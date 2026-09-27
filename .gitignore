@@ -1,0 +1,107 @@
+# ============================================================================
+# PlantDoctor - secrets and local state that must never be committed
+# ============================================================================
+
+# --- secrets -----------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials.json
+service-account*.json
+.netrc
+
+# --- database ----------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.backup
+/pgdata/
+postgres/
+
+# --- runtime data ------------------------------------------------------------
+/data/postgres/
+/data/plantdoctor/
+/plantdoctor-data/
+/backups/*.dump
+/backups/*.tar.gz
+/backups/*.json
+/plantdoctor-data/**
+uploads/
+diagnosis-images/
+plant-images/
+user-avatars/
+logs/
+*.log
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+
+# --- pytest / coverage -------------------------------------------------------
+.pytest_cache/
+.cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+nosetests.xml
+junit.xml
+
+# --- tooling -----------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Flutter / Dart ----------------------------------------------------------
+mobile/build/
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/app/debug/
+mobile/android/app/profile/
+mobile/android/app/release/
+mobile/android/key.properties
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/Flutter.framework
+mobile/ios/Flutter/Flutter.podspec
+mobile/ios/Podfile.lock
+**/generated_plugin_registrant.dart
+mobile/*.iml
+
+# --- generated / imported knowledge artefacts --------------------------------
+# Seed files are committed; generated import output and datasets are not.
+scripts/out/
+*.import-report.json
+mobile/assets/data/*.generated.json

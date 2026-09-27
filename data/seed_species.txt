@@ -1,0 +1,46 @@
+# Initial species list for the PlantDoctor knowledge base.
+# One scientific name per line. Lines starting with # are ignored.
+# Names are resolved against the GBIF Backbone Taxonomy; the importer records
+# the resolved accepted name, matchType and match confidence for every row and
+# refuses low-confidence matches.
+Solanum lycopersicum
+Solanum tuberosum
+Capsicum annuum
+Ocimum basilicum
+Mentha spicata
+Ocimum tenuiflorum
+Coriandrum sativum
+Spinacia oleracea
+Lactuca sativa
+Rosa chinensis
+Tagetes erecta
+Jasminum sambac
+Mangifera indica
+Musa acuminata
+Oryza sativa
+Triticum aestivum
+Zea mays
+Gossypium hirsutum
+Saccharum officinarum
+Citrus limon
+Punica granatum
+Psidium guajava
+Azadirachta indica
+Ficus religiosa
+Bougainvillea glabra
+Hibiscus rosa-sinensis
+Dracaena trifasciata
+Epipremnum aureum
+Aloe vera
+Chlorophytum comosum
+Crassula ovata
+Rosmarinus officinalis
+Thymus vulgaris
+Lavandula angustifolia
+Nicotiana tabacum
+Brassica oleracea
+Daucus carota
+Allium cepa
+Piper nigrum
+Curcuma longa
+Camellia sinensis
