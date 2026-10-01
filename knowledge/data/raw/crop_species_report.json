@@ -1,0 +1,178 @@
+{
+  "generated_at": "2026-09-30T23:18:02+00:00",
+  "requested": 167,
+  "added": 18,
+  "already_present": 143,
+  "unresolved": [
+    "Acacia catechu (rank=GENUS)",
+    "Bauhinia vahlii (rank=GENUS)",
+    "Catharanthus grandiflorus (rank=GENUS)",
+    "Luffa cylindrica (rank=FAMILY)",
+    "Prunus dulcis (rank=GENUS)",
+    "Syzygium cum (rank=GENUS)"
+  ],
+  "added_records": [
+    {
+      "requested": "Acacia nilotica",
+      "accepted_name": "Acacia nilotica",
+      "slug": "acacia-nilotica",
+      "gbif_key": "2978421",
+      "group": "trees",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Brassica oleracea var. botrytis",
+      "accepted_name": "Brassica oleracea botrytis",
+      "slug": "brassica-oleracea-botrytis",
+      "gbif_key": "3042854",
+      "group": "vegetables",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Brassica oleracea var. capitata",
+      "accepted_name": "Brassica oleracea capitata",
+      "slug": "brassica-oleracea-capitata",
+      "gbif_key": "3042846",
+      "group": "vegetables",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Brassica oleracea var. italica",
+      "accepted_name": "Brassica oleracea italica",
+      "slug": "brassica-oleracea-italica",
+      "gbif_key": "3042863",
+      "group": "vegetables",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Coptis teeta",
+      "accepted_name": "Coptis teeta",
+      "slug": "coptis-teeta",
+      "gbif_key": "8332947",
+      "group": "medicinal",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Cyperus papyrus",
+      "accepted_name": "Cyperus papyrus",
+      "slug": "cyperus-papyrus",
+      "gbif_key": "2716311",
+      "group": "aquatic_and_misc",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Eichhornia crassipes",
+      "accepted_name": "Eichhornia crassipes",
+      "slug": "eichhornia-crassipes",
+      "gbif_key": "2765940",
+      "group": "aquatic_and_misc",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Ficus lyrata",
+      "accepted_name": "Ficus lyrata",
+      "slug": "ficus-lyrata",
+      "gbif_key": "5361899",
+      "group": "ornamental_and_houseplant",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Hoya carnosa",
+      "accepted_name": "Hoya carnosa",
+      "slug": "hoya-carnosa",
+      "gbif_key": "8658195",
+      "group": "ornamental_and_houseplant",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Lemna minor",
+      "accepted_name": "Lemna minor",
+      "slug": "lemna-minor",
+      "gbif_key": "2867589",
+      "group": "aquatic_and_misc",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Lens culinaris",
+      "accepted_name": "Lens culinaris",
+      "slug": "lens-culinaris",
+      "gbif_key": "5350010",
+      "group": "pulses",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Ocimum sanctum",
+      "accepted_name": "Ocimum sanctum",
+      "slug": "ocimum-sanctum",
+      "gbif_key": "2927101",
+      "group": "medicinal",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Pennisetum glaucum",
+      "accepted_name": "Pennisetum glaucum",
+      "slug": "pennisetum-glaucum",
+      "gbif_key": "2706141",
+      "group": "cereals",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Petunia hybrida",
+      "accepted_name": "Petunia hybrida",
+      "slug": "petunia-hybrida",
+      "gbif_key": "2928860",
+      "group": "ornamental_and_houseplant",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Pistacia vera",
+      "accepted_name": "Pistacia vera",
+      "slug": "pistacia-vera",
+      "gbif_key": "3190585",
+      "group": "fruits",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Pisum sativum",
+      "accepted_name": "Pisum sativum",
+      "slug": "pisum-sativum",
+      "gbif_key": "5347845",
+      "group": "pulses",
+      "match_type": "EXACT",
+      "confidence": 100
+    },
+    {
+      "requested": "Secale cereale",
+      "accepted_name": "Secale cereale",
+      "slug": "secale-cereale",
+      "gbif_key": "2705966",
+      "group": "cereals",
+      "match_type": "EXACT",
+      "confidence": 99
+    },
+    {
+      "requested": "Tamarix aphylla",
+      "accepted_name": "Tamarix aphylla",
+      "slug": "tamarix-aphylla",
+      "gbif_key": "2874704",
+      "group": "trees",
+      "match_type": "EXACT",
+      "confidence": 99
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "file": "nutrient_deficiencies.json",
+    "purpose": "Symptom patterns and correction guidance for the nutrients the specification lists, plus the environmental stresses that look like them.",
+    "provenance": "Project-curated from standard plant-nutrition teaching material (mobile vs immobile nutrient behaviour, chlorosis and necrosis patterns).",
+    "verification_status": "UNVERIFIED",
+    "why_unverified": "No single named published source has been attached to each record yet, so the app must present these as general guidance and never as a diagnosis.",
+    "critical_rule": "A symptom such as 'yellow leaves' maps to many possible causes. Nitrogen deficiency is one hypothesis among several, and the app must present it that way. This is why every record carries a similar_conditions field."
+  },
+  "deficiencies": [
+    {
+      "nutrient": "Nitrogen",
+      "symbol": "N",
+      "description": "A mobile macronutrient. Because the plant can move nitrogen from old tissue to new growth, shortage shows up on the OLDEST leaves first.",
+      "visual_signs": "Uniform pale-green to yellowing of older or lower leaves beginning at the leaf tip and moving along the midrib; in severe cases the lower canopy yellows and dries; plants are stunted with thin stems.",
+      "affected_parts": "older leaves; whole-plant vigour; stem thickness",
+      "similar_conditions": "Overwatering and poor drainage (roots cannot take up nitrogen); root damage or waterlogging; natural autumn senescence; sulfur deficiency (pale on young leaves instead); shade-induced yellowing; viral yellowing diseases; cold soil.",
+      "soil_factors": "Low organic matter, heavy leaching by rain or irrigation, denitrification in waterlogged soil, cold soil slowing mineralisation, high-carbon residue tying up nitrogen.",
+      "correction_guidance": "Confirm the pattern is on older leaves before acting. Check drainage and irrigation first. Where nitrogen is genuinely low, split applications of a nitrogen source matched to the crop are standard practice; avoid one large dose that leaches."
+    },
+    {
+      "nutrient": "Phosphorus",
+      "symbol": "P",
+      "description": "Mobile macronutrient involved in energy transfer and root development.",
+      "visual_signs": "Dull dark green foliage, sometimes with purple or reddish tinting on older leaves and stems; stunted growth; poor root and tiller development; delayed flowering and maturity.",
+      "affected_parts": "older leaves; stems; roots",
+      "similar_conditions": "Cold soil (a very common cause of purple leaves in young maize and tomato); genetic purple colouring in some cultivars; root injury; herbicide injury; phosphorus fixation in very acidic or calcareous soils.",
+      "soil_factors": "Strongly acidic soils (iron and aluminium fixation), calcareous or alkaline soils (calcium fixation), very low organic matter, cold and compacted soil.",
+      "correction_guidance": "Test soil before applying. Correct soil pH toward the crop's range and place phosphorus fertiliser near the root zone rather than broadcasting, because phosphorus moves very little in soil."
+    },
+    {
+      "nutrient": "Potassium",
+      "symbol": "K",
+      "description": "Mobile macronutrient controlling water regulation and enzyme activity.",
+      "visual_signs": "Mottled yellowing followed by scorching or firing of the margins of older leaves; leaf edges become necrotic and curl; weak stems; fruit size and quality reduced.",
+      "affected_parts": "older leaf margins; stems; fruit quality",
+      "similar_conditions": "Salt burn from over-fertilisation; wind burn or drought scorch; magnesium deficiency (which also yellows older leaves but keeps the veins green); boron toxicity; herbicide drift.",
+      "soil_factors": "Sandy soils low in exchangeable potassium, heavy leaching, very high calcium or magnesium competing for uptake, prolonged waterlogging reducing root function.",
+      "correction_guidance": "Confirm the scorching is on older leaves and starts at the margin. Avoid over-application, which interferes with magnesium and calcium uptake. Maintain even moisture so potassium reaches the roots."
+    },
+    {
+      "nutrient": "Calcium",
+      "symbol": "Ca",
+      "description": "Immobile element carried mainly in the transpiration stream. Shortage therefore appears in NEW growth and in low-transpiration tissue such as fruit.",
+      "visual_signs": "Distorted, hooked or crinkled new leaves; death of the growing point in severe cases; blossom-end rot of tomato and pepper fruit; tip-burn of lettuce and cabbage; brown corky specks in fruit.",
+      "affected_parts": "young leaves; growing points; fruit",
+      "similar_conditions": "Irregular or fluctuating irrigation (the usual cause of blossom-end rot even when soil calcium is adequate); high salinity; root disease; boron deficiency also distorts new growth but with different lesion shapes.",
+      "soil_factors": "Low soil calcium, strong leaching, very low pH, high sodium, and any condition restricting water flow to newly expanding tissue.",
+      "correction_guidance": "The decisive factor is usually steady moisture, not more calcium. Level out irrigation so the transpiration stream keeps flowing, and avoid excessive potassium or magnesium which compete for uptake."
+    },
+    {
+      "nutrient": "Magnesium",
+      "symbol": "Mg",
+      "description": "Mobile element at the centre of the chlorophyll molecule.",
+      "visual_signs": "Interveinal chlorosis of OLDER leaves - the tissue between the veins turns yellow while the veins stay green, often with a paler margin; in severe cases the yellowing becomes necrotic; leaves may drop early.",
+      "affected_parts": "older leaves; interveinal tissue",
+      "similar_conditions": "Iron deficiency (appears on young leaves with contrasting green veins); manganese deficiency (also interveinal, usually on young or middle leaves); zinc deficiency; natural ageing; root hypoxia.",
+      "soil_factors": "Sandy acidic soils, heavy potassium application competing for uptake, high calcium, prolonged leaching.",
+      "correction_guidance": "Distinguish from iron by leaf age. Where soil magnesium is genuinely low, magnesium sulfate or dolomitic lime are standard amendments; foliar magnesium gives a short-term response in fruit crops."
+    },
+    {
+      "nutrient": "Sulfur",
+      "symbol": "S",
+      "description": "Immobile to poorly mobile element needed for protein synthesis.",
+      "visual_signs": "General pale green to yellowing that appears on YOUNG leaves and spreads over the whole plant; plants are small and thin; in brassicas the leaves may be cupped.",
+      "affected_parts": "young leaves; whole plant",
+      "similar_conditions": "Nitrogen deficiency (which starts on old leaves); iron chlorosis; viral yellows; cool wet soil reducing sulfur mineralisation; sulfur dioxide air pollution damage.",
+      "soil_factors": "Low organic matter, coarse sandy soils, high leaching, long history of using sulfate-free fertilisers.",
+      "correction_guidance": "Distinguish from nitrogen by checking whether young or old leaves yellow first. Elemental sulfur must be oxidised by soil microbes before it is available, so it acts slowly; sulfate forms act faster."
+    },
+    {
+      "nutrient": "Iron",
+      "symbol": "Fe",
+      "description": "Immobile micronutrient needed for chlorophyll formation. Deficiency is very often an availability problem rather than a shortage in the soil.",
+      "visual_signs": "Sharply interveinal chlorosis of YOUNG leaves - a pale yellow to almost white blade with a fine network of green veins; in severe cases the whole young leaf whitens and the margins scorch.",
+      "affected_parts": "young leaves; interveinal tissue",
+      "similar_conditions": "Manganese deficiency (very similar; manganese chlorosis often has a wider green band and may affect middle leaves); magnesium deficiency (starts on old leaves); zinc deficiency; glyphosate or herbicide injury; root damage from waterlogging.",
+      "soil_factors": "Alkaline and calcareous soils (the most common cause), over-liming, bicarbonate in irrigation water, waterlogged or compacted soil, cold wet root conditions, high phosphorus or heavy metal interference.",
+      "correction_guidance": "Correcting soil pH toward the crop's range and improving drainage is the durable fix. Chelated iron applied to soil or as a foliar spray gives a rapid but temporary green-up; the pattern returns if the pH is not addressed."
+    },
+    {
+      "nutrient": "Zinc",
+      "symbol": "Zn",
+      "description": "Micronutrient involved in auxin metabolism and enzyme activity.",
+      "visual_signs": "Shortened internodes giving a rosetted or stunted look; small narrow leaves (little leaf); interveinal chlorosis usually on middle and younger leaves; in maize, broad pale bands either side of the midrib of young leaves (white bud).",
+      "affected_parts": "young and middle leaves; internodes; growing point",
+      "similar_conditions": "Iron or manganese chlorosis; boron deficiency (also stunts growing points); herbicide carryover; root restriction in compacted soil; cold stress stunting.",
+      "soil_factors": "High pH and calcareous soils, sandy low-organic-matter soils, high phosphorus levels reducing zinc uptake, prolonged flooding.",
+      "correction_guidance": "Zinc sulfate applied to the soil is a standard correction where deficiency is confirmed; foliar sprays correct the visible symptoms quickly but do not fix the soil supply."
+    },
+    {
+      "nutrient": "Manganese",
+      "symbol": "Mn",
+      "description": "Micronutrient involved in photosynthesis, especially in the oxygen-evolving step.",
+      "visual_signs": "Interveinal chlorosis with greyish or brownish speckling, often on young to middle leaves; the chlorosis can be uneven across the leaf giving a mottled look; in severe cases necrotic spots appear.",
+      "affected_parts": "young and middle leaves",
+      "similar_conditions": "Iron deficiency (usually a sharper contrast with finer, greener veins); magnesium deficiency (older leaves first); zinc deficiency; ozone flecking; spider mite stippling (which follows leaf texture rather than veins).",
+      "soil_factors": "High pH and high organic matter, over-liming, high soil moisture, and the opposite condition of very acidic soil where manganese can instead become toxic.",
+      "correction_guidance": "Where the soil is over-limed, lowering pH improves availability. Manganese sulfate is used as a soil or foliar correction where deficiency is verified by tissue or soil test."
+    },
+    {
+      "nutrient": "Boron",
+      "symbol": "B",
+      "description": "Immobile micronutrient required for cell wall formation and growth of new tissue. The margin between deficiency and toxicity is narrow.",
+      "visual_signs": "Death of the growing point, distortion and brittleness of young leaves, corky brown lesions on stems and fruit, hollow or cracked stems, poor seed and fruit set.",
+      "affected_parts": "growing points; young leaves; flowers; fruit; seed",
+      "similar_conditions": "Calcium deficiency (also distorts new growth and causes blossom-end rot); herbicide injury; boron TOXICITY produces marginal leaf burn and is easily confused with deficiency, so never apply boron without a test.",
+      "soil_factors": "Sandy acidic soils low in organic matter, heavy leaching because boron moves readily, and drought restricting root access to boron.",
+      "correction_guidance": "Never apply boron on a guess: the safe range is narrow and overdose is damaging. Confirm with a soil or tissue test first. Steady irrigation often resolves the symptom."
+    },
+    {
+      "nutrient": "Copper",
+      "symbol": "Cu",
+      "description": "Micronutrient involved in lignin synthesis and enzyme systems. Deficiency is uncommon and usually tied to organic, peaty or reclaimed soils.",
+      "visual_signs": "Young leaves pale and twisted, sometimes with a blue-green tinge; tips of young leaves wither; stems become soft and may bend; in cereals, blind heads and white ear tips.",
+      "affected_parts": "young leaves; growing points; stems",
+      "similar_conditions": "Iron, manganese or zinc chlorosis; boron deficiency; frost damage to young growth; herbicide injury; excessive zinc or phosphorus interfering with copper uptake.",
+      "soil_factors": "Peaty or high organic matter soils, leached acidic sandy soils, reclaimed or calcareous soils, and soils that have received many years of copper sprays where toxicity is the opposite risk.",
+      "correction_guidance": "Confirm by soil or tissue test. Copper sulfate is the usual correction but the safe window is narrow, and repeated copper sprays can build up in soil to toxic levels."
+    },
+    {
+      "nutrient": "Molybdenum",
+      "symbol": "Mo",
+      "description": "Micronutrient needed for nitrate reduction. Because of this role, a shortage can look exactly like nitrogen deficiency.",
+      "visual_signs": "Interveinal chlorosis and marginal scorching on older leaves; in crucifers, whiptail - narrowly deformed leaf blades that fail to expand; in legumes a general pale nitrogen-starved appearance.",
+      "affected_parts": "older leaves; leaf blades",
+      "similar_conditions": "Nitrogen deficiency (very similar because molybdenum shortage blocks nitrate use); manganese or zinc chlorosis; herbicide injury.",
+      "soil_factors": "Strongly acidic soils where molybdenum binds to iron oxides; high leaching; high sulfur; low pH is the usual driver.",
+      "correction_guidance": "Liming acidic soil toward the crop's range is the standard, long-lasting correction. Seed treatment or a very small amount of molybdate is used where deficiency is confirmed; the quantity required is minute."
+    }
+  ],
+  "stresses": [
+    {
+      "name": "Overwatering and waterlogging",
+      "description": "Excess water fills soil pores and starves roots of oxygen, so the plant shows shortage symptoms even though nutrients and water are physically present.",
+      "visual_signs": "Uniform yellowing of lower then upper leaves; wilting during the day even though the soil is wet; soft dark roots; leaf drop; mould on the soil surface; oedema blisters on the leaf underside.",
+      "similar_conditions": "Nitrogen deficiency; root rot pathogens; drought stress (wilting looks identical, so always check soil moisture); salt accumulation from over-fertilising.",
+      "correction_guidance": "Stop watering and let the root zone dry. Check the pot or field for drainage and fix it. Trim mushy roots only on plants that tolerate it. Do not add fertiliser while the roots are impaired."
+    },
+    {
+      "name": "Drought and under-watering",
+      "description": "Insufficient water reduces transpiration and the transport of immobile nutrients, producing characteristic scorching.",
+      "visual_signs": "Wilting that does not recover overnight; crisping and browning of leaf tips and margins; leaves curling inward; leaf drop; dull grey-green colour.",
+      "similar_conditions": "Potassium deficiency (margin scorch); salt toxicity; heat stress; vascular wilt diseases such as Verticillium or Fusarium, where only part of the plant wilts.",
+      "correction_guidance": "Water thoroughly so the whole root zone is wetted, then let the top layer partly dry before watering again. Do not fertilise dry soil. Mulch to reduce evaporation."
+    },
+    {
+      "name": "Heat stress and sunscald",
+      "description": "High temperature combined with high light overwhelms the plant's cooling and photoprotection.",
+      "visual_signs": "Pale or bleached patches on sun-exposed leaves; brown papery scorched areas between veins; wilting at midday with recovery at night; flower drop; fruit with pale sunken sunscald patches.",
+      "similar_conditions": "Drought stress; potassium deficiency scorch; iron chlorosis on alkaline soil; herbicide burn; wind burn.",
+      "correction_guidance": "Shade the plant during the hottest hours, increase air movement, keep soil moisture steady, and move container plants out of reflected heat."
+    },
+    {
+      "name": "Cold stress, chill injury and frost",
+      "description": "Low temperature damages cell membranes and blocks water and nutrient uptake.",
+      "visual_signs": "Water-soaked dark patches that turn brown-black; limp leaves that collapse; purple or red tinting of leaves and stems; flower and young fruit drop; cracking of stems.",
+      "similar_conditions": "Phosphorus deficiency (purple tinting); late blight (dark lesions, but with a spreading wet margin and mould growth in humidity); salinity injury; root rot.",
+      "correction_guidance": "Do not prune frost damage until the risk of further frost has passed and new growth shows. Protect with covers or windbreaks, water the soil the day before a frost, and harden plants off before cold spells."
+    },
+    {
+      "name": "Low light and shade stress",
+      "description": "Insufficient light limits photosynthesis, so growth thins and the plant abandons its lower leaves.",
+      "visual_signs": "Elongated weak stems with wide internode spacing; small pale leaves; more leaf drop in the lower canopy; variegated leaves reverting toward plain green; no flowering.",
+      "similar_conditions": "Nitrogen deficiency; overwatering; natural ageing; root restriction in an undersized pot.",
+      "correction_guidance": "Move the plant to brighter light and increase it gradually so leaves do not scorch. Rotate the plant so growth stays even, and reduce watering because a shaded plant uses less water."
+    },
+    {
+      "name": "Salt and over-fertilisation injury",
+      "description": "Excess soluble salts draw water out of the roots and burn tissue directly.",
+      "visual_signs": "Crisped brown leaf margins and tips; a white crust on the soil surface or pot rim; stunted wilted growth despite wet soil; pale speckling between veins.",
+      "similar_conditions": "Drought stress; potassium deficiency margin scorch; boron toxicity; root rot; wind burn.",
+      "correction_guidance": "Leach the root zone with plenty of water and let it drain freely. Stop fertilising for several weeks. Repot container plants into fresh media if the crust is heavy."
+    },
+    {
+      "name": "Acclimation scorch after moving into sun",
+      "description": "A plant grown in shade has not built up photoprotection, so sudden direct sun bleaches the leaves it grew under low light.",
+      "visual_signs": "Silvery or papery bleached patches limited to leaves that were present before the move, while new leaves grown in the new location are healthy.",
+      "similar_conditions": "Heat or sunscald damage; spider mite stippling; iron chlorosis; chemical burn.",
+      "correction_guidance": "Move the plant into its new light level gradually over one to two weeks. Keep the damaged leaves if the plant still has enough foliage, and remove them as new growth takes over."
+    },
+    {
+      "name": "Physical and mechanical damage",
+      "description": "Injury not caused by a pathogen or nutrient shortage - the pattern matches where something hit, cut or rubbed the plant.",
+      "visual_signs": "Clean cuts or tears; snapped stems; bruised areas; damage concentrated on one side or at one height; holes with straight edges; scars from ties or stakes.",
+      "similar_conditions": "Chewing insect damage (holes with irregular margins, often with frass); animal grazing; hail damage (which can repeat across many leaves); boron deficiency (distorts new growth rather than cutting it).",
+      "correction_guidance": "Prune cleanly with a disinfected tool where a break cannot heal, support the plant, and remove ties that are cutting into the stem. Keep the plant unstressed so it can seal the wound."
+    }
+  ]
+}

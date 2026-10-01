@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "file": "name_aliases.json",
+    "purpose": "Resolve names that appear in curated content and in the bundled visual model to the taxon record actually held in this database. Only needed where GBIF Backbone Taxonomy treats a familiar cultivated name as a synonym of a different accepted name. No new taxa are created here: every target must already exist in the GBIF import.",
+    "authority": "GBIF Backbone Taxonomy (CC BY 4.0)",
+    "verification_status": "SOURCE_NAMED"
+  },
+  "aliases": [
+    {
+      "alias": "Citrus sinensis",
+      "canonical_name": "Citrus aurantium",
+      "reason": "GBIF Backbone treats Citrus sinensis (Mill.) Pers. as a synonym of the accepted Citrus x aurantium L. (usageKey 3190158 -> acceptedKey 8077391). Sweet orange is therefore held under the sweet/sour orange aggregate.",
+      "display_note": "Sweet orange",
+      "language": "la"
+    }
+  ]
+}

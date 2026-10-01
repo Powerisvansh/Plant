@@ -1,0 +1,516 @@
+{
+  "generated_at": "2026-09-30T23:49:11+00:00",
+  "status": "measured",
+  "model_path": "/home/vansh/Desktop/PLANT/ml/models/plantvillage_best.keras",
+  "tensorflow_version": "2.20.0",
+  "device": "cpu",
+  "image_size": 160,
+  "split": "test",
+  "test_images": 8146,
+  "num_classes": 38,
+  "crops_covered": [
+    "Apple",
+    "Blueberry",
+    "Cherry (including sour)",
+    "Corn (maize)",
+    "Grape",
+    "Orange",
+    "Peach",
+    "Pepper, bell",
+    "Potato",
+    "Raspberry",
+    "Soybean",
+    "Squash",
+    "Strawberry",
+    "Tomato"
+  ],
+  "metrics": {
+    "top1_accuracy": 0.901792,
+    "top5_accuracy": 0.99153,
+    "macro": {
+      "precision": 0.885325,
+      "recall": 0.906241,
+      "f1": 0.890486
+    },
+    "weighted": {
+      "precision": 0.911304,
+      "recall": 0.901792,
+      "f1": 0.902421
+    },
+    "average_inference_seconds_per_image": 0.007718,
+    "inference_note": "CPU forward pass, batch 48, on this machine only. Phone latency will differ."
+  },
+  "unknown_rejection_sweep": [
+    {
+      "threshold": 0.3,
+      "accepted": 8057,
+      "rejected_as_unknown": 89,
+      "rejection_rate": 0.010926,
+      "accuracy_on_accepted": 0.908279
+    },
+    {
+      "threshold": 0.4,
+      "accepted": 7840,
+      "rejected_as_unknown": 306,
+      "rejection_rate": 0.037564,
+      "accuracy_on_accepted": 0.921046
+    },
+    {
+      "threshold": 0.5,
+      "accepted": 7462,
+      "rejected_as_unknown": 684,
+      "rejection_rate": 0.083968,
+      "accuracy_on_accepted": 0.940499
+    },
+    {
+      "threshold": 0.6,
+      "accepted": 7025,
+      "rejected_as_unknown": 1121,
+      "rejection_rate": 0.137614,
+      "accuracy_on_accepted": 0.959431
+    },
+    {
+      "threshold": 0.7,
+      "accepted": 6545,
+      "rejected_as_unknown": 1601,
+      "rejection_rate": 0.196538,
+      "accuracy_on_accepted": 0.971887
+    },
+    {
+      "threshold": 0.8,
+      "accepted": 5932,
+      "rejected_as_unknown": 2214,
+      "rejection_rate": 0.27179,
+      "accuracy_on_accepted": 0.983648
+    },
+    {
+      "threshold": 0.9,
+      "accepted": 5089,
+      "rejected_as_unknown": 3057,
+      "rejection_rate": 0.375276,
+      "accuracy_on_accepted": 0.991943
+    }
+  ],
+  "per_class": [
+    {
+      "class_index": 0,
+      "precision": 0.89899,
+      "recall": 0.936842,
+      "f1": 0.917526,
+      "support": 95,
+      "class_label": "Apple___Apple_scab",
+      "crop": "Apple",
+      "condition": "Apple scab",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 1,
+      "precision": 0.882353,
+      "recall": 0.967742,
+      "f1": 0.923077,
+      "support": 93,
+      "class_label": "Apple___Black_rot",
+      "crop": "Apple",
+      "condition": "Black rot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 2,
+      "precision": 0.826087,
+      "recall": 0.904762,
+      "f1": 0.863636,
+      "support": 42,
+      "class_label": "Apple___Cedar_apple_rust",
+      "crop": "Apple",
+      "condition": "Cedar apple rust",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 3,
+      "precision": 0.9,
+      "recall": 0.95122,
+      "f1": 0.924901,
+      "support": 246,
+      "class_label": "Apple___healthy",
+      "crop": "Apple",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 4,
+      "precision": 0.91358,
+      "recall": 0.982301,
+      "f1": 0.946695,
+      "support": 226,
+      "class_label": "Blueberry___healthy",
+      "crop": "Blueberry",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 5,
+      "precision": 0.968553,
+      "recall": 0.974684,
+      "f1": 0.971609,
+      "support": 158,
+      "class_label": "Cherry_(including_sour)___Powdery_mildew",
+      "crop": "Cherry (including sour)",
+      "condition": "Powdery mildew",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 6,
+      "precision": 0.969697,
+      "recall": 1.0,
+      "f1": 0.984615,
+      "support": 128,
+      "class_label": "Cherry_(including_sour)___healthy",
+      "crop": "Cherry (including sour)",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 7,
+      "precision": 0.954545,
+      "recall": 0.545455,
+      "f1": 0.694215,
+      "support": 77,
+      "class_label": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "crop": "Corn (maize)",
+      "condition": "Cercospora leaf spot Gray leaf spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 8,
+      "precision": 0.98895,
+      "recall": 1.0,
+      "f1": 0.994444,
+      "support": 179,
+      "class_label": "Corn_(maize)___Common_rust_",
+      "crop": "Corn (maize)",
+      "condition": "Common rust ",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 9,
+      "precision": 0.788043,
+      "recall": 0.986395,
+      "f1": 0.876133,
+      "support": 147,
+      "class_label": "Corn_(maize)___Northern_Leaf_Blight",
+      "crop": "Corn (maize)",
+      "condition": "Northern Leaf Blight",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 10,
+      "precision": 1.0,
+      "recall": 0.982857,
+      "f1": 0.991354,
+      "support": 175,
+      "class_label": "Corn_(maize)___healthy",
+      "crop": "Corn (maize)",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 11,
+      "precision": 0.951515,
+      "recall": 0.887006,
+      "f1": 0.918129,
+      "support": 177,
+      "class_label": "Grape___Black_rot",
+      "crop": "Grape",
+      "condition": "Black rot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 12,
+      "precision": 0.92891,
+      "recall": 0.942308,
+      "f1": 0.935561,
+      "support": 208,
+      "class_label": "Grape___Esca_(Black_Measles)",
+      "crop": "Grape",
+      "condition": "Esca (Black Measles)",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 13,
+      "precision": 0.981132,
+      "recall": 0.962963,
+      "f1": 0.971963,
+      "support": 162,
+      "class_label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "crop": "Grape",
+      "condition": "Leaf blight (Isariopsis Leaf Spot)",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 14,
+      "precision": 1.0,
+      "recall": 0.984375,
+      "f1": 0.992126,
+      "support": 64,
+      "class_label": "Grape___healthy",
+      "crop": "Grape",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 15,
+      "precision": 0.993827,
+      "recall": 0.974576,
+      "f1": 0.984108,
+      "support": 826,
+      "class_label": "Orange___Haunglongbing_(Citrus_greening)",
+      "crop": "Orange",
+      "condition": "Haunglongbing (Citrus greening)",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 16,
+      "precision": 0.986885,
+      "recall": 0.875,
+      "f1": 0.927581,
+      "support": 344,
+      "class_label": "Peach___Bacterial_spot",
+      "crop": "Peach",
+      "condition": "Bacterial spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 17,
+      "precision": 0.776119,
+      "recall": 0.962963,
+      "f1": 0.859504,
+      "support": 54,
+      "class_label": "Peach___healthy",
+      "crop": "Peach",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 18,
+      "precision": 0.836257,
+      "recall": 0.959732,
+      "f1": 0.89375,
+      "support": 149,
+      "class_label": "Pepper,_bell___Bacterial_spot",
+      "crop": "Pepper, bell",
+      "condition": "Bacterial spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 19,
+      "precision": 0.964824,
+      "recall": 0.868778,
+      "f1": 0.914286,
+      "support": 221,
+      "class_label": "Pepper,_bell___healthy",
+      "crop": "Pepper, bell",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 20,
+      "precision": 0.942675,
+      "recall": 0.986667,
+      "f1": 0.964169,
+      "support": 150,
+      "class_label": "Potato___Early_blight",
+      "crop": "Potato",
+      "condition": "Early blight",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 21,
+      "precision": 0.830508,
+      "recall": 0.98,
+      "f1": 0.899083,
+      "support": 150,
+      "class_label": "Potato___Late_blight",
+      "crop": "Potato",
+      "condition": "Late blight",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 22,
+      "precision": 0.65625,
+      "recall": 0.913043,
+      "f1": 0.763636,
+      "support": 23,
+      "class_label": "Potato___healthy",
+      "crop": "Potato",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 23,
+      "precision": 0.964286,
+      "recall": 0.981818,
+      "f1": 0.972973,
+      "support": 55,
+      "class_label": "Raspberry___healthy",
+      "crop": "Raspberry",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 24,
+      "precision": 0.959948,
+      "recall": 0.973788,
+      "f1": 0.966818,
+      "support": 763,
+      "class_label": "Soybean___healthy",
+      "crop": "Soybean",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 25,
+      "precision": 0.992806,
+      "recall": 1.0,
+      "f1": 0.99639,
+      "support": 276,
+      "class_label": "Squash___Powdery_mildew",
+      "crop": "Squash",
+      "condition": "Powdery mildew",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 26,
+      "precision": 0.964912,
+      "recall": 0.988024,
+      "f1": 0.976331,
+      "support": 167,
+      "class_label": "Strawberry___Leaf_scorch",
+      "crop": "Strawberry",
+      "condition": "Leaf scorch",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 27,
+      "precision": 0.930556,
+      "recall": 0.971014,
+      "f1": 0.950355,
+      "support": 69,
+      "class_label": "Strawberry___healthy",
+      "crop": "Strawberry",
+      "condition": "healthy",
+      "is_healthy_class": true
+    },
+    {
+      "class_index": 28,
+      "precision": 0.867133,
+      "recall": 0.777429,
+      "f1": 0.819835,
+      "support": 319,
+      "class_label": "Tomato___Bacterial_spot",
+      "crop": "Tomato",
+      "condition": "Bacterial spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 29,
+      "precision": 0.827869,
+      "recall": 0.673333,
+      "f1": 0.742647,
+      "support": 150,
+      "class_label": "Tomato___Early_blight",
+      "crop": "Tomato",
+      "condition": "Early blight",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 30,
+      "precision": 0.83908,
+      "recall": 0.765734,
+      "f1": 0.800731,
+      "support": 286,
+      "class_label": "Tomato___Late_blight",
+      "crop": "Tomato",
+      "condition": "Late blight",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 31,
+      "precision": 0.783784,
+      "recall": 0.811189,
+      "f1": 0.797251,
+      "support": 143,
+      "class_label": "Tomato___Leaf_Mold",
+      "crop": "Tomato",
+      "condition": "Leaf Mold",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 32,
+      "precision": 0.857143,
+      "recall": 0.701887,
+      "f1": 0.771784,
+      "support": 265,
+      "class_label": "Tomato___Septoria_leaf_spot",
+      "crop": "Tomato",
+      "condition": "Septoria leaf spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 33,
+      "precision": 0.612994,
+      "recall": 0.861111,
+      "f1": 0.716172,
+      "support": 252,
+      "class_label": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "crop": "Tomato",
+      "condition": "Spider mites Two-spotted spider mite",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 34,
+      "precision": 0.621277,
+      "recall": 0.695238,
+      "f1": 0.65618,
+      "support": 210,
+      "class_label": "Tomato___Target_Spot",
+      "crop": "Tomato",
+      "condition": "Target Spot",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 35,
+      "precision": 0.998469,
+      "recall": 0.811955,
+      "f1": 0.895604,
+      "support": 803,
+      "class_label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "crop": "Tomato",
+      "condition": "Tomato Yellow Leaf Curl Virus",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 36,
+      "precision": 0.742857,
+      "recall": 0.928571,
+      "f1": 0.825397,
+      "support": 56,
+      "class_label": "Tomato___Tomato_mosaic_virus",
+      "crop": "Tomato",
+      "condition": "Tomato mosaic virus",
+      "is_healthy_class": false
+    },
+    {
+      "class_index": 37,
+      "precision": 0.73955,
+      "recall": 0.966387,
+      "f1": 0.837887,
+      "support": 238,
+      "class_label": "Tomato___healthy",
+      "crop": "Tomato",
+      "condition": "healthy",
+      "is_healthy_class": true
+    }
+  ],
+  "confusion_matrix_file": "/home/vansh/Desktop/PLANT/ml/metrics/confusion_matrix.csv",
+  "note": "Every number above is from this run on the held-out split. The model is a crop-and-condition screener, not a 2000-species identifier: it can only name crops it was trained on and must answer 'uncertain' for anything else."
+}

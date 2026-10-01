@@ -1,0 +1,138 @@
+{
+  "_comment": "Curated genus worklist for the GBIF import. Order matters: species are collected genus by genus until the target is met, so the most India-relevant groups come first. 'max_species' caps how many India-recorded species are taken per genus so a single huge genus cannot dominate the database.",
+  "default_max_species": 40,
+  "groups": [
+    {
+      "group": "cereals_and_grasses",
+      "max_species": 60,
+      "genera": [
+        "Oryza", "Triticum", "Zea", "Hordeum", "Avena", "Sorghum", "Pennisetum",
+        "Eleusine", "Setaria", "Panicum", "Echinochloa", "Saccharum", "Cynodon",
+        "Lolium", "Phalaris", "Dactylis", "Bambusa", "Dendrocalamus", "Cymbopogon",
+        "Vetiveria", "Chrysopogon", "Bothriochloa", "Digitaria", "Paspalum"
+      ]
+    },
+    {
+      "group": "pulses_and_legumes",
+      "max_species": 50,
+      "genera": [
+        "Cicer", "Cajanus", "Vigna", "Vicia", "Lens", "Pisum", "Lathyrus",
+        "Glycine", "Phaseolus", "Macrotyloma", "Lablab", "Mucuna", "Trigonella",
+        "Sesbania", "Crotalaria", "Clitoria", "Arachis"
+      ]
+    },
+    {
+      "group": "oilseeds",
+      "max_species": 40,
+      "genera": [
+        "Brassica", "Sinapis", "Sesamum", "Helianthus", "Linum", "Ricinus",
+        "Carthamus", "Camelina", "Guizotia", "Pongamia", "Madhuca", "Jatropha"
+      ]
+    },
+    {
+      "group": "fibre_and_industrial",
+      "max_species": 35,
+      "genera": [
+        "Gossypium", "Corchorus", "Agave", "Hibiscus", "Boerhavia",
+        "Cannabis"
+      ]
+    },
+    {
+      "group": "vegetables",
+      "max_species": 50,
+      "genera": [
+        "Solanum", "Capsicum", "Daucus", "Raphanus", "Allium", "Cucumis",
+        "Cucurbita", "Lagenaria", "Luffa", "Momordica", "Trichosanthes",
+        "Benincasa", "Citrullus", "Abelmoschus", "Spinacia", "Beta", "Lactuca",
+        "Amaranthus", "Chenopodium", "Colocasia", "Xanthosoma", "Dioscorea",
+        "Ipomoea", "Manihot", "Psophocarpus", "Sechium"
+      ]
+    },
+    {
+      "group": "fruits_and_nuts",
+      "max_species": 45,
+      "genera": [
+        "Mangifera", "Musa", "Malus", "Citrus", "Pyrus", "Prunus", "Psidium",
+        "Carica", "Punica", "Vitis", "Fragaria", "Ananas", "Cocos", "Ziziphus",
+        "Syzygium", "Artocarpus", "Annona", "Averrhoa", "Litchi", "Tamarindus",
+        "Phyllanthus", "Aegle", "Limonia", "Eriobotrya", "Rubus", "Ribes",
+        "Anacardium", "Juglans", "Berberis", "Cordia", "Grewia", "Flacourtia"
+      ]
+    },
+    {
+      "group": "spices_and_condiments",
+      "max_species": 40,
+      "genera": [
+        "Piper", "Curcuma", "Zingiber", "Elettaria", "Cinnamomum", "Myristica",
+        "Cuminum", "Coriandrum", "Foeniculum", "Anethum", "Trachyspermum",
+        "Murraya", "Vanilla", "Kaempferia", "Hedychium", "Alpinia", "Amomum",
+        "Bunium", "Nigella", "Pimpinella", "Vaccinium", "Pentas"
+      ]
+    },
+    {
+      "group": "medicinal_and_aromatic",
+      "max_species": 45,
+      "genera": [
+        "Ocimum", "Withania", "Bacopa", "Centella", "Tinospora", "Andrographis",
+        "Gymnema", "Catharanthus", "Rauvolfia", "Asparagus", "Aloe",
+        "Azadirachta", "Terminalia", "Santalum", "Commiphora", "Boswellia",
+        "Sida", "Justicia", "Picrorhiza", "Glycyrrhiza", "Senna", "Plumbago",
+        "Datura", "Papaver", "Plantago", "Achyranthes", "Eclipta", "Emblica",
+        "Tylophora", "Saraca", "Holarrhena", "Moringa", "Pergularia",
+        "Wrightia", "Vitex", "Premna", "Coleus", "Salvia"
+      ]
+    },
+    {
+      "group": "ornamentals",
+      "max_species": 45,
+      "genera": [
+        "Rosa", "Tagetes", "Jasminum", "Chrysanthemum", "Dahlia", "Dianthus",
+        "Petunia", "Zinnia", "Bougainvillea", "Nerium", "Plumeria", "Delonix",
+        "Lagerstroemia", "Tecoma", "Ixora", "Crossandra", "Mussaenda",
+        "Barleria", "Antirrhinum", "Impatiens", "Begonia", "Gerbera", "Lilium",
+        "Gladiolus", "Narcissus", "Tulipa", "Phalaenopsis", "Dendrobium",
+        "Cattleya", "Vanda", "Nelumbo", "Nymphaea", "Canna", "Calendula",
+        "Celosia", "Gomphrena", "Portulaca", "Bassia", "Gaillardia", "Coreopsis",
+        "Cosmos", "Thunbergia", "Clerodendrum", "Calliandra",
+        "Tabernaemontana", "Allamanda", "Bauhinia", "Cassia"
+      ]
+    },
+    {
+      "group": "houseplants_and_succulents",
+      "max_species": 45,
+      "genera": [
+        "Dracaena", "Sansevieria", "Epipremnum", "Monstera", "Philodendron",
+        "Ficus", "Spathiphyllum", "Zamioculcas", "Crassula", "Kalanchoe",
+        "Sedum", "Echeveria", "Haworthia", "Aglaonema", "Goeppertia", "Maranta",
+        "Dieffenbachia", "Syngonium", "Tradescantia", "Peperomia", "Hoya",
+        "Anthurium", "Aspidistra", "Beaucarnea", "Yucca", "Euphorbia", "Opuntia",
+        "Cereus", "Mammillaria", "Adenium", "Pachira", "Schefflera",
+        "Chamaedorea", "Dypsis", "Caryota", "Phoenix", "Washingtonia",
+        "Cycas", "Nephrolepis", "Adiantum", "Pteris", "Asplenium", "Platycerium",
+        "Chlorophytum", "Nyctanthes", "Duranta"
+      ]
+    },
+    {
+      "group": "trees_and_forestry",
+      "max_species": 45,
+      "genera": [
+        "Tectona", "Dalbergia", "Shorea", "Acacia", "Prosopis", "Eucalyptus",
+        "Pinus", "Populus", "Bombax", "Butea", "Albizia", "Quercus", "Morus",
+        "Ailanthus", "Melia", "Schleichera", "Gmelina", "Casuarina", "Alnus",
+        "Salix", "Hardwickia", "Anogeissus", "Dipterocarpus", "Pterocarpus",
+        "Stereospermum", "Diospyros", "Buchanania", "Semecarpus", "Sterculia",
+        "Swietenia"
+      ]
+    },
+    {
+      "group": "wild_native_and_weedy",
+      "max_species": 40,
+      "genera": [
+        "Calotropis", "Lantana", "Parthenium", "Eichhornia", "Ageratum",
+        "Xanthium", "Abutilon", "Tribulus", "Capparis", "Salvadora",
+        "Argemone", "Urtica", "Aerva", "Launaea", "Sonchus", "Oxalis",
+        "Tridax", "Alternanthera", "Cyperus", "Typha"
+      ]
+    }
+  ]
+}

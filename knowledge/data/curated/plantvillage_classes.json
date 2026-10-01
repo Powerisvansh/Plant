@@ -1,0 +1,466 @@
+{
+  "_meta": {
+    "file": "plantvillage_classes.json",
+    "purpose": "Disease records for the crops that the bundled visual model can actually see. The class list and the image counts are read from the real dataset archive, not written by hand; the pathogen and symptom fields are curated project content and are stored as UNVERIFIED until an individual published source is attached.",
+    "dataset": "PlantVillage Dataset (raw/color)",
+    "dataset_url": "https://github.com/spMohanty/PlantVillage-Dataset",
+    "dataset_license": "CC BY-SA 3.0",
+    "dataset_citation": "Mohanty SP, Hughes DP, Salathe M (2016) Using Deep Learning for Image-Based Plant Disease Detection. Frontiers in Plant Science 7:1419. doi:10.3389/fpls.2016.01419",
+    "class_counts_file": "knowledge/data/raw/plantvillage_class_counts.json",
+    "name_source": "aps_common_names",
+    "verification_status": "UNVERIFIED",
+    "important_limit": "PlantVillage covers 14 crop species and their foliar conditions only. It does NOT represent the 2000+ species plant knowledge base and must never be used to justify a species claim outside those 14 crops."
+  },
+  "diseases": [
+    {
+      "name": "Apple scab",
+      "pathogen": "Venturia inaequalis",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Apple___Apple_scab",
+      "description": "Fungal leaf and fruit disease of apple, most damaging in cool wet spring weather.",
+      "visual_symptoms": "Olive-green to velvety dark blotches on leaves; later scabby, corky, cracked lesions on fruit.",
+      "favorable_conditions": "Cool (approx. 16-24 C), wet spring weather with prolonged leaf wetness.",
+      "transmission": "Sexual spores released from fallen leaf litter in spring; secondary spread by rain-splashed conidia.",
+      "prevention": "Rake and destroy fallen leaves; prune for airflow; grow scab-resistant cultivars; avoid overhead irrigation.",
+      "management": "Sanitation plus protectant sprays timed to infection periods; remove severely affected shoots.",
+      "crops": [
+        {
+          "scientific_name": "Malus domestica",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Apple black rot",
+      "pathogen": "Botryosphaeria obtusa",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Apple___Black_rot",
+      "description": "Fungal canker and fruit rot of apple; also known as frogeye leaf spot on leaves.",
+      "visual_symptoms": "Small purple-brown circular leaf spots (frogeye) with pale centres; limb cankers; fruit with firm brown rot and concentric rings.",
+      "favorable_conditions": "Warm humid weather; wounds, winter injury and unpruned canopies.",
+      "transmission": "Spores from cankers, mummified fruit and dead wood, spread by rain and wind.",
+      "prevention": "Remove cankers and mummified fruit; prune out dead wood in dry weather; maintain tree vigour.",
+      "management": "Sanitation is the primary control; remove infected limbs; do not leave prunings in the orchard.",
+      "crops": [
+        {
+          "scientific_name": "Malus domestica",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Cedar apple rust",
+      "pathogen": "Gymnosporangium juniperi-virginianae",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Apple___Cedar_apple_rust",
+      "description": "Rust fungus that alternates between apple and juniper/cedar species; needs both hosts to complete its life cycle.",
+      "visual_symptoms": "Bright orange-yellow rounded spots on the upper leaf surface, often with tiny black dots; later orange tube-like structures under the leaf.",
+      "favorable_conditions": "Wet weather in spring when apple leaves are young; presence of nearby junipers.",
+      "transmission": "Spores travel from juniper galls to apple in spring, then back to juniper in late summer.",
+      "prevention": "Plant rust-resistant apple cultivars; remove nearby junipers where practical; avoid overhead irrigation during leaf expansion.",
+      "management": "Rarely fatal. Remove severely affected leaves; protectant sprays during spring infection periods.",
+      "crops": [
+        {
+          "scientific_name": "Malus domestica",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Cherry powdery mildew",
+      "pathogen": "Podosphaera clandestina",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Cherry_(including_sour)___Powdery_mildew",
+      "description": "Powdery mildew of cherry and related Prunus species.",
+      "visual_symptoms": "White to grey powdery coating on leaves and young shoots; leaf curling and distortion; premature leaf drop.",
+      "favorable_conditions": "Moderate temperatures, high humidity with dry foliage, and shaded crowded canopies.",
+      "transmission": "Airborne spores; the fungus survives in buds and on fallen leaves.",
+      "prevention": "Prune for airflow, avoid excess nitrogen, remove fallen leaves, favour resistant cultivars.",
+      "management": "Remove affected shoots; improve canopy airflow; protectant programmes where the disease is annual.",
+      "crops": [
+        {
+          "scientific_name": "Prunus avium",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Gray leaf spot of maize",
+      "pathogen": "Cercospora zeae-maydis",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "description": "Residue-borne fungal leaf blight of maize; also called Cercospora leaf spot.",
+      "visual_symptoms": "Long narrow rectangular grey-to-tan lesions running parallel to the veins, later merging.",
+      "favorable_conditions": "Extended periods of high humidity and warm temperatures; continuous maize with surface residue.",
+      "transmission": "Overwinters in maize residue; spores splashed and wind-blown to new leaves.",
+      "prevention": "Crop rotation, tillage or residue management, resistant hybrids, balanced potassium.",
+      "management": "Resistant hybrids are the main control; rotation reduces inoculum; fungicide only when disease pressure is high.",
+      "crops": [
+        {
+          "scientific_name": "Zea mays",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Common rust of maize",
+      "pathogen": "Puccinia sorghi",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Corn_(maize)___Common_rust_",
+      "description": "Rust disease of maize caused by an obligate fungal parasite.",
+      "visual_symptoms": "Small circular to elongate cinnamon-brown pustules scattered on both leaf surfaces; pustules rupture the epidermis and release powdery spores.",
+      "favorable_conditions": "Cool to moderate temperatures (approx. 16-23 C) with high humidity and dew.",
+      "transmission": "Wind-borne spores from distant maize crops; does not need an alternate host in tropical climates.",
+      "prevention": "Resistant hybrids; early sowing to escape peak rust periods; avoid excessive nitrogen.",
+      "management": "Usually does not need treatment in field maize; resistant hybrids are the practical control.",
+      "crops": [
+        {
+          "scientific_name": "Zea mays",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Northern corn leaf blight",
+      "pathogen": "Exserohilum turcicum",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Corn_(maize)___Northern_Leaf_Blight",
+      "description": "Fungal leaf blight of maize that can cause significant grain loss in humid regions.",
+      "visual_symptoms": "Long elliptical grey-green to tan lesions (cigar-shaped) up to several centimetres long; lesions first on lower leaves.",
+      "favorable_conditions": "Moderate temperatures (approx. 18-27 C) with high humidity lasting many hours.",
+      "transmission": "Survives in maize residue; spores dispersed by wind and rain splash to upper leaves.",
+      "prevention": "Rotation, residue management, resistant hybrids, balanced fertility.",
+      "management": "Resistant hybrids plus rotation; foliar fungicide only where disease pressure justifies it.",
+      "crops": [
+        {
+          "scientific_name": "Zea mays",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Grape black rot",
+      "pathogen": "Guignardia bidwellii",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Grape___Black_rot",
+      "description": "Serious fungal disease of grapevine, capable of destroying an entire crop in wet seasons.",
+      "visual_symptoms": "Small reddish-brown circular leaf spots with dark margins; berries turn brown then shrivel into hard black mummies.",
+      "favorable_conditions": "Warm (approx. 20-27 C) wet weather from bloom onward.",
+      "transmission": "Spores released from mummified berries and infected canes during rain.",
+      "prevention": "Remove mummified berries and infected canes; open the canopy; keep vines off the ground.",
+      "management": "Sanitation is essential; a protectant programme from early season is standard in humid regions.",
+      "crops": [
+        {
+          "scientific_name": "Vitis vinifera",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Grape esca",
+      "pathogen": "Phaeomoniella chlamydospora and Phaeoacremonium spp.",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Grape___Esca_(Black_Measles)",
+      "description": "Chronic wood disease complex of mature grapevines; also known as black measles because of fruit spotting.",
+      "visual_symptoms": "Interveinal leaf chlorosis and necrosis with a tiger-stripe pattern; dark streaking in the wood; small dark spots on berries; sudden vine collapse.",
+      "favorable_conditions": "Long-lived vines, pruning wounds, water stress; older vineyards are more affected.",
+      "transmission": "Fungal spores enter through pruning wounds and spread internally through the wood.",
+      "prevention": "Protect pruning wounds, prune in dry weather, remove severely affected vines, avoid severe water stress.",
+      "management": "No curative treatment exists. Remove and burn affected wood; retrain affected vines; replant with clean material.",
+      "crops": [
+        {
+          "scientific_name": "Vitis vinifera",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Grape leaf blight",
+      "pathogen": "Pseudocercospora vitis",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "description": "Cercospora-type leaf spot of grapevine, common in humid tropical and subtropical vineyards.",
+      "visual_symptoms": "Irregular dark brown angular spots, often limited by veins; leaves yellow and drop early; dark fuzzy growth on the underside.",
+      "favorable_conditions": "Warm humid weather with frequent rain or overhead irrigation.",
+      "transmission": "Survives on fallen leaves and in vine debris; spores spread by wind and splash.",
+      "prevention": "Remove fallen leaves, improve air movement, avoid overhead irrigation, control weeds.",
+      "management": "Sanitation and canopy management; protectant sprays where the disease recurs each season.",
+      "crops": [
+        {
+          "scientific_name": "Vitis vinifera",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Citrus greening",
+      "pathogen": "Candidatus Liberibacter asiaticus",
+      "pathogen_kind": "bacterium",
+      "pvl_class": "Orange___Haunglongbing_(Citrus_greening)",
+      "description": "Huanglongbing (HLB), the most destructive citrus disease worldwide. Vector-borne and currently incurable; infected trees decline over years.",
+      "visual_symptoms": "Blotchy mottled yellowing of leaves that crosses the veins asymmetrically; lopsided small bitter fruit; twig dieback.",
+      "favorable_conditions": "Presence of the Asian citrus psyllid vector; warm climates; new flush growth.",
+      "transmission": "Spread by the citrus psyllid Diaphorina citri and by grafting infected budwood.",
+      "prevention": "Use certified disease-free planting material; manage the psyllid vector; remove confirmed infected trees; do not move uncertified budwood.",
+      "management": "No cure. Manage the vector, keep trees vigorous, and replace confirmed infected trees. Report suspected cases to the state horticulture department.",
+      "crops": [
+        {
+          "scientific_name": "Citrus sinensis",
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "name": "Peach bacterial spot",
+      "pathogen": "Xanthomonas arboricola pv. pruni",
+      "pathogen_kind": "bacterium",
+      "pvl_class": "Peach___Bacterial_spot",
+      "description": "Bacterial disease of peach and related stone fruit, worst in warm humid conditions with wind-driven rain.",
+      "visual_symptoms": "Small angular water-soaked leaf spots that turn purple-brown and may drop out leaving shot holes; fruit with dark sunken cracked pits.",
+      "favorable_conditions": "Warm, wet, windy spring weather; sandy soils; susceptible cultivars.",
+      "transmission": "Bacteria overwinter in cankers and buds; spread by rain splash, wind and pruning tools.",
+      "prevention": "Plant resistant cultivars, use windbreaks, avoid excessive nitrogen, disinfect pruning tools.",
+      "management": "Copper-based protectants are the standard bactericide approach; reduce tree stress and remove severely affected wood.",
+      "crops": [
+        {
+          "scientific_name": "Prunus persica",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Pepper bacterial spot",
+      "pathogen": "Xanthomonas euvesicatoria",
+      "pathogen_kind": "bacterium",
+      "pvl_class": "Pepper,_bell___Bacterial_spot",
+      "description": "One of the most damaging bacterial diseases of capsicum and chilli in warm humid regions.",
+      "visual_symptoms": "Small water-soaked leaf spots turning dark brown with yellow halos; raised scabby spots on fruit; extensive defoliation.",
+      "favorable_conditions": "Warm (approx. 25-30 C) wet weather; splashing rain or overhead irrigation; contaminated seed.",
+      "transmission": "Seed-borne and survives in crop debris; spread by rain splash, wind, and handling wet plants.",
+      "prevention": "Use certified clean seed, rotate away from solanaceous crops, avoid overhead irrigation, remove volunteer plants.",
+      "management": "Copper plus mancozeb programmes are used where permitted; sanitation and rotation are the foundation.",
+      "crops": [
+        {
+          "scientific_name": "Capsicum annuum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Potato early blight",
+      "pathogen": "Alternaria solani",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Potato___Early_blight",
+      "description": "Fungal foliar disease of potato and tomato, typically appearing on older leaves first and worsening as the plant matures.",
+      "visual_symptoms": "Dark brown to black lesions with concentric rings (target pattern) on older leaves, often with a yellow halo; lesions begin on lower leaves.",
+      "favorable_conditions": "Warm (approx. 24-29 C), humid conditions with alternating wet and dry periods; stressed or nutrient-deficient plants.",
+      "transmission": "Survives in soil, crop debris and infected tubers; spores spread by wind and rain.",
+      "prevention": "Rotate away from solanaceous crops, use certified seed tubers, maintain balanced nutrition, avoid overhead irrigation.",
+      "management": "Remove affected lower leaves; improve airflow; fungicides are used where disease pressure is high.",
+      "crops": [
+        {
+          "scientific_name": "Solanum tuberosum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Potato late blight",
+      "pathogen": "Phytophthora infestans",
+      "pathogen_kind": "oomycete",
+      "pvl_class": "Potato___Late_blight",
+      "description": "The historically devastating blight of potato and tomato. It can destroy a field within days in cool wet weather.",
+      "visual_symptoms": "Large irregular water-soaked grey-green lesions that turn brown-black; white fuzzy growth on the leaf underside in humid conditions; rapid collapse of foliage; reddish-brown granular rot in tubers.",
+      "favorable_conditions": "Cool (approx. 10-20 C) with prolonged high humidity, fog, dew or rain.",
+      "transmission": "Airborne sporangia travelling long distances; also infected seed tubers and volunteer plants.",
+      "prevention": "Certified seed, resistant cultivars, avoid dense planting, destroy cull piles and volunteers, avoid overhead irrigation in cool weather.",
+      "management": "Act quickly: remove and destroy affected plants, do not compost them. Protectant programmes are standard where the disease is endemic. Report severe outbreaks to the local agriculture office.",
+      "crops": [
+        {
+          "scientific_name": "Solanum tuberosum",
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "name": "Squash powdery mildew",
+      "pathogen": "Podosphaera xanthii",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Squash___Powdery_mildew",
+      "description": "Powdery mildew of cucurbits; the white growth is on the leaf surface, so humid air alone is enough even with dry leaves.",
+      "visual_symptoms": "White powdery patches on the upper leaf surface that spread to cover the leaf; leaves yellow, brown and die prematurely.",
+      "favorable_conditions": "Warm days, cool nights, and humid air without free water on the leaves.",
+      "transmission": "Airborne spores; survives on living cucurbit crops and crop debris.",
+      "prevention": "Plant resistant varieties, space plants for airflow, avoid shade, water at the base.",
+      "management": "Remove heavily infected leaves; improve airflow; protectants plus sulfur or potassium bicarbonate options are used.",
+      "crops": [
+        {
+          "scientific_name": "Cucurbita pepo",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Strawberry leaf scorch",
+      "pathogen": "Diplocarpon earlianum",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Strawberry___Leaf_scorch",
+      "description": "Fungal leaf disease of strawberry that reduces plant vigour by destroying leaf tissue.",
+      "visual_symptoms": "Numerous small dark purple spots on the upper leaf surface that enlarge and merge; leaves look scorched and the margins curl up.",
+      "favorable_conditions": "Warm humid weather with extended leaf wetness; dense plantings.",
+      "transmission": "Overwinters in infected leaves and debris; spores spread by rain splash.",
+      "prevention": "Renovate beds after harvest, remove old foliage, improve spacing and airflow, avoid overhead irrigation.",
+      "management": "Sanitation by removing infected foliage; protectant sprays in severe recurring cases.",
+      "crops": [
+        {
+          "scientific_name": "Fragaria ananassa",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Tomato bacterial spot",
+      "pathogen": "Xanthomonas perforans",
+      "pathogen_kind": "bacterium",
+      "pvl_class": "Tomato___Bacterial_spot",
+      "description": "Bacterial spot of tomato; a major disease in warm humid production areas including India.",
+      "visual_symptoms": "Small greasy water-soaked leaf spots turning brown with a yellow halo; on fruit, small dark raised scabby spots with pale halos.",
+      "favorable_conditions": "Warm (25-30 C) wet weather, splashing rain, overhead irrigation, contaminated seed.",
+      "transmission": "Seed-borne, survives in debris; spread by rain splash, wind and handling wet foliage.",
+      "prevention": "Certified clean seed, rotation away from solanaceous crops, drip irrigation, remove crop debris after harvest.",
+      "management": "Sanitation plus rotation; copper-based protectants are used where disease pressure is high.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Tomato early blight",
+      "pathogen": "Alternaria solani",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Tomato___Early_blight",
+      "description": "Common fungal foliar disease of tomato; begins on older lower leaves and progresses upward.",
+      "visual_symptoms": "Dark brown lesions on older leaves with concentric target-like rings and a yellow halo; stem collar rot in seedlings; fruit shoulder lesions.",
+      "favorable_conditions": "Warm humid weather (24-29 C) with alternating wet and dry periods; weak or poorly nourished plants.",
+      "transmission": "Soil and debris-borne; spores dispersed by wind and rain splash.",
+      "prevention": "Rotation, staking for airflow, mulching to stop soil splash, balanced nutrition, removal of lower infected leaves.",
+      "management": "Sanitation and airflow first; fungicides where the disease recurs annually.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Tomato late blight",
+      "pathogen": "Phytophthora infestans",
+      "pathogen_kind": "oomycete",
+      "pvl_class": "Tomato___Late_blight",
+      "description": "Devastating airborne blight of tomato; can destroy a crop within a week in cool wet conditions.",
+      "visual_symptoms": "Large greasy grey-green water-soaked patches on leaves and stems turning brown; white fuzzy growth on the underside in humid weather; firm brown greasy fruit rot.",
+      "favorable_conditions": "Cool (10-20 C), very humid weather with rain, fog or heavy dew.",
+      "transmission": "Airborne spores from infected tomato or potato crops nearby.",
+      "prevention": "Avoid planting near potatoes, remove volunteers and cull piles, space plants for airflow, avoid overhead watering in cool weather.",
+      "management": "Remove and destroy affected plants immediately; do not compost. Protectant programmes are standard in endemic areas.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "name": "Tomato leaf mould",
+      "pathogen": "Passalora fulva",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Tomato___Leaf_Mold",
+      "description": "Fungal disease of tomato, especially important in humid greenhouses and polyhouses.",
+      "visual_symptoms": "Pale yellow spots on the upper leaf surface that turn brown; olive-green to grey-brown velvety mould on the corresponding lower surface; leaves wither but often stay attached.",
+      "favorable_conditions": "High humidity (above about 85%) and moderate temperatures (20-25 C), poor ventilation.",
+      "transmission": "Spores survive in debris and on structures; spread by air currents and water splash.",
+      "prevention": "Ventilation and humidity control, drip irrigation, wider spacing, resistant cultivars, remove debris.",
+      "management": "Improve airflow and reduce humidity first; protectants in severe greenhouse situations.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Tomato Septoria leaf spot",
+      "pathogen": "Septoria lycopersici",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Tomato___Septoria_leaf_spot",
+      "description": "Very common fungal leaf spot of tomato; causes heavy defoliation and sunscald of fruit.",
+      "visual_symptoms": "Many small circular spots with grey-white centres and dark margins, scattered over lower leaves first; tiny black fruiting bodies visible in the centres; progressive yellowing and leaf drop.",
+      "favorable_conditions": "Warm wet weather with extended leaf wetness; dense unpruned plants.",
+      "transmission": "Survives in debris and on solanaceous weeds; spores splashed by rain and irrigation water.",
+      "prevention": "Remove lower leaves, stake and mulch, rotate, avoid overhead irrigation, clean up debris.",
+      "management": "Sanitation is decisive; fungicides where defoliation is severe.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Tomato yellow leaf curl virus",
+      "pathogen": "Tomato yellow leaf curl virus (TYLCV), genus Begomovirus",
+      "pathogen_kind": "virus",
+      "pvl_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "description": "Whitefly-transmitted begomovirus disease; one of the most serious constraints on tomato production in South Asia.",
+      "visual_symptoms": "Marked upward curling and cupping of young leaves, strong yellowing of leaf margins, stunted plants, very few or no fruit.",
+      "favorable_conditions": "High whitefly (Bemisia tabaci) populations; warm dry weather; continuous tomato cropping.",
+      "transmission": "Transmitted by the whitefly Bemisia tabaci. Not spread by seed or by handling.",
+      "prevention": "Use TYLCV-resistant/tolerant hybrids, raise nursery under insect-proof net, manage whitefly, avoid overlapping tomato crops, remove infected plants early.",
+      "management": "There is no cure for the virus itself. Remove infected plants promptly to reduce inoculum and manage the whitefly vector, including yellow sticky traps.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "name": "Tomato mosaic virus",
+      "pathogen": "Tomato mosaic virus (ToMV)",
+      "pathogen_kind": "virus",
+      "pvl_class": "Tomato___Tomato_mosaic_virus",
+      "description": "Contact-transmitted virus of tomato; very stable and easily spread on hands, tools and clothing.",
+      "visual_symptoms": "Light and dark green mottling (mosaic) on leaves, leaf distortion, uneven fruit ripening with internal browning.",
+      "favorable_conditions": "Contaminated seed, tobacco use near plants, handling plants after touching infected material.",
+      "transmission": "Mechanical: sap on hands, tools, clothing. Also seed-borne. Very stable in plant debris.",
+      "prevention": "Use certified virus-free seed, wash hands and tools, do not smoke or handle tobacco near plants, remove infected plants, rotate.",
+      "management": "Remove and destroy infected plants; disinfect tools between plants. No chemical cure exists.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "name": "Tomato target spot",
+      "pathogen": "Corynespora cassiicola",
+      "pathogen_kind": "fungus",
+      "pvl_class": "Tomato___Target_Spot",
+      "description": "Fungal leaf and fruit spot of tomato and other crops, favoured by warm humid conditions.",
+      "visual_symptoms": "Brown circular lesions with concentric rings and yellow halos on leaves; small sunken dark lesions on fruit; heavy defoliation in severe cases.",
+      "favorable_conditions": "Warm (25-30 C) and very humid weather with long leaf wetness; dense canopies.",
+      "transmission": "Airborne spores; survives on crop debris and on several weed hosts.",
+      "prevention": "Improve airflow, avoid overhead irrigation, remove debris, practise rotation.",
+      "management": "Canopy management and sanitation; protectant sprays where pressure is high.",
+      "crops": [
+        {
+          "scientific_name": "Solanum lycopersicum",
+          "severity": "high"
+        }
+      ]
+    }
+  ]
+}

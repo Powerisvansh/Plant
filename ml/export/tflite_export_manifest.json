@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-09-30T23:49:31+00:00",
+  "model_source": "/home/vansh/Desktop/PLANT/ml/models/plantvillage_best.keras",
+  "tflite_path": "/home/vansh/Desktop/PLANT/ml/export/plantvillage.tflite",
+  "labels_path": "/home/vansh/Desktop/PLANT/ml/export/labels.txt",
+  "quantised": true,
+  "image_size": 160,
+  "input_tensor": "image",
+  "output_tensor": "class_probabilities",
+  "note": "This is the PlantVillage crop-and-condition screener. It does NOT claim to identify 2000+ species. The app maps low-confidence outputs to 'uncertain'."
+}

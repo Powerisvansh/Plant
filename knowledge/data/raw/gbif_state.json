@@ -1,0 +1,2275 @@
+{
+  "Oryza": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2703455,
+    "species_added": 16,
+    "staged_total": 16
+  },
+  "Triticum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2706388,
+    "species_added": 4,
+    "staged_total": 20
+  },
+  "Hordeum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2706050,
+    "species_added": 7,
+    "staged_total": 27
+  },
+  "Sorghum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705180,
+    "species_added": 10,
+    "staged_total": 37
+  },
+  "Pennisetum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2706129,
+    "species_added": 0,
+    "staged_total": 37
+  },
+  "Eleusine": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705952,
+    "species_added": 5,
+    "staged_total": 42
+  },
+  "Panicum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705064,
+    "species_added": 43,
+    "staged_total": 85
+  },
+  "Echinochloa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2702794,
+    "species_added": 10,
+    "staged_total": 95
+  },
+  "Saccharum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2703910,
+    "species_added": 14,
+    "staged_total": 109
+  },
+  "Lolium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2706217,
+    "species_added": 9,
+    "staged_total": 118
+  },
+  "Phalaris": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2703277,
+    "species_added": 5,
+    "staged_total": 123
+  },
+  "Dactylis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705307,
+    "species_added": 1,
+    "staged_total": 124
+  },
+  "Bambusa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705751,
+    "species_added": 28,
+    "staged_total": 152
+  },
+  "Dendrocalamus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2703313,
+    "species_added": 18,
+    "staged_total": 170
+  },
+  "Cymbopogon": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705264,
+    "species_added": 26,
+    "staged_total": 196
+  },
+  "Vetiveria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 8289208,
+    "species_added": 1,
+    "staged_total": 197
+  },
+  "Bothriochloa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2704089,
+    "species_added": 14,
+    "staged_total": 211
+  },
+  "Paspalum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705540,
+    "species_added": 24,
+    "staged_total": 235
+  },
+  "Cicer": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2947292,
+    "species_added": 12,
+    "staged_total": 247
+  },
+  "Cajanus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2960263,
+    "species_added": 21,
+    "staged_total": 268
+  },
+  "Vigna": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2982372,
+    "species_added": 34,
+    "staged_total": 302
+  },
+  "Vicia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2974751,
+    "species_added": 31,
+    "staged_total": 333
+  },
+  "Glycine": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7968287,
+    "species_added": 1,
+    "staged_total": 334
+  },
+  "Macrotyloma": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2976914,
+    "species_added": 3,
+    "staged_total": 337
+  },
+  "Lablab": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2952235,
+    "species_added": 1,
+    "staged_total": 338
+  },
+  "Mucuna": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2951351,
+    "species_added": 17,
+    "staged_total": 355
+  },
+  "Sesbania": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7854649,
+    "species_added": 12,
+    "staged_total": 367
+  },
+  "Crotalaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2941719,
+    "species_added": 50,
+    "staged_total": 417
+  },
+  "Clitoria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2946499,
+    "species_added": 11,
+    "staged_total": 428
+  },
+  "Brassica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3042506,
+    "species_added": 12,
+    "staged_total": 440
+  },
+  "Sesamum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3172619,
+    "species_added": 6,
+    "staged_total": 446
+  },
+  "Helianthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3119134,
+    "species_added": 5,
+    "staged_total": 451
+  },
+  "Linum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2873855,
+    "species_added": 12,
+    "staged_total": 463
+  },
+  "Carthamus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3138214,
+    "species_added": 4,
+    "staged_total": 467
+  },
+  "Camelina": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3042394,
+    "species_added": 2,
+    "staged_total": 469
+  },
+  "Guizotia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3088622,
+    "species_added": 1,
+    "staged_total": 470
+  },
+  "Pongamia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7953486,
+    "species_added": 1,
+    "staged_total": 471
+  },
+  "Zea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705049,
+    "species_added": 2,
+    "staged_total": 473
+  },
+  "Avena": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705282,
+    "species_added": 6,
+    "staged_total": 479
+  },
+  "Setaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2702955,
+    "species_added": 21,
+    "staged_total": 500
+  },
+  "Cynodon": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2703525,
+    "species_added": 5,
+    "staged_total": 505
+  },
+  "Chrysopogon": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2705672,
+    "species_added": 25,
+    "staged_total": 530
+  },
+  "Digitaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2704525,
+    "species_added": 35,
+    "staged_total": 565
+  },
+  "Lens": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2974751,
+    "species_added": 0,
+    "staged_total": 565
+  },
+  "Pisum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 10356062,
+    "species_added": 20,
+    "staged_total": 585
+  },
+  "Lathyrus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 10356062,
+    "species_added": 0,
+    "staged_total": 585
+  },
+  "Phaseolus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2947798,
+    "species_added": 8,
+    "staged_total": 593
+  },
+  "Trigonella": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2981525,
+    "species_added": 16,
+    "staged_total": 609
+  },
+  "Arachis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2956684,
+    "species_added": 15,
+    "staged_total": 624
+  },
+  "Sinapis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3047584,
+    "species_added": 3,
+    "staged_total": 627
+  },
+  "Ricinus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 9188216,
+    "species_added": 1,
+    "staged_total": 628
+  },
+  "Madhuca": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2883218,
+    "species_added": 6,
+    "staged_total": 634
+  },
+  "Jatropha": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3072692,
+    "species_added": 12,
+    "staged_total": 646
+  },
+  "Gossypium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152652,
+    "species_added": 7,
+    "staged_total": 653
+  },
+  "Corchorus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3032212,
+    "species_added": 12,
+    "staged_total": 665
+  },
+  "Agave": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2766430,
+    "species_added": 10,
+    "staged_total": 675
+  },
+  "Hibiscus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152542,
+    "species_added": 35,
+    "staged_total": 710
+  },
+  "Boerhavia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3086275,
+    "species_added": 7,
+    "staged_total": 717
+  },
+  "Cannabis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2984538,
+    "species_added": 1,
+    "staged_total": 718
+  },
+  "Solanum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2928997,
+    "species_added": 50,
+    "staged_total": 768
+  },
+  "Capsicum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2932937,
+    "species_added": 5,
+    "staged_total": 773
+  },
+  "Daucus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034740,
+    "species_added": 3,
+    "staged_total": 776
+  },
+  "Raphanus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3040962,
+    "species_added": 3,
+    "staged_total": 779
+  },
+  "Allium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 9624496,
+    "species_added": 50,
+    "staged_total": 829
+  },
+  "Cucumis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874568,
+    "species_added": 18,
+    "staged_total": 847
+  },
+  "Cucurbita": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874506,
+    "species_added": 4,
+    "staged_total": 851
+  },
+  "Lagenaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874671,
+    "species_added": 1,
+    "staged_total": 852
+  },
+  "Luffa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874598,
+    "species_added": 4,
+    "staged_total": 856
+  },
+  "Momordica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874578,
+    "species_added": 8,
+    "staged_total": 864
+  },
+  "Trichosanthes": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874604,
+    "species_added": 25,
+    "staged_total": 889
+  },
+  "Benincasa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874523,
+    "species_added": 3,
+    "staged_total": 892
+  },
+  "Citrullus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 8257011,
+    "species_added": 3,
+    "staged_total": 895
+  },
+  "Abelmoschus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152705,
+    "species_added": 10,
+    "staged_total": 905
+  },
+  "Spinacia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3083646,
+    "species_added": 1,
+    "staged_total": 906
+  },
+  "Beta": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3083586,
+    "species_added": 2,
+    "staged_total": 908
+  },
+  "Lactuca": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3140231,
+    "species_added": 21,
+    "staged_total": 929
+  },
+  "Amaranthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3085074,
+    "species_added": 27,
+    "staged_total": 956
+  },
+  "Chenopodium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3083823,
+    "species_added": 13,
+    "staged_total": 969
+  },
+  "Colocasia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 5330758,
+    "species_added": 5,
+    "staged_total": 974
+  },
+  "Xanthosoma": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2872044,
+    "species_added": 4,
+    "staged_total": 978
+  },
+  "Dioscorea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2754367,
+    "species_added": 50,
+    "staged_total": 1028
+  },
+  "Ipomoea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2928509,
+    "species_added": 50,
+    "staged_total": 1078
+  },
+  "Manihot": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3060685,
+    "species_added": 4,
+    "staged_total": 1082
+  },
+  "Psophocarpus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2944679,
+    "species_added": 2,
+    "staged_total": 1084
+  },
+  "Sechium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874611,
+    "species_added": 1,
+    "staged_total": 1085
+  },
+  "Mangifera": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3075453,
+    "species_added": 14,
+    "staged_total": 1099
+  },
+  "Musa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2760990,
+    "species_added": 34,
+    "staged_total": 1133
+  },
+  "Malus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3001068,
+    "species_added": 8,
+    "staged_total": 1141
+  },
+  "Citrus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190155,
+    "species_added": 16,
+    "staged_total": 1157
+  },
+  "Pyrus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2986532,
+    "species_added": 5,
+    "staged_total": 1162
+  },
+  "Prunus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3020559,
+    "species_added": 45,
+    "staged_total": 1207
+  },
+  "Psidium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3187232,
+    "species_added": 4,
+    "staged_total": 1211
+  },
+  "Carica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874482,
+    "species_added": 1,
+    "staged_total": 1212
+  },
+  "Punica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3188663,
+    "species_added": 1,
+    "staged_total": 1213
+  },
+  "Vitis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7467468,
+    "species_added": 13,
+    "staged_total": 1226
+  },
+  "Fragaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3029779,
+    "species_added": 13,
+    "staged_total": 1239
+  },
+  "Ananas": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2699430,
+    "species_added": 1,
+    "staged_total": 1240
+  },
+  "Cocos": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2735116,
+    "species_added": 1,
+    "staged_total": 1241
+  },
+  "Ziziphus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3039411,
+    "species_added": 23,
+    "staged_total": 1264
+  },
+  "Syzygium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3029010,
+    "species_added": 45,
+    "staged_total": 1309
+  },
+  "Artocarpus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2984563,
+    "species_added": 13,
+    "staged_total": 1322
+  },
+  "Annona": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3155252,
+    "species_added": 9,
+    "staged_total": 1331
+  },
+  "Averrhoa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 9407103,
+    "species_added": 2,
+    "staged_total": 1333
+  },
+  "Litchi": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190001,
+    "species_added": 1,
+    "staged_total": 1334
+  },
+  "Tamarindus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2975767,
+    "species_added": 1,
+    "staged_total": 1335
+  },
+  "Phyllanthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3061139,
+    "species_added": 45,
+    "staged_total": 1380
+  },
+  "Aegle": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 8397331,
+    "species_added": 1,
+    "staged_total": 1381
+  },
+  "Limonia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190428,
+    "species_added": 1,
+    "staged_total": 1382
+  },
+  "Eriobotrya": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3024121,
+    "species_added": 0,
+    "staged_total": 1382
+  },
+  "Rubus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2988638,
+    "species_added": 45,
+    "staged_total": 1427
+  },
+  "Ribes": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2986095,
+    "species_added": 17,
+    "staged_total": 1444
+  },
+  "Anacardium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 5421367,
+    "species_added": 1,
+    "staged_total": 1445
+  },
+  "Juglans": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3054350,
+    "species_added": 3,
+    "staged_total": 1448
+  },
+  "Berberis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3033893,
+    "species_added": 45,
+    "staged_total": 1493
+  },
+  "Cordia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2900865,
+    "species_added": 28,
+    "staged_total": 1521
+  },
+  "Grewia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152078,
+    "species_added": 45,
+    "staged_total": 1566
+  },
+  "Flacourtia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874157,
+    "species_added": 9,
+    "staged_total": 1575
+  },
+  "Piper": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3075433,
+    "species_added": 40,
+    "staged_total": 1615
+  },
+  "Curcuma": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2757518,
+    "species_added": 40,
+    "staged_total": 1655
+  },
+  "Zingiber": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2756693,
+    "species_added": 33,
+    "staged_total": 1688
+  },
+  "Elettaria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2759853,
+    "species_added": 3,
+    "staged_total": 1691
+  },
+  "Cinnamomum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3033980,
+    "species_added": 40,
+    "staged_total": 1731
+  },
+  "Myristica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152840,
+    "species_added": 7,
+    "staged_total": 1738
+  },
+  "Cuminum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034774,
+    "species_added": 1,
+    "staged_total": 1739
+  },
+  "Coriandrum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034870,
+    "species_added": 1,
+    "staged_total": 1740
+  },
+  "Foeniculum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 10704390,
+    "species_added": 2,
+    "staged_total": 1742
+  },
+  "Anethum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034645,
+    "species_added": 3,
+    "staged_total": 1745
+  },
+  "Trachyspermum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034237,
+    "species_added": 6,
+    "staged_total": 1751
+  },
+  "Murraya": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190383,
+    "species_added": 6,
+    "staged_total": 1757
+  },
+  "Vanilla": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2743233,
+    "species_added": 7,
+    "staged_total": 1764
+  },
+  "Kaempferia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2756998,
+    "species_added": 8,
+    "staged_total": 1772
+  },
+  "Hedychium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2758595,
+    "species_added": 39,
+    "staged_total": 1811
+  },
+  "Alpinia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 5301253,
+    "species_added": 22,
+    "staged_total": 1833
+  },
+  "Amomum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7434655,
+    "species_added": 10,
+    "staged_total": 1843
+  },
+  "Bunium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034500,
+    "species_added": 2,
+    "staged_total": 1845
+  },
+  "Nigella": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3033657,
+    "species_added": 3,
+    "staged_total": 1848
+  },
+  "Pimpinella": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3027402,
+    "species_added": 0,
+    "staged_total": 1848
+  },
+  "Ocimum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874693,
+    "species_added": 8,
+    "staged_total": 1856
+  },
+  "Withania": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2928839,
+    "species_added": 3,
+    "staged_total": 1859
+  },
+  "Bacopa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3171166,
+    "species_added": 3,
+    "staged_total": 1862
+  },
+  "Centella": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3034124,
+    "species_added": 1,
+    "staged_total": 1863
+  },
+  "Tinospora": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7268723,
+    "species_added": 6,
+    "staged_total": 1869
+  },
+  "Andrographis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7740842,
+    "species_added": 23,
+    "staged_total": 1892
+  },
+  "Gymnema": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3170352,
+    "species_added": 11,
+    "staged_total": 1903
+  },
+  "Catharanthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169829,
+    "species_added": 2,
+    "staged_total": 1905
+  },
+  "Rauvolfia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169769,
+    "species_added": 7,
+    "staged_total": 1912
+  },
+  "Asparagus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 9527393,
+    "species_added": 29,
+    "staged_total": 1941
+  },
+  "Aloe": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2770879,
+    "species_added": 23,
+    "staged_total": 1964
+  },
+  "Azadirachta": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190473,
+    "species_added": 1,
+    "staged_total": 1965
+  },
+  "Terminalia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3189387,
+    "species_added": 30,
+    "staged_total": 1995
+  },
+  "Santalum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2889778,
+    "species_added": 2,
+    "staged_total": 1997
+  },
+  "Commiphora": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2972896,
+    "species_added": 8,
+    "staged_total": 2005
+  },
+  "Boswellia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190439,
+    "species_added": 4,
+    "staged_total": 2009
+  },
+  "Sida": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152100,
+    "species_added": 28,
+    "staged_total": 2037
+  },
+  "Justicia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2904597,
+    "species_added": 45,
+    "staged_total": 2082
+  },
+  "Picrorhiza": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 6438747,
+    "species_added": 2,
+    "staged_total": 2084
+  },
+  "Glycyrrhiza": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2965731,
+    "species_added": 3,
+    "staged_total": 2087
+  },
+  "Senna": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2956904,
+    "species_added": 45,
+    "staged_total": 2132
+  },
+  "Plumbago": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3082281,
+    "species_added": 3,
+    "staged_total": 2135
+  },
+  "Datura": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2928734,
+    "species_added": 7,
+    "staged_total": 2142
+  },
+  "Papaver": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2888431,
+    "species_added": 12,
+    "staged_total": 2154
+  },
+  "Plantago": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3189695,
+    "species_added": 21,
+    "staged_total": 2175
+  },
+  "Achyranthes": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3085166,
+    "species_added": 5,
+    "staged_total": 2180
+  },
+  "Eclipta": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3086569,
+    "species_added": 2,
+    "staged_total": 2182
+  },
+  "Emblica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7276108,
+    "species_added": 0,
+    "staged_total": 2182
+  },
+  "Tylophora": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7588865,
+    "species_added": 18,
+    "staged_total": 2200
+  },
+  "Vaccinium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2882813,
+    "species_added": 37,
+    "staged_total": 2237
+  },
+  "Pentas": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2908974,
+    "species_added": 1,
+    "staged_total": 2238
+  },
+  "Saraca": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2974323,
+    "species_added": 6,
+    "staged_total": 2244
+  },
+  "Holarrhena": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169747,
+    "species_added": 3,
+    "staged_total": 2247
+  },
+  "Moringa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3054180,
+    "species_added": 2,
+    "staged_total": 2249
+  },
+  "Pergularia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3170444,
+    "species_added": 2,
+    "staged_total": 2251
+  },
+  "Wrightia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3230933,
+    "species_added": 11,
+    "staged_total": 2262
+  },
+  "Vitex": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925556,
+    "species_added": 20,
+    "staged_total": 2282
+  },
+  "Premna": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925344,
+    "species_added": 37,
+    "staged_total": 2319
+  },
+  "Coleus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2927310,
+    "species_added": 35,
+    "staged_total": 2354
+  },
+  "Salvia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2926981,
+    "species_added": 45,
+    "staged_total": 2399
+  },
+  "Rosa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 8395064,
+    "species_added": 45,
+    "staged_total": 2444
+  },
+  "Tagetes": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3088468,
+    "species_added": 5,
+    "staged_total": 2449
+  },
+  "Jasminum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3172260,
+    "species_added": 45,
+    "staged_total": 2494
+  },
+  "Chrysanthemum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3150746,
+    "species_added": 5,
+    "staged_total": 2499
+  },
+  "Dahlia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3093023,
+    "species_added": 4,
+    "staged_total": 2503
+  },
+  "Dianthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3085411,
+    "species_added": 21,
+    "staged_total": 2524
+  },
+  "Petunia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2928858,
+    "species_added": 3,
+    "staged_total": 2527
+  },
+  "Zinnia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3111750,
+    "species_added": 4,
+    "staged_total": 2531
+  },
+  "Bougainvillea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3086089,
+    "species_added": 5,
+    "staged_total": 2536
+  },
+  "Nerium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169755,
+    "species_added": 3,
+    "staged_total": 2539
+  },
+  "Plumeria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169672,
+    "species_added": 6,
+    "staged_total": 2545
+  },
+  "Delonix": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2956165,
+    "species_added": 2,
+    "staged_total": 2547
+  },
+  "Lagerstroemia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3188723,
+    "species_added": 15,
+    "staged_total": 2562
+  },
+  "Tecoma": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3172488,
+    "species_added": 4,
+    "staged_total": 2566
+  },
+  "Ixora": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2905224,
+    "species_added": 45,
+    "staged_total": 2611
+  },
+  "Crossandra": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 6359788,
+    "species_added": 3,
+    "staged_total": 2614
+  },
+  "Mussaenda": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2892394,
+    "species_added": 26,
+    "staged_total": 2640
+  },
+  "Barleria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3173125,
+    "species_added": 36,
+    "staged_total": 2676
+  },
+  "Antirrhinum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3172000,
+    "species_added": 1,
+    "staged_total": 2677
+  },
+  "Impatiens": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2891766,
+    "species_added": 45,
+    "staged_total": 2722
+  },
+  "Begonia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874710,
+    "species_added": 45,
+    "staged_total": 2767
+  },
+  "Gerbera": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7466389,
+    "species_added": 4,
+    "staged_total": 2771
+  },
+  "Lilium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2752977,
+    "species_added": 19,
+    "staged_total": 2790
+  },
+  "Gladiolus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2749747,
+    "species_added": 3,
+    "staged_total": 2793
+  },
+  "Narcissus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2858200,
+    "species_added": 2,
+    "staged_total": 2795
+  },
+  "Tulipa": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2750913,
+    "species_added": 5,
+    "staged_total": 2800
+  },
+  "Phalaenopsis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2804680,
+    "species_added": 13,
+    "staged_total": 2813
+  },
+  "Dendrobium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2821327,
+    "species_added": 45,
+    "staged_total": 2858
+  },
+  "Cattleya": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2800821,
+    "species_added": 0,
+    "staged_total": 2858
+  },
+  "Vanda": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2783121,
+    "species_added": 24,
+    "staged_total": 2882
+  },
+  "Nelumbo": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2882448,
+    "species_added": 1,
+    "staged_total": 2883
+  },
+  "Nymphaea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2882411,
+    "species_added": 14,
+    "staged_total": 2897
+  },
+  "Canna": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2762470,
+    "species_added": 5,
+    "staged_total": 2902
+  },
+  "Calendula": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3104843,
+    "species_added": 3,
+    "staged_total": 2905
+  },
+  "Celosia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3085190,
+    "species_added": 4,
+    "staged_total": 2909
+  },
+  "Gomphrena": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3084899,
+    "species_added": 6,
+    "staged_total": 2915
+  },
+  "Portulaca": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3084696,
+    "species_added": 10,
+    "staged_total": 2925
+  },
+  "Bassia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3083576,
+    "species_added": 6,
+    "staged_total": 2931
+  },
+  "Gaillardia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3095122,
+    "species_added": 4,
+    "staged_total": 2935
+  },
+  "Coreopsis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3133864,
+    "species_added": 6,
+    "staged_total": 2941
+  },
+  "Cosmos": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3098910,
+    "species_added": 3,
+    "staged_total": 2944
+  },
+  "Thunbergia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3173206,
+    "species_added": 14,
+    "staged_total": 2958
+  },
+  "Clerodendrum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925347,
+    "species_added": 40,
+    "staged_total": 2998
+  },
+  "Calliandra": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2981784,
+    "species_added": 9,
+    "staged_total": 3007
+  },
+  "Tabernaemontana": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169624,
+    "species_added": 16,
+    "staged_total": 3023
+  },
+  "Allamanda": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3169834,
+    "species_added": 3,
+    "staged_total": 3026
+  },
+  "Bauhinia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2952935,
+    "species_added": 22,
+    "staged_total": 3048
+  },
+  "Cassia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2963414,
+    "species_added": 14,
+    "staged_total": 3062
+  },
+  "Dracaena": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2752062,
+    "species_added": 26,
+    "staged_total": 3088
+  },
+  "Sansevieria": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 10921493,
+    "species_added": 0,
+    "staged_total": 3088
+  },
+  "Epipremnum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2868270,
+    "species_added": 3,
+    "staged_total": 3091
+  },
+  "Monstera": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2868125,
+    "species_added": 3,
+    "staged_total": 3094
+  },
+  "Philodendron": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2861312,
+    "species_added": 7,
+    "staged_total": 3101
+  },
+  "Ficus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2984588,
+    "species_added": 45,
+    "staged_total": 3146
+  },
+  "Spathiphyllum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2869649,
+    "species_added": 3,
+    "staged_total": 3149
+  },
+  "Zamioculcas": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2869013,
+    "species_added": 1,
+    "staged_total": 3150
+  },
+  "Crassula": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2985823,
+    "species_added": 6,
+    "staged_total": 3156
+  },
+  "Kalanchoe": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2985928,
+    "species_added": 24,
+    "staged_total": 3180
+  },
+  "Sedum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 5361975,
+    "species_added": 20,
+    "staged_total": 3200
+  },
+  "__priority_species__": {
+    "Malus domestica": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3001244"
+    },
+    "Vaccinium corymbosum": {
+      "done": true,
+      "requested": "Vaccinium corymbosum",
+      "resolved": "Vaccinium corymbosum",
+      "gbif_key": "2882849",
+      "status": "ACCEPTED"
+    },
+    "Prunus avium": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3020791"
+    },
+    "Zea mays": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5290052"
+    },
+    "Vitis vinifera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5372392"
+    },
+    "Citrus sinensis": {
+      "done": true,
+      "requested": "Citrus sinensis",
+      "resolved": "Citrus sinensis",
+      "gbif_key": "3190158",
+      "status": "SYNONYM"
+    },
+    "Prunus persica": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "8149923"
+    },
+    "Capsicum annuum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2932944"
+    },
+    "Solanum tuberosum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2930262"
+    },
+    "Rubus idaeus": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2993094"
+    },
+    "Glycine max": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5359660"
+    },
+    "Cucurbita pepo": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2874508"
+    },
+    "Fragaria ananassa": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3029912"
+    },
+    "Solanum lycopersicum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2930137"
+    },
+    "Oryza sativa": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2703459"
+    },
+    "Triticum aestivum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "7795888"
+    },
+    "Gossypium hirsutum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3152661"
+    },
+    "Saccharum officinarum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2703912"
+    },
+    "Mangifera indica": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3190638"
+    },
+    "Musa acuminata": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2762680"
+    },
+    "Psidium guajava": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5420380"
+    },
+    "Carica papaya": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2874484"
+    },
+    "Punica granatum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5420901"
+    },
+    "Cocos nucifera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2735117"
+    },
+    "Citrus limon": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "7647136"
+    },
+    "Ananas comosus": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5288819"
+    },
+    "Azadirachta indica": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3190474"
+    },
+    "Ficus religiosa": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5361935"
+    },
+    "Ficus benghalensis": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "5361919"
+    },
+    "Tectona grandis": {
+      "done": true,
+      "requested": "Tectona grandis",
+      "resolved": "Tectona grandis",
+      "gbif_key": "2925649",
+      "status": "ACCEPTED"
+    },
+    "Moringa oleifera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3054181"
+    },
+    "Ocimum tenuiflorum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2927100"
+    },
+    "Withania somnifera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2928840"
+    },
+    "Aloe vera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2777724"
+    },
+    "Curcuma longa": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2757624"
+    },
+    "Zingiber officinale": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2757280"
+    },
+    "Hibiscus rosa-sinensis": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3152559"
+    },
+    "Rosa chinensis": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3005039"
+    },
+    "Tagetes erecta": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3088488"
+    },
+    "Jasminum sambac": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "7587215"
+    },
+    "Dracaena trifasciata": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "11041822"
+    },
+    "Epipremnum aureum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2868323"
+    },
+    "Monstera deliciosa": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2868241"
+    },
+    "Spathiphyllum wallisii": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2869680"
+    },
+    "Chlorophytum comosum": {
+      "done": true,
+      "requested": "Chlorophytum comosum",
+      "resolved": "Chlorophytum comosum",
+      "gbif_key": "2774846",
+      "status": "ACCEPTED"
+    },
+    "Ficus elastica": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "7835333"
+    },
+    "Aloe barbadensis": {
+      "done": true,
+      "requested": "Aloe barbadensis",
+      "resolved": "Aloe barbadensis",
+      "gbif_key": "2777729",
+      "status": "SYNONYM"
+    },
+    "Sansevieria zeylanica": {
+      "done": true,
+      "reason": "not a species"
+    },
+    "Bougainvillea spectabilis": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "7167078"
+    },
+    "Nelumbo nucifera": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "2882449"
+    },
+    "Helianthus annuus": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "9206251"
+    },
+    "Chrysanthemum indicum": {
+      "done": true,
+      "reason": "already staged",
+      "gbif_key": "3150814"
+    }
+  },
+  "Tectona": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925648,
+    "species_added": 1,
+    "staged_total": 3206
+  },
+  "Dalbergia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2968358,
+    "species_added": 42,
+    "staged_total": 3248
+  },
+  "Shorea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 10803341,
+    "species_added": 5,
+    "staged_total": 3253
+  },
+  "Acacia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2978223,
+    "species_added": 45,
+    "staged_total": 3298
+  },
+  "Prosopis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2970763,
+    "species_added": 5,
+    "staged_total": 3303
+  },
+  "Eucalyptus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7493935,
+    "species_added": 45,
+    "staged_total": 3348
+  },
+  "Pinus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2684241,
+    "species_added": 25,
+    "staged_total": 3373
+  },
+  "Populus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3040183,
+    "species_added": 22,
+    "staged_total": 3395
+  },
+  "Bombax": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2874861,
+    "species_added": 3,
+    "staged_total": 3398
+  },
+  "Butea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2940412,
+    "species_added": 4,
+    "staged_total": 3402
+  },
+  "Albizia": {
+    "done": true,
+    "rank": "CLASS",
+    "taxon_key": 220,
+    "species_added": 39,
+    "staged_total": 3441
+  },
+  "Quercus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2877951,
+    "species_added": 45,
+    "staged_total": 3486
+  },
+  "Morus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2984545,
+    "species_added": 5,
+    "staged_total": 3491
+  },
+  "Ailanthus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190652,
+    "species_added": 4,
+    "staged_total": 3495
+  },
+  "Melia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190496,
+    "species_added": 3,
+    "staged_total": 3498
+  },
+  "Schleichera": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3189944,
+    "species_added": 1,
+    "staged_total": 3499
+  },
+  "Gmelina": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925650,
+    "species_added": 5,
+    "staged_total": 3504
+  },
+  "Casuarina": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2891925,
+    "species_added": 4,
+    "staged_total": 3508
+  },
+  "Alnus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2876099,
+    "species_added": 4,
+    "staged_total": 3512
+  },
+  "Salix": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3039576,
+    "species_added": 45,
+    "staged_total": 3557
+  },
+  "Hardwickia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2946903,
+    "species_added": 1,
+    "staged_total": 3558
+  },
+  "Anogeissus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3189412,
+    "species_added": 1,
+    "staged_total": 3559
+  },
+  "Dipterocarpus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7299001,
+    "species_added": 14,
+    "staged_total": 3573
+  },
+  "Pterocarpus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 5349236,
+    "species_added": 8,
+    "staged_total": 3581
+  },
+  "Stereospermum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 7298412,
+    "species_added": 7,
+    "staged_total": 3588
+  },
+  "Diospyros": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3030169,
+    "species_added": 45,
+    "staged_total": 3633
+  },
+  "Buchanania": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190571,
+    "species_added": 10,
+    "staged_total": 3643
+  },
+  "Semecarpus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190575,
+    "species_added": 9,
+    "staged_total": 3652
+  },
+  "Sterculia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152129,
+    "species_added": 27,
+    "staged_total": 3679
+  },
+  "Swietenia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3190483,
+    "species_added": 3,
+    "staged_total": 3682
+  },
+  "Calotropis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3170557,
+    "species_added": 2,
+    "staged_total": 3684
+  },
+  "Lantana": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2925302,
+    "species_added": 21,
+    "staged_total": 3705
+  },
+  "Parthenium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3086782,
+    "species_added": 0,
+    "staged_total": 3705
+  },
+  "Eichhornia": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2765939,
+    "species_added": 0,
+    "staged_total": 3705
+  },
+  "Ageratum": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3138550,
+    "species_added": 3,
+    "staged_total": 3708
+  },
+  "Xanthium": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3089139,
+    "species_added": 4,
+    "staged_total": 3712
+  },
+  "Abutilon": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3152599,
+    "species_added": 22,
+    "staged_total": 3734
+  },
+  "Tribulus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3189918,
+    "species_added": 5,
+    "staged_total": 3739
+  },
+  "Capparis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3054191,
+    "species_added": 40,
+    "staged_total": 3779
+  },
+  "Salvadora": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3232305,
+    "species_added": 3,
+    "staged_total": 3782
+  },
+  "Argemone": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2888474,
+    "species_added": 4,
+    "staged_total": 3786
+  },
+  "Urtica": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2984391,
+    "species_added": 11,
+    "staged_total": 3797
+  },
+  "Aerva": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3085013,
+    "species_added": 4,
+    "staged_total": 3801
+  },
+  "Launaea": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3144659,
+    "species_added": 12,
+    "staged_total": 3813
+  },
+  "Sonchus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3105646,
+    "species_added": 5,
+    "staged_total": 3818
+  },
+  "Oxalis": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2891642,
+    "species_added": 21,
+    "staged_total": 3839
+  },
+  "Tridax": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3149429,
+    "species_added": 0,
+    "staged_total": 3839
+  },
+  "Alternanthera": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 3084921,
+    "species_added": 15,
+    "staged_total": 3854
+  },
+  "Cyperus": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2713455,
+    "species_added": 40,
+    "staged_total": 3894
+  },
+  "Typha": {
+    "done": true,
+    "rank": "GENUS",
+    "taxon_key": 2702102,
+    "species_added": 6,
+    "staged_total": 3900
+  }
+}

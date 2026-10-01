@@ -1,0 +1,214 @@
+{
+  "_meta": {
+    "file": "pests.json",
+    "purpose": "Pest records for the crops the bundled visual model can see, plus the arthropod pests the health screening can flag. Scientific names are standard accepted names; every record is stored UNVERIFIED until a named published source is attached to that individual record.",
+    "name_source": "aps_common_names",
+    "verification_status": "UNVERIFIED",
+    "safety_rule": "No pesticide dose is recorded here. A dose belongs to a specific product label and is stored only in treatments.json with a label reference."
+  },
+  "pests": [
+    {
+      "name": "Two-spotted spider mite",
+      "scientific_name": "Tetranychus urticae",
+      "pvl_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "appearance": "Minute eight-legged mites, usually pale green to yellow-green with two dark spots on the back; barely visible without a hand lens. Fine silk webbing on the leaf underside.",
+      "feeding_behavior": "Pierces leaf cells and sucks out the contents, leaving the leaf stippled and bronzed. Colonies build up on the underside of leaves and spread upward.",
+      "damage_symptoms": "Fine pale stippling over the leaf surface that merges into yellow-bronze patches; fine webbing on leaf undersides and shoot tips; leaves dry out and drop. Worst in hot dry weather.",
+      "life_stages": "Egg, larva, protonymph, deutonymph, adult. Development is very fast in hot dry conditions, so populations can explode within days.",
+      "prevention": "Keep plants well watered and avoid water stress; maintain humidity; encourage predatory mites and other natural enemies; avoid excess nitrogen; inspect leaf undersides regularly.",
+      "management": "Strong water jets to dislodge colonies; remove and destroy heavily infested leaves; acaricides are used where permitted, and repeated application is often needed because eggs survive sprays. Rotate modes of action to slow resistance.",
+      "symptoms": [
+        {
+          "text": "fine pale stippling on the upper leaf surface",
+          "part": "leaf"
+        },
+        {
+          "text": "fine silk webbing on leaf undersides and shoot tips",
+          "part": "leaf"
+        },
+        {
+          "text": "leaves bronzing, drying and dropping in hot dry weather",
+          "part": "leaf"
+        }
+      ],
+      "crops": [
+        "Solanum lycopersicum",
+        "Solanum tuberosum",
+        "Cucumis sativus",
+        "Capsicum annuum",
+        "Phaseolus vulgaris"
+      ]
+    },
+    {
+      "name": "Asian citrus psyllid",
+      "scientific_name": "Diaphorina citri",
+      "appearance": "Small brown mottled psyllid about 3-4 mm long that holds its wings roof-like over the body; nymphs are yellowish and produce white waxy honeydew.",
+      "feeding_behavior": "Feeds on new flush growth; while feeding it transmits the bacterium that causes citrus greening (huanglongbing).",
+      "damage_symptoms": "Distorted and stunted new shoots; heavy white waxy secretions and sooty mould; notched or twisted young leaves. The most serious impact is virus-free transmission of huanglongbing rather than direct feeding damage.",
+      "life_stages": "Egg, five nymphal instars, adult. Eggs are laid in the tips of new flush.",
+      "prevention": "Inspect new flush regularly; manage psyllid populations on surrounding citrus and Murraya (curry leaf); use certified disease-free planting stock.",
+      "management": "Vector control is the practical management; systemic insecticides are used where permitted. Remove and destroy confirmed huanglongbing-infected trees and report suspected cases to the state horticulture department.",
+      "symptoms": [
+        {
+          "text": "distorted stunted new flush",
+          "part": "shoot"
+        },
+        {
+          "text": "white waxy secretions and sooty mould on shoots",
+          "part": "shoot"
+        }
+      ],
+      "crops": [
+        "Citrus sinensis",
+        "Citrus limon",
+        "Murraya koenigii"
+      ]
+    },
+    {
+      "name": "Sweetpotato whitefly",
+      "scientific_name": "Bemisia tabaci",
+      "appearance": "Tiny white moth-like insects about 1 mm long that rise in a cloud when the plant is disturbed; nymphs are flat oval scales on the leaf underside.",
+      "feeding_behavior": "Sucks sap from the phloem and excretes honeydew; vector of many plant viruses including begomoviruses.",
+      "damage_symptoms": "Yellowing and distortion of leaves; sticky honeydew with black sooty mould; virus transmission causing severe stunting and leaf curling.",
+      "life_stages": "Egg, four nymphal instars, adult.",
+      "prevention": "Use insect-proof nets in nurseries, reflective mulches, yellow sticky traps for monitoring; remove crop debris; manage weeds that host the insect.",
+      "management": "Traps and nets, conservation of natural enemies (Encarsia, Eretmocerus parasitoids, predators), then selective insecticides where permitted. Rotate modes of action because resistance develops quickly.",
+      "symptoms": [
+        {
+          "text": "clouds of tiny white insects when the plant is disturbed",
+          "part": "whole plant"
+        },
+        {
+          "text": "sticky honeydew with black sooty mould on leaves",
+          "part": "leaf"
+        },
+        {
+          "text": "yellowing and distortion of leaves with stunting",
+          "part": "leaf"
+        }
+      ],
+      "crops": [
+        "Solanum lycopersicum",
+        "Capsicum annuum",
+        "Gossypium hirsutum",
+        "Solanum melongena",
+        "Gossypium arboreum"
+      ]
+    },
+    {
+      "name": "Cotton bollworm",
+      "scientific_name": "Helicoverpa armigera",
+      "appearance": "Caterpillar up to about 40 mm, variable colour from green and brown to nearly black, with pale longitudinal stripes and a light band behind the head.",
+      "feeding_behavior": "Larvae bore into buds, flowers, pods and bolls, feeding on developing seed and tissue. One larva can damage several fruits.",
+      "damage_symptoms": "Round bore holes with frass at the entry point; hollowed bolls, pods or fruit; flowers and squares shed; secondary rot in damaged tissue.",
+      "life_stages": "Egg, six larval instars, pupa (in soil), adult moth.",
+      "prevention": "Deep summer ploughing to destroy pupae; timely sowing; trap crops such as marigold; pheromone traps for monitoring; conserve natural enemies; avoid excessive nitrogen.",
+      "management": "Pheromone traps, hand picking of larvae, biological agents including Bacillus thuringiensis and HaNPV where suited, and host-plant resistance. Insecticides are used on economic-threshold counts per the local recommendation, not on sight alone.",
+      "symptoms": [
+        {
+          "text": "round bore holes with frass on fruit or bolls",
+          "part": "fruit"
+        },
+        {
+          "text": "hollowed fruit and shed buds or flowers",
+          "part": "fruit"
+        }
+      ],
+      "crops": [
+        "Gossypium hirsutum",
+        "Gossypium arboreum",
+        "Solanum lycopersicum",
+        "Cicer arietinum",
+        "Cajanus cajan",
+        "Solanum melongena"
+      ]
+    },
+    {
+      "name": "Brown planthopper",
+      "scientific_name": "Nilaparvata lugens",
+      "appearance": "Small brown planthopper about 4-5 mm; adults occur in two wing forms, and nymphs are white to brown and crowd around the base of the tillers.",
+      "feeding_behavior": "Sucks sap at the base of the rice tiller; heavy feeding causes the classic patchy wilting known as hopperburn.",
+      "damage_symptoms": "Plants dry out and turn brown in irregular patches within a field, often in a circular pattern that spreads; honeydew and sooty mould at the base; severe lodging.",
+      "life_stages": "Egg, five nymphal instars, adult (brachypterous and macropterous).",
+      "prevention": "Avoid excess nitrogen and continuous flooding; leave gaps between crop cycles; grow resistant varieties; conserve spiders and mirid bugs.",
+      "management": "Encourage natural enemies, drain the field temporarily, and apply insecticides only directed at the base of the tillers where the hoppers sit. Follow the state recommendation for economic thresholds.",
+      "symptoms": [
+        {
+          "text": "patches of plants drying and turning brown in the field",
+          "part": "whole plant"
+        },
+        {
+          "text": "honeydew and sooty mould at the base of the tillers",
+          "part": "stem"
+        }
+      ],
+      "crops": [
+        "Oryza sativa"
+      ]
+    },
+    {
+      "name": "Aphids",
+      "scientific_name": "Aphididae (multiple species, e.g. Myzus persicae, Aphis gossypii)",
+      "appearance": "Small soft-bodied insects, usually green, black, brown or pinkish, clustered in dense groups on new growth and the underside of leaves.",
+      "feeding_behavior": "Sucks sap from young shoots and leaves; excretes honeydew and transmits many plant viruses.",
+      "damage_symptoms": "Curled distorted new growth; sticky honeydew with sooty mould; colonies clustered on shoot tips; virus transmission causing mottling and stunting.",
+      "life_stages": "Nymph and adult (winged and wingless forms); colonies can be all-female and reproduce without mating in warm conditions.",
+      "prevention": "Avoid excess nitrogen, manage weeds, encourage ladybirds, hoverflies, lacewings and parasitoid wasps, and monitor shoot tips weekly.",
+      "management": "Strong water jets to dislodge colonies, remove affected shoot tips, and conserve natural enemies. Insecticides are a last resort because they also kill the predators that keep aphids in check.",
+      "symptoms": [
+        {
+          "text": "colonies of small soft insects clustered on shoot tips",
+          "part": "shoot"
+        },
+        {
+          "text": "curled and distorted new leaves",
+          "part": "leaf"
+        },
+        {
+          "text": "sticky honeydew with black sooty mould",
+          "part": "leaf"
+        }
+      ],
+      "crops": [
+        "Solanum lycopersicum",
+        "Capsicum annuum",
+        "Brassica oleracea",
+        "Solanum melongena",
+        "Abelmoschus esculentus",
+        "Rosa"
+      ]
+    },
+    {
+      "name": "Mealybugs",
+      "scientific_name": "Pseudococcidae (e.g. Phenacoccus, Planococcus)",
+      "appearance": "Soft oval insects covered in white powdery wax, often with waxy filaments around the edge; they hide in leaf joints, stem crevices, under pot rims and on roots.",
+      "feeding_behavior": "Sucks sap from stems, leaf joints and roots; excretes honeydew.",
+      "damage_symptoms": "White cottony clusters in leaf axils and on stems; yellowing and stunted growth; sticky honeydew with black sooty mould; in pots, cottony white masses at the drainage holes.",
+      "life_stages": "Egg (in a waxy sac), three nymphal instars (crawlers), adult.",
+      "prevention": "Inspect new plants before bringing them in; isolate new plants for a few weeks; avoid overwatering and excess nitrogen; keep plants unstressed.",
+      "management": "Remove by hand with a cotton bud dipped in alcohol; strong water jets; wash pots; mealybug destroyer beetles and parasitoid wasps where suited. Systemic insecticides exist but are not a first step indoors.",
+      "symptoms": [
+        {
+          "text": "white cottony clusters in leaf axils and on stems",
+          "part": "stem"
+        },
+        {
+          "text": "yellowing and stunted growth",
+          "part": "whole plant"
+        },
+        {
+          "text": "sticky honeydew with black sooty mould",
+          "part": "leaf"
+        }
+      ],
+      "crops": [
+        "Ficus benjamina",
+        "Dracaena",
+        "Monstera deliciosa",
+        "Hibiscus rosa-sinensis",
+        "Citrus limon",
+        "Mangifera indica"
+      ]
+    }
+  ]
+}
