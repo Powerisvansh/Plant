@@ -87,6 +87,7 @@ mobile/.packages
 mobile/.pub-cache/
 mobile/.pub/
 mobile/android/.gradle/
+mobile/android/.kotlin/
 mobile/android/local.properties
 mobile/android/app/debug/
 mobile/android/app/profile/
@@ -105,3 +106,14 @@ mobile/*.iml
 scripts/out/
 *.import-report.json
 mobile/assets/data/*.generated.json
+
+# --- ML training artefacts ---------------------------------------------------
+# Training source and reports are committed; datasets, checkpoints, exports and
+# logs are not. The PlantVillage images alone are ~4.5 GB across ~160k files.
+ml/data/
+ml/models/
+ml/logs/
+ml/.venv/
+ml/**/__pycache__/
+knowledge/dist/
+knowledge/logs/
