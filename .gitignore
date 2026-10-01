@@ -24,6 +24,12 @@ service-account*.json
 /pgdata/
 postgres/
 
+# The bundled knowledge base is the exception: it is a build artefact, but the
+# app ships it as an asset and a fresh clone cannot build the APK without it.
+# Regenerate with knowledge/scripts/build_sqlite.py; it is byte-reproducible
+# apart from the created_at/updated_at timestamps.
+!mobile/assets/plant_knowledge/plantdoctor.db
+
 # --- runtime data ------------------------------------------------------------
 /data/postgres/
 /data/plantdoctor/

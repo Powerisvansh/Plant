@@ -65,9 +65,14 @@ writable `plantdoctor.db` so the shipped read-only data is never modified.
 ```bash
 python3 knowledge/scripts/build_sqlite.py
 python3 scripts/validate_plants.py
-cp knowledge/dist/plantdoctor.db mobile/assets/plant_knowledge/plantdoctor.db
 python3 ml/scripts/build_model_labels.py
 ```
+
+`build_sqlite.py` writes both `knowledge/dist/plantdoctor.db` and the
+`mobile/assets/plant_knowledge/` copy the app packages, so there is no manual
+copy step. The asset copy is published only after validation passes, so a
+failed build cannot leave the app bundling a rejected database. Pass
+`--asset ""` to build into `dist` alone.
 
 `build_sqlite.py` refuses to fabricate rows: if the 2,000-record target is not
 met it reports the shortfall and exits non-zero rather than inserting

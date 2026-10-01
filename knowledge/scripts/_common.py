@@ -27,6 +27,10 @@ LOG_DIR = KNOWLEDGE_DIR / "logs"
 DB_PATH = DIST_DIR / "plantdoctor.db"
 MANIFEST_PATH = DIST_DIR / "manifest.json"
 
+# The app ships the bundle as a Flutter asset, so a build has to land in both
+# places: knowledge/dist for inspection, and the asset path the APK packages.
+ASSET_DB_PATH = REPO_ROOT / "mobile" / "assets" / "plant_knowledge" / "plantdoctor.db"
+
 for _d in (RAW_DIR, CURATED_DIR, DIST_DIR, LOG_DIR):
     _d.mkdir(parents=True, exist_ok=True)
 

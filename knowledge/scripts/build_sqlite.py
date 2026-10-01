@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sqlite3
 import sys
 from pathlib import Path
@@ -29,6 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from _common import (  # noqa: E402
+    ASSET_DB_PATH,
     CURATED_DIR,
     DB_PATH,
     DIST_DIR,
@@ -1161,6 +1163,9 @@ def main() -> int:
                         help="output SQLite path")
     parser.add_argument("--allow-partial", action="store_true",
                         help="exit 0 even if the 2000-record target is unmet")
+    parser.add_argument("--asset", type=Path, default=ASSET_DB_PATH,
+                        help="also write the bundle to this app asset path; "
+                             "pass an empty string to skip")
     args = parser.parse_args()
 
     db_path: Path = args.db
@@ -1203,6 +1208,19 @@ def main() -> int:
     finally:
         conn.close()
 
+    # Publish to the Flutter asset path only once the build has passed, so a
+    # failed run cannot leave the app packaging a half-written bundle.
+    asset_db: Path | None = Path(args.asset) if args.asset else None
+    if asset_db is not None:
+        if report["target_status"] == "FAIL" and not args.allow_partial:
+            log.warning("not publishing to %s: record target unmet", asset_db)
+        else:
+            asset_db.parent.mkdir(parents=True, exist_ok=True)
+            tmp = asset_db.with_suffix(".db.tmp")
+            shutil.copyfile(db_path, tmp)
+            tmp.replace(asset_db)
+            log.info("published asset bundle -> %s", asset_db)
+
     print("=" * 72)
     print("PlantDoctor AI | offline knowledge base build")
     print("=" * 72)
@@ -1214,6 +1232,8 @@ def main() -> int:
         print(f"{key:28} {value}")
     print("-" * 72)
     print(f"manifest        : {MANIFEST_PATH}")
+    if asset_db is not None and asset_db.exists():
+        print(f"app asset       : {asset_db}")
     print("=" * 72)
 
     if report["target_status"] == "FAIL" and not args.allow_partial:
