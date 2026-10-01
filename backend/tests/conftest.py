@@ -107,7 +107,9 @@ def _knowledge_tables() -> set[str]:
     names: set[str] = set()
     for sql_file in sorted((BACKEND_DIR / "migrations").glob("*.sql")):
         names.update(pattern.findall(sql_file.read_text(encoding="utf-8")))
-    names.add("schema_migrations")
+    # schema_migrations is deliberately NOT swept. It is migration bookkeeping,
+    # not test data: emptying it makes the next session re-apply migrations onto
+    # a schema that already exists, which dies on "type already exists".
     return names
 
 
