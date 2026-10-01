@@ -26,6 +26,10 @@
 Every plant row carries its data source in `provenance`, and the taxon status
 is taken from GBIF's backbone taxonomy rather than invented.
 
+Rooftop and terrace siting guidance lives in its own `plant_rooftop` table and
+its own curated file, `knowledge/data/curated/rooftop_greenery.json`. See
+[rooftop-greenery.md](rooftop-greenery.md) for how to add a species.
+
 ## Honest limitations
 
 **All 3,918 records are `UNVERIFIED`.** They are real GBIF taxon records with

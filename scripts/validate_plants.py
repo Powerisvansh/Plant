@@ -127,7 +127,8 @@ def validate(db_path: Path) -> dict:
                   "environmental_stresses", "treatments", "toxicity_profiles",
                   "human_safety", "pet_safety", "livestock_safety",
                   "prevention_methods", "sources", "source_records",
-                  "data_provenance", "verification_records", "plant_images"):
+                  "data_provenance", "verification_records", "plant_images",
+                  "plant_rooftop"):
         detail_rows.append({
             "table": table,
             "present": table in tables,

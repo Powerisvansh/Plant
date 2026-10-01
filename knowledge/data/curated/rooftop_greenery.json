@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "file": "rooftop_greenery.json",
+    "purpose": "Species genuinely used for rooftop, terrace and balcony greening, with the siting facts a grower needs before buying a plant: how much sun the position gets, how much heat and wind the roof imposes, how deep a container it can live in, and how much water it asks for once established. Scoped to Indian rooftop conditions, which are hot, dusty, high-wind and often reflected-heat heavy.",
+    "scope": "Every species here must be resolvable to a taxon already present in the GBIF import. This file adds horticultural siting data to existing plants; it never introduces a taxon. Build fails on an unresolvable name so a typo cannot silently create a phantom plant.",
+    "provenance": "Project-curated siting guidance compiled from standard horticultural and rooftop-gardening practice. NOT yet attached to named published sources.",
+    "verification_status": "UNVERIFIED",
+    "why_unverified": "The per-record 'sources' array is empty. Every record is stored UNVERIFIED until a named publication is listed there. This matches the convention used by pests.json and plantvillage_classes.json: no record claims verification it does not have.",
+    "how_to_verify": "For each species, add entries to its 'sources' array citing a named published work (title, publisher or institution, year, and a URL or DOI where one exists). A record with an empty 'sources' array is written to the database as UNVERIFIED and is reported by scripts/validate_plants.py as unverified, exactly like the other curated content. Do not cite a source that does not say what the record claims.",
+    "field_definitions": {
+      "scientific_name": "Accepted scientific name as GBIF Backbone Taxonomy holds it. Resolved through the name_aliases mechanism if the familiar name differs.",
+      "rooftop_role": "How the plant is used on a roof: 'edible' (grown for harvest), 'ornamental', 'groundcover' (used to cover a surface), 'shade' (casts usable shade), 'pollinator' (supports bees and butterflies), 'windbreak' or 'structural' (vegetation used as a wind or privacy screen).",
+      "siting": "Conditions at the position. 'exposure' is the light the spot receives (full sun, partial sun, bright shade). 'heat_tolerance' and 'drought_tolerance' are 'high', 'moderate' or 'low'. 'wind_exposure' is 'high' (open roof edge, upper floors), 'moderate' or 'low' (walled, sheltered).",
+      "container": "Pot size the species can be kept in. 'min_container_litres' is the smallest pot that reliably holds it on a roof; 'root_depth_cm' is the typical rooting depth, which sets how shallow a planter can be. 'drainage' states whether the species tolerates a perched water table.",
+      "watering": "'watering_band' is 'low' (established plants need little beyond monsoon and dew), 'moderate' or 'high'. 'establishment_watering' describes what newly planted specimens need in the first season, which is the period that actually kills most rooftop plantings.",
+      "maintenance": "The recurring work: 'pruning_requirement', 'self_sown' (whether it spreads beyond its pot) and 'special_hazards' such as toxicity to children or pets, or roots that damage a waterproof membrane.",
+      "notes": "Free-text siting caveats, including anything that makes the species a poor rooftop choice despite being a good garden plant."
+    },
+    "safety_rule": "Watering guidance is expressed as frequency bands and soil-moisture checks, never as a measured volume, dilution or spray recipe. Toxicity notes point at the recorded status and never advise ingestion or treatment.",
+    "data_release_notes": "Data release 2026.10 adds rooftop greening siting data. The bundled visual model is unchanged; these species are reference content for the knowledge browser, not model classes."
+  },
+  "species": []
+}

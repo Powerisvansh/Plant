@@ -577,6 +577,7 @@ class KnowledgeProfile {
     this.toxicityStatus,
     this.toxicityWarning,
     this.hasCultivationData = false,
+    this.rooftop,
   });
 
   final KnowledgePlant plant;
@@ -592,6 +593,11 @@ class KnowledgeProfile {
   final String? toxicityStatus;
   final String? toxicityWarning;
   final bool hasCultivationData;
+
+  /// Rooftop siting guidance, when the species has a record.
+  final KnowledgeRooftop? rooftop;
+
+  bool get hasRooftopData => rooftop?.hasAnyData ?? false;
 
   /// True when a label-verified dosage exists. Drives the exact wording
   /// "Verified dosage information is unavailable." when it does not.
@@ -614,4 +620,116 @@ class KnowledgeProfile {
     if (value == null || value.isEmpty) return 'Unknown';
     return value;
   }
+}
+
+/// Rooftop and terrace siting guidance, from the `plant_rooftop` table.
+///
+/// Every field is optional because the table only holds species someone has
+/// actually curated a record for. [verificationStatus] is shown in the UI:
+/// these records are horticultural siting notes, not clinical or dosage
+/// advice, and an unsourced record says so rather than reading as settled.
+class KnowledgeRooftop {
+  const KnowledgeRooftop({
+    this.rooftopRole,
+    this.exposure,
+    this.heatTolerance,
+    this.droughtTolerance,
+    this.windExposure,
+    this.minContainerLitres,
+    this.rootDepthCm,
+    this.drainage,
+    this.wateringBand,
+    this.establishmentWatering,
+    this.pruningRequirement,
+    this.selfSown,
+    this.specialHazards,
+    this.notes,
+    this.verificationStatus,
+  });
+
+  final String? rooftopRole;
+  final String? exposure;
+  final String? heatTolerance;
+  final String? droughtTolerance;
+  final String? windExposure;
+  final int? minContainerLitres;
+  final int? rootDepthCm;
+  final String? drainage;
+  final String? wateringBand;
+  final String? establishmentWatering;
+  final String? pruningRequirement;
+  final String? selfSown;
+  final String? specialHazards;
+  final String? notes;
+  final String? verificationStatus;
+
+  bool get hasAnyData => <Object?>[
+        rooftopRole, exposure, heatTolerance, droughtTolerance, windExposure,
+        minContainerLitres, rootDepthCm, drainage, wateringBand,
+        establishmentWatering, pruningRequirement, selfSown, specialHazards,
+        notes,
+      ].any((v) => v != null && '$v'.trim().isNotEmpty);
+
+  bool get isVerified =>
+      (verificationStatus ?? '').trim().toUpperCase() == 'VERIFIED';
+
+  /// Short badges for the top of the rooftop section, in display order.
+  List<MapEntry<String, String?>> get badges => <MapEntry<String, String?>>[
+        MapEntry('Role', rooftopRole),
+        MapEntry('Light', exposure),
+        MapEntry('Heat', heatTolerance),
+        MapEntry('Drought', droughtTolerance),
+        MapEntry('Wind', windExposure),
+        MapEntry('Water', wateringBand),
+        MapEntry('Drainage', drainage),
+      ].where((e) => e.value != null && e.value!.trim().isNotEmpty).toList();
+
+  /// Siting and maintenance fields, in display order. Container sizing is
+  /// rendered separately because it needs the two numbers formatted.
+  List<MapEntry<String, String?>> get details => <MapEntry<String, String?>>[
+        MapEntry('Container size', containerSizeText),
+        MapEntry('Root depth', rootDepthText),
+        MapEntry('Establishment watering', establishmentWatering),
+        MapEntry('Pruning', pruningRequirement),
+        MapEntry('Spreads beyond its pot', selfSown),
+        MapEntry('Hazards', specialHazards),
+        MapEntry('Siting notes', notes),
+      ].where((e) => e.value != null && e.value!.trim().isNotEmpty).toList();
+
+  String? get containerSizeText {
+    final litres = minContainerLitres;
+    if (litres == null) return null;
+    return litres >= 1 ? 'about $litres litres or larger' : null;
+  }
+
+  String? get rootDepthText {
+    final cm = rootDepthCm;
+    if (cm == null) return null;
+    return 'about $cm cm';
+  }
+
+  /// Shown next to the section heading. An unsourced record is labelled as
+  /// such rather than presented as settled guidance.
+  String get provenanceNotice => isVerified
+      ? 'Siting guidance recorded with a named source.'
+      : 'Siting guidance is project-curated and not yet attached to a '
+          'published source. Treat it as a starting point, not a settled fact.';
+
+  factory KnowledgeRooftop.fromRow(Map<String, Object?> row) => KnowledgeRooftop(
+        rooftopRole: row['rooftop_role'] as String?,
+        exposure: row['exposure'] as String?,
+        heatTolerance: row['heat_tolerance'] as String?,
+        droughtTolerance: row['drought_tolerance'] as String?,
+        windExposure: row['wind_exposure'] as String?,
+        minContainerLitres: row['min_container_litres'] as int?,
+        rootDepthCm: row['root_depth_cm'] as int?,
+        drainage: row['drainage'] as String?,
+        wateringBand: row['watering_band'] as String?,
+        establishmentWatering: row['establishment_watering'] as String?,
+        pruningRequirement: row['pruning_requirement'] as String?,
+        selfSown: row['self_sown'] as String?,
+        specialHazards: row['special_hazards'] as String?,
+        notes: row['notes'] as String?,
+        verificationStatus: row['verification_status'] as String?,
+      );
 }

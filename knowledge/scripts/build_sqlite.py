@@ -48,9 +48,9 @@ from _common import (  # noqa: E402
 log = setup_logging("build_sqlite")
 
 SCHEMA_PATH = KNOWLEDGE_DIR / "schema.sql"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 DATABASE_VERSION = 1
-DATA_RELEASE = "2026.09.0"
+DATA_RELEASE = "2026.10.0"
 
 # ---------------------------------------------------------------------------
 # Source registry (licences are recorded for every imported dataset)
@@ -886,13 +886,102 @@ def insert_toxicity(conn: sqlite3.Connection, source_ids: dict[str, int]) -> dic
     return stats
 
 
+def insert_rooftop(conn: sqlite3.Connection, source_ids: dict[str, int]) -> dict:
+    """Rooftop / terrace siting data (see rooftop_greenery.json).
+
+    Unlike the other curated loaders, an unresolvable name is a hard failure
+    rather than a warning. The other files are best-effort enrichment of
+    plants that already exist, so skipping a row is harmless. This file is a
+    curated worklist: a name that matches no taxon means a typo or a species
+    that was never imported, and quietly dropping it would leave the app
+    claiming to cover a plant it has no record of.
+    """
+    data = read_json(CURATED_DIR / "rooftop_greenery.json", {}) or {}
+    entries = data.get("species", [])
+    if not entries:
+        log.info("rooftop: no species entries yet (sources pending)")
+        return {"profiles": 0, "verified": 0, "unverified": 0}
+
+    src = source_ids["curated_project"]
+    stats = {"profiles": 0, "verified": 0, "unverified": 0}
+    unmatched: list[str] = []
+
+    for entry in entries:
+        plant_id = _plant_id_for(conn, entry.get("scientific_name"))
+        if plant_id is None:
+            unmatched.append(entry.get("scientific_name") or "?")
+            continue
+
+        # A record is only VERIFIED when it names the sources it rests on.
+        # An empty list stays UNVERIFIED, matching every other curated file.
+        sources = entry.get("sources") or []
+        verified = bool(sources)
+        status = "VERIFIED" if verified else "UNVERIFIED"
+        cited = "; ".join(
+            s.get("citation") or s.get("title") or "unnamed source"
+            for s in sources if isinstance(s, dict)
+        ) or None
+
+        siting = entry.get("siting") or {}
+        container = entry.get("container") or {}
+        watering = entry.get("watering") or {}
+        maintenance = entry.get("maintenance") or {}
+
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO plant_rooftop
+                (plant_id, rooftop_role, exposure, heat_tolerance,
+                 drought_tolerance, wind_exposure, min_container_litres,
+                 root_depth_cm, drainage, watering_band,
+                 establishment_watering, pruning_requirement, self_sown,
+                 special_hazards, notes, verification_status, source_id)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            """,
+            (
+                plant_id,
+                entry.get("rooftop_role"),
+                siting.get("exposure"),
+                siting.get("heat_tolerance"),
+                siting.get("drought_tolerance"),
+                siting.get("wind_exposure"),
+                container.get("min_container_litres"),
+                container.get("root_depth_cm"),
+                container.get("drainage"),
+                watering.get("watering_band"),
+                watering.get("establishment_watering"),
+                maintenance.get("pruning_requirement"),
+                maintenance.get("self_sown"),
+                maintenance.get("special_hazards"),
+                entry.get("notes"),
+                status, src,
+            ),
+        )
+        stats["profiles"] += 1
+        stats["verified" if verified else "unverified"] += 1
+        provenance(conn, "plant_rooftop", plant_id, "rooftop_role", src,
+                   entry.get("rooftop_role"), method="curated_file",
+                   confidence="HIGH" if verified else "MEDIUM",
+                   status=status, note=cited)
+
+    if unmatched:
+        raise SystemExit(
+            "rooftop_greenery.json names species that are not in the knowledge "
+            f"base, so they would be silently dropped: {', '.join(sorted(set(unmatched)))}. "
+            "Fix the name, or add the genus to knowledge/data/curated/"
+            "target_genera.json and re-run knowledge/scripts/import_gbif.py."
+        )
+    log.info("rooftop: %s", stats)
+    return stats
+
+
 # ---------------------------------------------------------------------------
 # Meta rows, indexes, integrity and the manifest
 # ---------------------------------------------------------------------------
 
 AUDITED_TABLES = [
     "plants", "plant_names", "plant_synonyms", "plant_taxonomy",
-    "plant_characteristics", "plant_distribution", "plant_images", "diseases",
+    "plant_characteristics", "plant_distribution", "plant_rooftop",
+    "plant_images", "diseases",
     "plant_diseases", "disease_symptoms", "pests", "plant_pests",
     "pest_symptoms", "nutrient_deficiencies", "environmental_stresses",
     "prevention_methods", "treatments", "treatment_targets",
@@ -1188,6 +1277,7 @@ def main() -> int:
             stats["treatments"] = insert_treatments(conn, source_ids)
             stats["prevention"] = insert_prevention(conn, source_ids)
             stats["toxicity"] = insert_toxicity(conn, source_ids)
+            stats["rooftop"] = insert_rooftop(conn, source_ids)
             write_meta(conn, stats)
             write_indexes(conn)
 

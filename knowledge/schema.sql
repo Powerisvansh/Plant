@@ -220,6 +220,34 @@ CREATE TABLE plant_growth (
     source_id               INTEGER REFERENCES sources(id)
 );
 
+-- Rooftop / terrace siting data, from knowledge/data/curated/rooftop_greenery.json.
+-- One row per species. This table holds horticultural siting facts only; it
+-- never introduces a taxon, so plant_id is a foreign key and an unresolvable
+-- name is a build failure rather than a new plant.
+--
+-- watering_band and the frequency language in establishment_watering are
+-- deliberately qualitative. No column stores a measured volume, dilution or
+-- spray recipe: the project does not publish application rates.
+CREATE TABLE plant_rooftop (
+    plant_id                INTEGER PRIMARY KEY REFERENCES plants(id) ON DELETE CASCADE,
+    rooftop_role            TEXT,
+    exposure                TEXT,
+    heat_tolerance          TEXT,
+    drought_tolerance       TEXT,
+    wind_exposure           TEXT,
+    min_container_litres    INTEGER,
+    root_depth_cm           INTEGER,
+    drainage                TEXT,
+    watering_band           TEXT,
+    establishment_watering  TEXT,
+    pruning_requirement     TEXT,
+    self_sown               TEXT,
+    special_hazards         TEXT,
+    notes                   TEXT,
+    verification_status     TEXT NOT NULL DEFAULT 'UNVERIFIED',
+    source_id               INTEGER REFERENCES sources(id)
+);
+
 CREATE TABLE plant_distribution (
     id          INTEGER PRIMARY KEY,
     plant_id    INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,

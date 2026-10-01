@@ -136,6 +136,10 @@ class _KnowledgePlantDetailScreenState
         else
           ...profile.growth!.labelled.map((e) => _kv(context, e.key, e.value!)),
 
+        // ------------------------------------------------------------ rooftop
+        const SizedBox(height: 18),
+        RooftopSection(profile: profile),
+
         // ------------------------------------------------------------ diseases
         const SizedBox(height: 18),
         SectionHeader(title: 'Diseases (${profile.diseases.length})'),
@@ -479,4 +483,67 @@ class _Expansion extends StatelessWidget {
       children: children,
     ),
   );
+}
+
+/// Rooftop and terrace siting guidance for one plant.
+///
+/// Extracted from the detail screen so the section can be rendered under test
+/// without standing up the asset pipeline, and so the two states stay
+/// together: a species with a curated record, and one without. The second
+/// state is a first-class message, not an empty box, because a grower needs
+/// to know the guidance is absent rather than assume the plant is unsuitable.
+class RooftopSection extends StatelessWidget {
+  const RooftopSection({super.key, required this.profile});
+
+  final KnowledgeProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!profile.hasRooftopData) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SectionHeader(title: 'Rooftop and terrace growing'),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Text(
+              'No rooftop siting record for this species in this release. '
+              'Light, wind, container and watering bands stay empty rather than '
+              'being filled with typical values for the genus.',
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ],
+      );
+    }
+
+    final record = profile.rooftop!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SectionHeader(title: 'Rooftop and terrace growing'),
+        _line(context, 'Sourcing', record.provenanceNotice),
+        ...record.badges.map((e) => _line(context, e.key, e.value!)),
+        ...record.details.map((e) => _line(context, e.key, e.value!)),
+      ],
+    );
+  }
+
+  static Widget _line(BuildContext context, String key, String value) =>
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: RichText(
+          text: TextSpan(
+            style: Theme.of(context).textTheme.bodyMedium,
+            children: <InlineSpan>[
+              TextSpan(
+                text: '$key: ',
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(text: value),
+            ],
+          ),
+        ),
+      );
 }

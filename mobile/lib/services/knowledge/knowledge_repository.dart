@@ -320,6 +320,20 @@ class KnowledgeRepository {
     return KnowledgeGrowth.fromRow(rows.first);
   }
 
+  /// Rooftop siting guidance, or null when the species has no record.
+  ///
+  /// Table-gated: an asset bundle predating the rooftop data has no such
+  /// table, and a missing table must read as "no data" rather than throw.
+  Future<KnowledgeRooftop?> rooftopFor(int plantId) async {
+    final rows = await _queryIfPresent(
+      'plant_rooftop',
+      'SELECT * FROM plant_rooftop WHERE plant_id = ? LIMIT 1',
+      [plantId],
+    );
+    if (rows.isEmpty) return null;
+    return KnowledgeRooftop.fromRow(rows.first);
+  }
+
   Future<List<KnowledgeDisease>> diseasesFor(int plantId) async {
     final rows = await _query(
       'SELECT d.* FROM diseases d '
@@ -457,6 +471,7 @@ class KnowledgeRepository {
       stressesFor(plant.id),
       treatmentsFor(plant.id),
       sourcesFor(plant.id),
+      rooftopFor(plant.id),
     ]);
 
     final growth = results[2] as KnowledgeGrowth?;
@@ -471,6 +486,7 @@ class KnowledgeRepository {
       stresses: results[6] as List<KnowledgeStress>,
       treatments: results[7] as List<KnowledgeTreatment>,
       sources: results[8] as List<KnowledgeSource>,
+      rooftop: results[9] as KnowledgeRooftop?,
       toxicityStatus: plant.toxicityStatus,
       toxicityWarning: plant.toxicityKnown
           ? null
