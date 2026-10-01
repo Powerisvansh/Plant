@@ -44,6 +44,8 @@ dependencies:
   intl: ^0.20.3
   shared_preferences: ^2.5.5
   fl_chart: ^1.2.0
+  # On-device inference for the bundled plant classifier.
+  tflite_flutter: ^0.12.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,12 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    # Bundled knowledge base (built by knowledge/scripts/build_sqlite.py) and
+    # the on-device classifier (produced by ml/export_tflite.py).
+    - assets/plant_knowledge/plantdoctor.db
+    - assets/models/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

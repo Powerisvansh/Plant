@@ -2,8 +2,9 @@ import 'package:image/image.dart' as img;
 
 import '../../models/analysis_models.dart';
 import '../../models/scan_models.dart';
+import '../identification/identification_service.dart';
 import '../image_files.dart';
-import '../identification/plant_classifier.dart';
+import '../ml/plant_model.dart';
 import '../synthetic_samples.dart';
 import 'analysis_engine.dart';
 
@@ -13,7 +14,10 @@ typedef ScanInput = ({String path, ImageSubjectType subject});
 /// Orchestrates the full analysis pipeline for 1-4 photos.
 ///
 ///   decode -> downscale -> save working copy -> quality gate -> measure
-///   -> combine health -> health index -> morphology identification
+///   -> on-device model (when bundled) -> combine -> health index
+///
+/// Identification is model-first; the leaf-shape screening is only a clearly
+/// labelled fallback, and neither path may invent a species name.
 class AnalyzeService {
   AnalyzeService(this.files);
 
@@ -32,13 +36,18 @@ class AnalyzeService {
     final originalPaths = <String>[];
     final subjects = <ImageSubjectType>[];
 
+    // Load the bundled model once; null when this build ships no model.
+    final model = await PlantModelService.load();
+    final modelResults = <List<ModelPrediction>?>[];
+
     for (var i = 0; i < inputs.length; i++) {
       final input = inputs[i];
       final bytes = await files.readAsBytes(input.path);
       final decoded = img.decodeImage(bytes);
       if (decoded == null) {
         throw const FormatException(
-            'The selected image could not be read as a photo.');
+          'The selected image could not be read as a photo.',
+        );
       }
       final prepared = AnalysisEngine.prepare(decoded);
       final workingPath = await files.saveWorking(scanId, i, prepared);
@@ -46,13 +55,34 @@ class AnalyzeService {
       originalPaths.add(input.path);
       subjects.add(input.subject);
 
-      quality.add(AnalysisEngine.checkQuality(prepared));
+      final report = AnalysisEngine.checkQuality(prepared);
+      quality.add(report);
       perImage.add(AnalysisEngine.analyzeSingle(prepared));
+
+      // First non-plant gate: photos with no plant-like pixels never reach the
+      // classifier. (The model's own confidence floor is the second gate.)
+      if (model != null) {
+        try {
+          modelResults.add(
+            report.issues.contains(QualityIssue.plantNotDetected)
+                ? null
+                : model.topK(prepared, k: 5),
+          );
+        } catch (_) {
+          modelResults.add(null);
+        }
+      }
     }
 
     final health = AnalysisEngine.assess(perImage);
     final index = AnalysisEngine.computeIndex(perImage);
-    final identification = PlantClassifier.classify(perImage);
+    final outcome = IdentificationService.combine(
+      perImage: perImage,
+      qualityReports: quality,
+      modelResults: modelResults.isEmpty
+          ? List<List<ModelPrediction>?>.filled(perImage.length, null)
+          : modelResults,
+    );
 
     sw.stop();
 
@@ -60,7 +90,8 @@ class AnalyzeService {
       perImage: perImage,
       health: health,
       index: index,
-      identification: identification,
+      identification: outcome.plant,
+      conditionScreen: outcome.condition,
       originalPaths: originalPaths,
       workingPaths: workingPaths,
       subjects: subjects,
@@ -68,6 +99,8 @@ class AnalyzeService {
       measuredMetrics: {
         'inference_ms': sw.elapsedMilliseconds,
         'images': perImage.length,
+
+        'model_loaded': model != null ? 1 : 0,
       },
       inferenceMillis: sw.elapsedMilliseconds,
     );

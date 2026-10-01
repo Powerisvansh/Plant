@@ -7,11 +7,12 @@ import '../../core/formats.dart';
 import '../../core/theme/app_theme.dart';
 import '../../models/analysis_models.dart';
 import '../../models/scan_models.dart';
-import '../../services/identification/plant_classifier.dart';
+import '../../services/identification/identification_models.dart';
 import '../../services/plant_database.dart';
 import '../../state/providers.dart';
 import '../../widgets/evidence_overlay.dart';
 import '../../widgets/health_ring.dart';
+import '../learn/knowledge_plant_detail_screen.dart';
 import '../../widgets/stat_card.dart';
 
 /// Full result of a check-up: identification, health screening, evidence,
@@ -62,9 +63,10 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
       thumbPath: bundle.workingPaths.isNotEmpty ? bundle.workingPaths.first : '',
       imagePaths: bundle.workingPaths,
       imageSubjects: bundle.subjects.map(subjectLabel).toList(),
-      plantGuess: bundle.identification.bestName,
-      scientificGuess: bundle.identification.bestScientific,
-      identificationConfidence: bundle.identification.bestConfidence,
+      plantGuess: bundle.identification.recordName,
+      scientificGuess: bundle.identification.recordScientific,
+      identificationConfidence: bundle.identification.identifiedConfidence ??
+          bundle.identification.growthFormConfidence,
       identificationUncertain: bundle.identification.uncertain,
       healthIndex: bundle.index.score,
       overallCondition: bundle.health.overallCondition,
@@ -82,8 +84,8 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
   Future<void> _saveAsPlant() async {
     final plants = context.read<PlantsController>();
     final plant = await plants.addPlant(
-      name: bundle.identification.bestName,
-      species: bundle.identification.bestScientific,
+      name: bundle.identification.recordName,
+      species: bundle.identification.recordScientific,
       healthIndex: bundle.index.score,
       photoPath: bundle.workingPaths.isNotEmpty ? bundle.workingPaths.first : '',
     );
@@ -162,6 +164,8 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
           _qualityWarnings(),
           const SizedBox(height: 12),
           _conditionCard(theme),
+          const SizedBox(height: 12),
+          _modelScreeningCard(theme),
           const SizedBox(height: 12),
           _identificationCard(theme, identification),
           const SizedBox(height: 12),
@@ -247,8 +251,12 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
     );
   }
 
-  Widget _identificationCard(ThemeData theme, PlantCategoryResult id) {
-    final best = id.best;
+  Widget _identificationCard(ThemeData theme, PlantIdentification id) {
+    final hasSpecies = id.hasSpeciesIdentification;
+    final modelCandidates =
+        id.candidates.where((c) => !c.morphologyOnly).toList(growable: false);
+    final lookAlikes = id.possibilities;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(18),
@@ -259,35 +267,188 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
               children: [
                 const Icon(Icons.psychology_outlined, color: AppColors.teal),
                 const SizedBox(width: 8),
-                Text('Likely plant match', style: theme.textTheme.titleMedium),
+                Text(
+                  hasSpecies ? 'Identified plant' : 'Plant identity',
+                  style: theme.textTheme.titleMedium,
+                ),
               ],
             ),
             const SizedBox(height: 10),
-            Text(best?.commonName ?? id.groupLabel, style: theme.textTheme.titleLarge),
-            if (best != null)
-              Text(best.scientificName, style: theme.textTheme.bodySmall),
+            Text(id.displayName, style: theme.textTheme.titleLarge),
+            if (id.displayScientificName.isNotEmpty)
+              Text(id.displayScientificName, style: theme.textTheme.bodySmall),
             const SizedBox(height: 8),
-            Text(
-              id.uncertain
-                  ? 'This is a guess based on leaf shape only - keep checking '
-                      'against your own plant.'
-                  : id.explanation,
-              style: theme.textTheme.bodyMedium,
-            ),
-            if (id.uncertain)
+            Text(id.explanation, style: theme.textTheme.bodyMedium),
+            if (id.conflictingEvidence) ...[
+              const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppColors.amber.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(20),
+                  color: AppColors.warn.withValues(alpha: 0.14),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
-                  'Uncertain - ${(id.bestConfidence * 100).round()}% match',
-                  style: theme.textTheme.bodySmall!
-                      .copyWith(color: AppColors.warn, fontWeight: FontWeight.w700),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.compare_arrows,
+                        size: 18, color: AppColors.warn),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'The submitted images provide conflicting visual '
+                        'evidence, so no single answer is forced.',
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+            ],
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                _bandChip(theme, id),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    id.modelAvailable
+                        ? 'On-device model'
+                        : 'No model bundled - leaf-shape screening only',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+              ],
+            ),
+            if (hasSpecies && modelCandidates.length > 1) ...[
+              const SizedBox(height: 12),
+              Text('Runner-up matches', style: theme.textTheme.bodySmall),
+              const SizedBox(height: 4),
+              for (final c in modelCandidates.skip(1).take(4))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Text(
+                    '${c.commonName}'
+                    '${c.scientificName.isEmpty ? '' : ' (${c.scientificName})'}'
+                    ' - ${c.displayScore}',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+            ],
+            if (!hasSpecies && modelCandidates.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              Text('Closest model matches (not confirmed)',
+                  style: theme.textTheme.bodySmall),
+              const SizedBox(height: 4),
+              for (final c in modelCandidates.take(5))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Text(
+                    '${c.commonName} - ${c.displayScore}',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+            ],
+            if (!hasSpecies && lookAlikes.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              Text(
+                'Look-alikes from the local catalogue (shape similarity only, '
+                'not a probability)',
+                style: theme.textTheme.bodySmall,
+              ),
+              const SizedBox(height: 4),
+              for (final c in lookAlikes)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Text(
+                    '${c.commonName} (${c.scientificName})',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bandChip(ThemeData theme, PlantIdentification id) {
+    final isUnknown =
+        id.band == ConfidenceBand.unknown || id.band == ConfidenceBand.low;
+    final color = isUnknown ? AppColors.warn : AppColors.primary;
+    final probability = id.identifiedConfidence;
+    final text = probability != null
+        ? '${id.band.label} - ${(probability * 100).round()}%'
+        : id.band.label;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.14),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        text,
+        style: theme.textTheme.bodySmall!
+            .copyWith(color: color, fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+
+  Widget _modelScreeningCard(ThemeData theme) {
+    final screen = bundle.conditionScreen;
+    if (screen == null) return const SizedBox.shrink();
+    final condition = screen.conditionName;
+    final headline = screen.healthy
+        ? 'no disease class won for this photo'
+        : (condition ?? 'unsupported condition');
+    final agreementText = screen.agreement >= 1.0
+        ? 'all photos agreed'
+        : '${(screen.agreement * 100).round()}% of photos agreed';
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.biotech_outlined, color: AppColors.teal),
+                const SizedBox(width: 8),
+                Text('Model disease screening',
+                    style: theme.textTheme.titleMedium),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '${screen.cropName} - $headline',
+              style: theme.textTheme.titleMedium!.copyWith(fontSize: 15),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Strongest class ${(screen.topProbability * 100).round()}% '
+              '($agreementText).',
+              style: theme.textTheme.bodySmall,
+            ),
+            if (screen.topK.length > 1) ...[
+              const SizedBox(height: 8),
+              Text('Other candidates', style: theme.textTheme.bodySmall),
+              for (final p in screen.topK.skip(1).take(3))
+                Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Text(
+                    '${p.classInfo?.crop ?? '?'}'
+                    '${p.classInfo?.condition == null ? ' (healthy)' : ' - ${p.classInfo!.condition}'}'
+                    ' - ${(p.probability * 100).round()}%',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+            ],
+            const SizedBox(height: 10),
+            Text(
+              'Visual screening from a model trained on the PlantVillage '
+              'dataset (${screen.modelKey}). Not a laboratory diagnosis - '
+              'confirm before treating.',
+              style: theme.textTheme.bodySmall,
+            ),
           ],
         ),
       ),
@@ -510,7 +671,7 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
     );
   }
 
-  Widget _careCard(ThemeData theme, PlantCategoryResult id) {
+  Widget _careCard(ThemeData theme, PlantIdentification id) {
     final info = _plantInfoFor(id);
     if (info == null) return const SizedBox.shrink();
     return Card(
@@ -540,9 +701,11 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
     );
   }
 
-  Widget _plantInfoCard(ThemeData theme, PlantCategoryResult id) {
+  Widget _plantInfoCard(ThemeData theme, PlantIdentification id) {
     final info = _plantInfoFor(id);
-    if (info == null) return const SizedBox.shrink();
+    final slug = _knowledgeSlugFor(id);
+    if (info == null && slug == null) return const SizedBox.shrink();
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(18),
@@ -551,35 +714,75 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
           children: [
             Row(
               children: [
-                const Icon(Icons.menu_book_outlined, color: AppColors.teal, size: 20),
+                const Icon(Icons.menu_book_outlined,
+                    color: AppColors.teal, size: 20),
                 const SizedBox(width: 8),
-                Text('About ${info.commonName}', style: theme.textTheme.titleMedium),
+                Expanded(
+                  child: Text(
+                    info == null
+                        ? 'About ${id.identifiedName ?? 'this plant'}'
+                        : 'About ${info.commonName}',
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
               ],
             ),
-            const SizedBox(height: 10),
-            StatCard(
-              label: 'Family',
-              value: info.family,
-              icon: Icons.emoji_nature_outlined,
-            ),
-            const SizedBox(height: 8),
-            StatCard(
-              label: 'Growth',
-              value: info.growth,
-              icon: Icons.trending_up,
-            ),
-            const SizedBox(height: 8),
-            Text('Origin', style: theme.textTheme.bodySmall),
-            const SizedBox(height: 2),
-            Text(info.origin, style: theme.textTheme.bodyMedium),
-            const SizedBox(height: 10),
-            Text('Common problems', style: theme.textTheme.bodySmall),
-            const SizedBox(height: 2),
-            Text(info.commonProblems, style: theme.textTheme.bodyMedium),
+            if (slug != null) ...[
+              const SizedBox(height: 10),
+              OutlinedButton.icon(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => KnowledgePlantDetailScreen(slug: slug),
+                  ),
+                ),
+                icon: const Icon(Icons.storage_rounded, size: 18),
+                label: const Text('Open the full plant record'),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Sourced taxonomy, diseases, pests and safety from the bundled '
+                'offline database.',
+                style: theme.textTheme.bodySmall,
+              ),
+            ],
+            if (info != null) ...[
+              const SizedBox(height: 12),
+              StatCard(
+                label: 'Family',
+                value: info.family,
+                icon: Icons.emoji_nature_outlined,
+              ),
+              const SizedBox(height: 8),
+              StatCard(
+                label: 'Growth',
+                value: info.growth,
+                icon: Icons.trending_up,
+              ),
+              const SizedBox(height: 8),
+              Text('Origin', style: theme.textTheme.bodySmall),
+              const SizedBox(height: 2),
+              Text(info.origin, style: theme.textTheme.bodyMedium),
+              const SizedBox(height: 10),
+              Text('Common problems', style: theme.textTheme.bodySmall),
+              const SizedBox(height: 2),
+              Text(info.commonProblems, style: theme.textTheme.bodyMedium),
+            ],
           ],
         ),
       ),
     );
+  }
+
+  /// Slug of the knowledge-base row for the identified plant, when the model
+  /// named one. Returns null for an uncertain result so no record is opened.
+  String? _knowledgeSlugFor(PlantIdentification id) {
+    if (id.source != IdentificationSource.model) return null;
+    if (id.identifiedName == null) return null;
+    final lead = id.candidates.isEmpty ? null : id.candidates.first;
+    final slug = lead?.plantId ?? '';
+    // Guard against a raw class label being used as a slug.
+    if (slug.isEmpty || slug.contains('___')) return null;
+    return slug;
   }
 
   Widget _followUpCard(ThemeData theme) {
@@ -624,11 +827,16 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
     );
   }
 
-  PlantInfo? _plantInfoFor(PlantCategoryResult id) {
-    final best = id.best;
-    if (best == null) return null;
+  /// Local catalogue entry for the leading candidate, if there is one. The
+  /// profile card is hidden unless the app actually has a matching entry.
+  PlantInfo? _plantInfoFor(PlantIdentification id) {
+    if (id.candidates.isEmpty) return null;
+    final lead = id.candidates.first;
     for (final p in PlantDatabase.all) {
-      if (p.id == best.plantId) return p;
+      if (p.id == lead.plantId) return p;
+    }
+    for (final p in PlantDatabase.all) {
+      if (p.commonName.toLowerCase() == lead.commonName.toLowerCase()) return p;
     }
     return null;
   }

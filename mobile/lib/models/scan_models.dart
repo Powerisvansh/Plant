@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../services/identification/plant_classifier.dart';
+import '../services/identification/identification_models.dart';
+import '../services/identification/identification_service.dart';
 import 'analysis_models.dart';
 
 /// Everything the analysis pipeline produced for one scan (1-4 photos).
@@ -23,8 +24,9 @@ class ScanAnalysis {
   /// Aggregated experimental health index.
   final HealthIndex aggregateIndex;
 
-  /// Morphology-based identification result (honestly labelled as a guess).
-  final PlantCategoryResult identification;
+  /// Identification result. A species name is present only when the bundled
+  /// on-device model produced it; otherwise this is growth-form screening.
+  final PlantIdentification identification;
 
   /// Time measurements (for science-fair dashboard).
   final Map<String, num> measuredMetrics;
@@ -327,12 +329,19 @@ class AnalysisBundle {
     required this.qualityReports,
     required this.measuredMetrics,
     required this.inferenceMillis,
+    this.conditionScreen,
   });
 
   final List<LeafAnalysis> perImage;
   final HealthReport health;
   final HealthIndex index;
-  final PlantCategoryResult identification;
+
+  /// Model-first identification. Species names are only present when the
+  /// bundled classifier produced them.
+  final PlantIdentification identification;
+
+  /// Crop/condition screening from the same classifier, when a model ran.
+  final ModelConditionScreen? conditionScreen;
 
   /// Paths of the original files the user provided/captured.
   final List<String> originalPaths;

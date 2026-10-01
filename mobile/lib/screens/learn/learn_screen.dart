@@ -4,14 +4,14 @@ import '../../core/theme/app_theme.dart';
 import '../../models/condition_models.dart';
 import '../../models/education_models.dart';
 import '../../services/condition_content.dart';
-import '../../services/education_content.dart';
 import '../../services/plant_database.dart';
+import '../../services/education_content.dart';
 import '../../widgets/section_header.dart';
 import 'condition_detail_screen.dart';
 import 'disease_by_plant_screen.dart';
+import 'knowledge_browser_screen.dart';
 import 'learn_detail_screen.dart';
 import 'learn_topic_detail_screen.dart';
-import 'plant_browser_screen.dart';
 import 'plant_health_guide_screen.dart';
 
 /// Educational content: plant-science topics plus the plant care catalogue.
@@ -129,7 +129,7 @@ class LearnScreen extends StatelessWidget {
             child: InkWell(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (_) => const PlantBrowserScreen(),
+                  builder: (_) => const KnowledgeBrowserScreen(),
                 ),
               ),
               child: Padding(
@@ -155,12 +155,13 @@ class LearnScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Browse all plants',
+                            'Plant knowledge base',
                             style: theme.textTheme.titleMedium,
                           ),
                           const SizedBox(height: 3),
                           Text(
-                            'Search, filter and open a larger plant catalogue',
+                            '3,918 sourced plant records stored on this phone, '
+                            'with diseases, pests and references. Works offline.',
                             style: theme.textTheme.bodySmall,
                           ),
                         ],
@@ -220,9 +221,10 @@ class LearnScreen extends StatelessWidget {
               ),
             ),
           ),
-          SectionHeader(
-            title: 'Plant care catalogue',
-            subtitle: 'Common house and garden plants',
+          const SectionHeader(
+            title: 'Care guides',
+            subtitle: 'Short care notes written for the app. For taxonomy, '
+                'diseases and sources use the knowledge base above.',
           ),
           for (final p in PlantDatabase.all)
             Card(

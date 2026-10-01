@@ -1,0 +1,361 @@
+{
+  "model_key": "plantdoctor_plantvillage_screener",
+  "version": "2026-09-30T23:38:30+00:00",
+  "architecture": "MobileNetV3Small(frozen)+GAP+Dense, then partial fine-tune",
+  "input_size": 160,
+  "trained_on": "PlantVillage (raw/color), 14 crops, 38 crop/condition classes, split at leaf-specimen level",
+  "unknown_threshold": 0.6,
+  "metrics": {
+    "top1_accuracy": 0.901792,
+    "top5_accuracy": 0.99153,
+    "macro_f1": 0.890486,
+    "weighted_f1": 0.902421,
+    "average_inference_ms": 7.718
+  },
+  "metrics_measured_at": "2026-09-30T23:49:11+00:00",
+  "scope_note": "This model is a crop-and-condition screener covering 14 crops. It is not a 2000-species identifier. For any plant outside these crops the app reports the identification as uncertain instead of guessing.",
+  "classes": [
+    {
+      "index": 0,
+      "class_label": "Apple___Apple_scab",
+      "crop": "Apple",
+      "condition": "Apple scab",
+      "healthy": false,
+      "plant_slug": "malus-domestica",
+      "plant_scientific_name": "Malus domestica (Suckow) Borkh."
+    },
+    {
+      "index": 1,
+      "class_label": "Apple___Black_rot",
+      "crop": "Apple",
+      "condition": "Black rot",
+      "healthy": false,
+      "plant_slug": "malus-domestica",
+      "plant_scientific_name": "Malus domestica (Suckow) Borkh."
+    },
+    {
+      "index": 2,
+      "class_label": "Apple___Cedar_apple_rust",
+      "crop": "Apple",
+      "condition": "Cedar apple rust",
+      "healthy": false,
+      "plant_slug": "malus-domestica",
+      "plant_scientific_name": "Malus domestica (Suckow) Borkh."
+    },
+    {
+      "index": 3,
+      "class_label": "Apple___healthy",
+      "crop": "Apple",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "malus-domestica",
+      "plant_scientific_name": "Malus domestica (Suckow) Borkh."
+    },
+    {
+      "index": 4,
+      "class_label": "Blueberry___healthy",
+      "crop": "Blueberry",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "vaccinium-corymbosum",
+      "plant_scientific_name": "Vaccinium corymbosum L."
+    },
+    {
+      "index": 5,
+      "class_label": "Cherry_(including_sour)___Powdery_mildew",
+      "crop": "Cherry (including sour)",
+      "condition": "Powdery mildew",
+      "healthy": false,
+      "plant_slug": "prunus-avium",
+      "plant_scientific_name": "Prunus avium (L.) L."
+    },
+    {
+      "index": 6,
+      "class_label": "Cherry_(including_sour)___healthy",
+      "crop": "Cherry (including sour)",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "prunus-avium",
+      "plant_scientific_name": "Prunus avium (L.) L."
+    },
+    {
+      "index": 7,
+      "class_label": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "crop": "Corn (maize)",
+      "condition": "Cercospora leaf spot Gray leaf spot",
+      "healthy": false,
+      "plant_slug": "zea-mays",
+      "plant_scientific_name": "Zea mays L."
+    },
+    {
+      "index": 8,
+      "class_label": "Corn_(maize)___Common_rust_",
+      "crop": "Corn (maize)",
+      "condition": "Common rust ",
+      "healthy": false,
+      "plant_slug": "zea-mays",
+      "plant_scientific_name": "Zea mays L."
+    },
+    {
+      "index": 9,
+      "class_label": "Corn_(maize)___Northern_Leaf_Blight",
+      "crop": "Corn (maize)",
+      "condition": "Northern Leaf Blight",
+      "healthy": false,
+      "plant_slug": "zea-mays",
+      "plant_scientific_name": "Zea mays L."
+    },
+    {
+      "index": 10,
+      "class_label": "Corn_(maize)___healthy",
+      "crop": "Corn (maize)",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "zea-mays",
+      "plant_scientific_name": "Zea mays L."
+    },
+    {
+      "index": 11,
+      "class_label": "Grape___Black_rot",
+      "crop": "Grape",
+      "condition": "Black rot",
+      "healthy": false,
+      "plant_slug": "vitis-vinifera",
+      "plant_scientific_name": "Vitis vinifera L."
+    },
+    {
+      "index": 12,
+      "class_label": "Grape___Esca_(Black_Measles)",
+      "crop": "Grape",
+      "condition": "Esca (Black Measles)",
+      "healthy": false,
+      "plant_slug": "vitis-vinifera",
+      "plant_scientific_name": "Vitis vinifera L."
+    },
+    {
+      "index": 13,
+      "class_label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "crop": "Grape",
+      "condition": "Leaf blight (Isariopsis Leaf Spot)",
+      "healthy": false,
+      "plant_slug": "vitis-vinifera",
+      "plant_scientific_name": "Vitis vinifera L."
+    },
+    {
+      "index": 14,
+      "class_label": "Grape___healthy",
+      "crop": "Grape",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "vitis-vinifera",
+      "plant_scientific_name": "Vitis vinifera L."
+    },
+    {
+      "index": 15,
+      "class_label": "Orange___Haunglongbing_(Citrus_greening)",
+      "crop": "Orange",
+      "condition": "Haunglongbing (Citrus greening)",
+      "healthy": false,
+      "plant_slug": "citrus-sinensis",
+      "plant_scientific_name": "Citrus sinensis (Mill.) Pers., 1806"
+    },
+    {
+      "index": 16,
+      "class_label": "Peach___Bacterial_spot",
+      "crop": "Peach",
+      "condition": "Bacterial spot",
+      "healthy": false,
+      "plant_slug": "prunus-persica",
+      "plant_scientific_name": "Prunus persica (L.) Stokes"
+    },
+    {
+      "index": 17,
+      "class_label": "Peach___healthy",
+      "crop": "Peach",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "prunus-persica",
+      "plant_scientific_name": "Prunus persica (L.) Stokes"
+    },
+    {
+      "index": 18,
+      "class_label": "Pepper,_bell___Bacterial_spot",
+      "crop": "Pepper, bell",
+      "condition": "Bacterial spot",
+      "healthy": false,
+      "plant_slug": "capsicum-annuum",
+      "plant_scientific_name": "Capsicum annuum L."
+    },
+    {
+      "index": 19,
+      "class_label": "Pepper,_bell___healthy",
+      "crop": "Pepper, bell",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "capsicum-annuum",
+      "plant_scientific_name": "Capsicum annuum L."
+    },
+    {
+      "index": 20,
+      "class_label": "Potato___Early_blight",
+      "crop": "Potato",
+      "condition": "Early blight",
+      "healthy": false,
+      "plant_slug": "solanum-tuberosum",
+      "plant_scientific_name": "Solanum tuberosum L."
+    },
+    {
+      "index": 21,
+      "class_label": "Potato___Late_blight",
+      "crop": "Potato",
+      "condition": "Late blight",
+      "healthy": false,
+      "plant_slug": "solanum-tuberosum",
+      "plant_scientific_name": "Solanum tuberosum L."
+    },
+    {
+      "index": 22,
+      "class_label": "Potato___healthy",
+      "crop": "Potato",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "solanum-tuberosum",
+      "plant_scientific_name": "Solanum tuberosum L."
+    },
+    {
+      "index": 23,
+      "class_label": "Raspberry___healthy",
+      "crop": "Raspberry",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "rubus-idaeus",
+      "plant_scientific_name": "Rubus idaeus L."
+    },
+    {
+      "index": 24,
+      "class_label": "Soybean___healthy",
+      "crop": "Soybean",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "glycine-max",
+      "plant_scientific_name": "Glycine max (L.) Merr."
+    },
+    {
+      "index": 25,
+      "class_label": "Squash___Powdery_mildew",
+      "crop": "Squash",
+      "condition": "Powdery mildew",
+      "healthy": false,
+      "plant_slug": "cucurbita-pepo",
+      "plant_scientific_name": "Cucurbita pepo L."
+    },
+    {
+      "index": 26,
+      "class_label": "Strawberry___Leaf_scorch",
+      "crop": "Strawberry",
+      "condition": "Leaf scorch",
+      "healthy": false,
+      "plant_slug": "fragaria-ananassa",
+      "plant_scientific_name": "Fragaria \u00d7ananassa (Weston) Rozier"
+    },
+    {
+      "index": 27,
+      "class_label": "Strawberry___healthy",
+      "crop": "Strawberry",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "fragaria-ananassa",
+      "plant_scientific_name": "Fragaria \u00d7ananassa (Weston) Rozier"
+    },
+    {
+      "index": 28,
+      "class_label": "Tomato___Bacterial_spot",
+      "crop": "Tomato",
+      "condition": "Bacterial spot",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 29,
+      "class_label": "Tomato___Early_blight",
+      "crop": "Tomato",
+      "condition": "Early blight",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 30,
+      "class_label": "Tomato___Late_blight",
+      "crop": "Tomato",
+      "condition": "Late blight",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 31,
+      "class_label": "Tomato___Leaf_Mold",
+      "crop": "Tomato",
+      "condition": "Leaf Mold",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 32,
+      "class_label": "Tomato___Septoria_leaf_spot",
+      "crop": "Tomato",
+      "condition": "Septoria leaf spot",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 33,
+      "class_label": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "crop": "Tomato",
+      "condition": "Spider mites Two-spotted spider mite",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 34,
+      "class_label": "Tomato___Target_Spot",
+      "crop": "Tomato",
+      "condition": "Target Spot",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 35,
+      "class_label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "crop": "Tomato",
+      "condition": "Tomato Yellow Leaf Curl Virus",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 36,
+      "class_label": "Tomato___Tomato_mosaic_virus",
+      "crop": "Tomato",
+      "condition": "Tomato mosaic virus",
+      "healthy": false,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    },
+    {
+      "index": 37,
+      "class_label": "Tomato___healthy",
+      "crop": "Tomato",
+      "condition": "healthy",
+      "healthy": true,
+      "plant_slug": "solanum-lycopersicum",
+      "plant_scientific_name": "Solanum lycopersicum L."
+    }
+  ]
+}

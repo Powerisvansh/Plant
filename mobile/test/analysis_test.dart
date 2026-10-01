@@ -22,7 +22,10 @@ void main() {
     });
 
     test('chlorosis leaf: yellow indicators detected, lower index', () {
-      final im = SyntheticSamples.leaf(seed: 11, effect: SymptomEffect.chlorosis);
+      final im = SyntheticSamples.leaf(
+        seed: 11,
+        effect: SymptomEffect.chlorosis,
+      );
       final a = measure(im);
       final idx = AnalysisEngine.computeIndex([a]);
       expect(a.yellowFraction, greaterThan(0.03));
@@ -30,22 +33,40 @@ void main() {
     });
 
     test('diseased leaf: brown/spot indicators detected', () {
-      final im = SyntheticSamples.leaf(seed: 11, effect: SymptomEffect.diseased);
+      final im = SyntheticSamples.leaf(
+        seed: 11,
+        effect: SymptomEffect.diseased,
+      );
       final a = measure(im);
-      expect(a.brownFraction + a.spottedFraction, greaterThan(0.02),
-          reason: 'brown damage should be measurable');
+      expect(
+        a.brownFraction + a.spottedFraction,
+        greaterThan(0.02),
+        reason: 'brown damage should be measurable',
+      );
       final report = AnalysisEngine.assess([a]);
       expect(report.possibleCauses, isNotEmpty);
-      expect(report.safeCareGuidance, isNotEmpty,
-          reason: 'disease screening should include concrete care steps');
-      expect(report.safeMedicineGuidance, isNotEmpty,
-          reason: 'treatment results should include label-safe medicine warnings');
-      expect(report.warningFlags, isNotEmpty,
-          reason: 'the app should warn when treatment or dosage is uncertain');
+      expect(
+        report.safeCareGuidance,
+        isNotEmpty,
+        reason: 'disease screening should include concrete care steps',
+      );
+      expect(
+        report.safeMedicineGuidance,
+        isNotEmpty,
+        reason: 'treatment results should include label-safe medicine warnings',
+      );
+      expect(
+        report.warningFlags,
+        isNotEmpty,
+        reason: 'the app should warn when treatment or dosage is uncertain',
+      );
     });
 
     test('spotting leaf: spotting measured', () {
-      final im = SyntheticSamples.leaf(seed: 22, effect: SymptomEffect.spotting);
+      final im = SyntheticSamples.leaf(
+        seed: 22,
+        effect: SymptomEffect.spotting,
+      );
       final a = measure(im);
       expect(a.spottedFraction, greaterThan(0.005));
     });
@@ -93,11 +114,19 @@ void main() {
       final im = SyntheticSamples.leaf(seed: 33, effect: SymptomEffect.healthy);
       final a = measure(im);
       final result = PlantClassifier.classify([a]);
-      expect(result.groupLabel, isNotEmpty);
-      expect(result.uncertain, isTrue,
-          reason: 'morphology alone must not confirm a species');
+      expect(result.growthFormLabel, isNotEmpty);
+      expect(
+        result.identifiedName,
+        isNull,
+        reason: 'morphology alone must never name a species',
+      );
+      expect(result.identifiedScientificName, isNull);
       for (final c in result.candidates) {
-        expect(c.confidence, lessThanOrEqualTo(0.42));
+        expect(
+          c.score,
+          lessThanOrEqualTo(0.42),
+          reason: 'morphology confidence is capped',
+        );
       }
     });
   });

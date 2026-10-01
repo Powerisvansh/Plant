@@ -1,67 +1,39 @@
 import '../../core/constants.dart';
 import '../../models/analysis_models.dart';
+import '../../models/scan_models.dart';
 import '../plant_database.dart';
+import 'identification_models.dart';
 
-/// A ranked identification suggestion.
-class PlantCandidate {
-  const PlantCandidate(this.plantId, this.commonName, this.scientificName, this.confidence);
-
-  final String plantId;
-  final String commonName;
-  final String scientificName;
-  final double confidence;
-}
-
-/// The honest output of identification: a morphology-based suggestion, never
-/// a confirmed species.
-class PlantCategoryResult {
-  const PlantCategoryResult({
-    required this.groupLabel,
-    required this.groupConfidence,
-    required this.candidates,
-    required this.uncertain,
-    required this.explanation,
-  });
-
-  final String groupLabel;
-  final double groupConfidence;
-  final List<PlantCandidate> candidates;
-  final bool uncertain;
-  final String explanation;
-
-  /// Falls back to 'Unknown' when nothing could be determined.
-  String get bestName => uncertain && candidates.isEmpty ? 'Unknown plant' : best?.commonName ?? 'Unknown plant';
-
-  String get bestScientific =>
-      uncertain && candidates.isEmpty ? '' : best?.scientificName ?? '';
-
-  double get bestConfidence => best?.confidence ?? 0;
-
-  PlantCandidate? get best =>
-      candidates.isEmpty ? null : candidates.reduce((a, b) => a.confidence >= b.confidence ? a : b);
-}
-
-/// Rule-based morphological classifier.
+/// Rule-based **growth-form** screening.
 ///
-/// It turns visual measurements (leaf shape, edge density, coverage) into a
-/// *coarse* growth-form suggestion (monocot-like, succulent-like, ...).
-/// Species-level confidence is deliberately capped: leaf appearance alone
-/// cannot confirm a species, and the app says so.
+/// This class answers one question only: *what broad kind of leaf shape is
+/// this?* (elongated-leaved / broad-leaved / succulent-like / vining /
+/// fern-like / shrub-like).
+///
+/// It deliberately cannot name a species. The previous version of this file
+/// scored every plant in the catalogue against leaf shape and surfaced the
+/// winner as "the plant" - which is how unrelated photos ended up labelled
+/// "Snake Plant". Two things changed:
+///
+///  1. scoring no longer rewards a plant for having many catalogue tags (the
+///     old `+0.08 per extra tag` bonus made multi-tag entries win by
+///     construction), and
+///  2. the result is a [PlantIdentification] whose species fields stay null.
+///     Only a real model result (`IdentificationSource.model`) may name a
+///     species.
 class PlantClassifier {
   PlantClassifier._();
 
-  static PlantCategoryResult classify(List<LeafAnalysis> images) {
+  /// Minimum similarity before a catalogue entry is even listed as a look-alike.
+  static const double _minPossibilityScore = 0.22;
+
+  /// Morphology scores are not probabilities, so they can never be "high".
+  static const double _maxMorphologyConfidence = 0.42;
+
+  static PlantIdentification classify(List<LeafAnalysis> images) {
     final active = images.where((a) => a.plantDetected).toList();
     if (active.isEmpty) {
-      return const PlantCategoryResult(
-        groupLabel: 'Not enough evidence',
-        groupConfidence: 0,
-        candidates: [],
-        uncertain: true,
-        explanation:
-            'No clearly visible plant was found, so identification was not '
-            'possible.',
-      );
+      return PlantIdentification.none;
     }
 
     double mean(List<double> v) =>
@@ -73,7 +45,6 @@ class PlantClassifier {
     final coverage = mean(active.map((a) => a.plantCoverage).toList());
     final green = mean(active.map((a) => a.greenFraction).toList());
 
-    // Growth-form scores from the visual rules (range 0..1).
     final groups = <String, double>{};
 
     double monocot = 0;
@@ -84,13 +55,17 @@ class PlantClassifier {
     }
     if (monocot > 0) groups['monocot'] = monocot;
 
-    final broadleaf = _bell(aspect, 1.1, 2.8) * 0.5 +
-        _bell(roundness, 0.3, 0.8) * 0.25;
-    if (broadleaf > 0.2) groups['broadleaf'] = broadleaf.clamp(0.0, 0.6).toDouble();
+    final broadleaf =
+        _bell(aspect, 1.1, 2.8) * 0.5 + _bell(roundness, 0.3, 0.8) * 0.25;
+    if (broadleaf > 0.2) {
+      groups['broadleaf'] = broadleaf.clamp(0.0, 0.6).toDouble();
+    }
 
     final succulent = (roundness > 0.55 ? (0.3 + roundness * 0.4) : 0.0) +
         (edge < 25 ? 0.15 : 0.0);
-    if (succulent > 0.2) groups['succulent'] = succulent.clamp(0.0, 0.8).toDouble();
+    if (succulent > 0.2) {
+      groups['succulent'] = succulent.clamp(0.0, 0.8).toDouble();
+    }
 
     final viny = _bell(aspect, 1.0, 1.9) * 0.3 +
         (edge > 30 ? 0.25 : 0.0) +
@@ -100,75 +75,95 @@ class PlantClassifier {
     final fern = _bell(aspect, 1.3, 3.4) * 0.25 + (edge > 40 ? 0.4 : 0.0);
     if (fern > 0.2) groups['fern'] = fern.clamp(0.0, 0.6).toDouble();
 
-    final shrub = (coverage > 0.35 ? 0.25 : 0.0) +
-        (green > 0.4 ? 0.1 : 0.0);
+    final shrub = (coverage > 0.35 ? 0.25 : 0.0) + (green > 0.4 ? 0.1 : 0.0);
     if (shrub > 0.2) groups['shrub'] = shrub.clamp(0.0, 0.4);
 
-    // Rank groups.
     final ordered = groups.entries.toList()
       ..sort((a, b) => b.value.compareTo(a.value));
     if (ordered.isEmpty) {
-      return const PlantCategoryResult(
-        groupLabel: 'Plant type unclear',
-        groupConfidence: 0,
+      return const PlantIdentification(
+        source: IdentificationSource.morphology,
+        band: ConfidenceBand.unknown,
+        growthFormLabel: 'unclear plant type',
+        growthFormConfidence: 0,
         candidates: [],
-        uncertain: true,
-        explanation:
-            'The leaf shape features were not decisive enough to assign a '
-            'plant type. Try a close-up of a whole leaf.',
+        explanation: 'The leaf-shape measurements were not decisive enough to '
+            'describe a plant type. A closer photo of a whole leaf may help.',
       );
     }
 
     final topGroup = ordered.first;
-    final topGroups = ordered.take(2).map((e) => e.key).toSet();
+    final topGroups = ordered.take(2).map((e) => e.key).toList();
+    final scored = _scorePlants(groups, topGroups);
+    final candidates = scored
+        .where((s) => s.score >= _minPossibilityScore)
+        .take(3)
+        .map((s) => IdentificationCandidate(
+              plantId: s.plant.id,
+              commonName: s.plant.commonName,
+              scientificName: s.plant.scientificName,
+              score: s.score,
+              morphologyOnly: true,
+            ))
+        .toList(growable: false);
 
-    final candidates = <PlantCandidate>[];
-    // Deliberate honesty cap: leaf morphology cannot confirm a species from
-    // a phone photo, so no species-level suggestion ever exceeds 42%.
-    const speciesCap = 0.42;
-    for (final plant in PlantDatabase.all) {
-      final overlap = plant.morphologyTags.where(topGroups.contains).length;
-      if (overlap == 0) continue;
-      final bestTagScore = plant.morphologyTags
-          .where(topGroups.contains)
-          .map((t) => groups[t] ?? 0)
-          .reduce((a, b) => a > b ? a : b);
-      final confidence = (bestTagScore + (overlap - 1) * 0.08)
-          .clamp(0.0, speciesCap)
-          .toDouble();
-      candidates.add(PlantCandidate(
-        plant.id,
-        plant.commonName,
-        plant.scientificName,
-        confidence,
-      ));
-    }
+    final label = growthFormLabel(topGroup.key);
+    final confidentEnough = topGroup.value >= 0.35;
+    final explanation = confidentEnough
+        ? 'Leaf shape reads as a $label. That is a plant *type*, not a '
+            'species - PlantDoctor will not name a species from leaf shape '
+            'alone. Check the possibilities against the real plant.'
+        : 'Leaf shape only loosely suggests a $label, so even the plant type '
+            'is uncertain.';
 
-    candidates.sort((a, b) => b.confidence.compareTo(a.confidence));
-
-    final bestConfidence = candidates.isEmpty ? 0.0 : candidates.first.confidence;
-    final uncertain =
-        bestConfidence < AppConstants.identificationUncertaintyThreshold;
-
-    final explanation = uncertain
-        ? 'The leaf shape matches a *${topGroupLabel(topGroup.key)}* growth '
-              'form, but there is not enough evidence to confirm a specific '
-              'species. These are possibilities to check against the actual '
-              'plant.'
-        : 'The leaf appearance is most consistent with a '
-              '*${topGroupLabel(topGroup.key)}* plant. The name below is an '
-              'informed guess, not a confirmed identification.';
-
-    return PlantCategoryResult(
-      groupLabel: topGroupLabel(topGroup.key),
-      groupConfidence: topGroup.value,
-      candidates: candidates.take(4).toList(),
-      uncertain: uncertain,
+    return PlantIdentification(
+      source: IdentificationSource.morphology,
+      band: ConfidenceBand.unknown,
+      growthFormLabel: label,
+      growthFormConfidence: topGroup.value.clamp(0.0, _maxMorphologyConfidence),
+      candidates: candidates,
       explanation: explanation,
+      modelAvailable: false,
     );
   }
 
-  /// A tent-shaped scoring curve peaking around [peak].
+  /// Ranks catalogue plants against the observed growth-form evidence.
+  ///
+  /// Fair scoring rules (these fix the old "Snake Plant wins everything"):
+  ///  * a plant only competes when the *leading* growth form it is tagged with
+  ///    actually appears among the observed top groups;
+  ///  * the score is a blend of the primary-tag evidence and the *weakest*
+  ///    matched tag (a plant cannot win by having one strong tag and several
+  ///    unsupported ones);
+  ///  * there is no bonus for having more tags in the catalogue.
+  static List<_ScoredPlant> _scorePlants(
+    Map<String, double> groups,
+    List<String> topGroups,
+  ) {
+    final scored = <_ScoredPlant>[];
+    for (final plant in PlantDatabase.all) {
+      final tags = plant.morphologyTags;
+      if (tags.isEmpty) continue;
+      final primary = tags.first;
+      final rank = topGroups.indexOf(primary);
+      if (rank < 0) continue;
+
+      final matched =
+          tags.where(topGroups.contains).map((t) => groups[t] ?? 0.0).toList();
+      if (matched.isEmpty) continue;
+      final weakest = matched.reduce((a, b) => a < b ? a : b);
+      final primaryScore = groups[primary] ?? 0;
+      final rankPenalty = rank == 0 ? 1.0 : 0.75;
+      final score = ((primaryScore * 0.6) + (weakest * 0.4)) * rankPenalty;
+      if (score <= 0) continue;
+      scored.add(
+          _ScoredPlant(plant, score.clamp(0.0, _maxMorphologyConfidence)));
+    }
+    scored.sort((a, b) => b.score.compareTo(a.score));
+    return scored;
+  }
+
+  /// A tent-shaped scoring curve peaking around the middle of [lo]..[hi].
   static double _bell(double v, double lo, double hi) {
     if (v <= lo || v >= hi) return 0;
     final mid = (lo + hi) / 2;
@@ -176,13 +171,26 @@ class PlantClassifier {
     return (1 - ((v - mid).abs() / width)).clamp(0.0, 1.0);
   }
 
-  static String topGroupLabel(String key) => switch (key) {
+  static String growthFormLabel(String key) => switch (key) {
         'monocot' => 'elongated-leaved (monocot-like)',
         'broadleaf' => 'broad-leaved',
         'succulent' => 'succulent-like',
         'vine' => 'vining',
         'fern' => 'fern-like',
         'shrub' => 'shrub-like',
-        _ => 'unknown',
+        _ => 'unclassified',
       };
+
+  /// Confidence ceiling for any purely morphological statement.
+  static double get morphologyConfidenceCap => _maxMorphologyConfidence;
+
+  /// Kept for screens that display the uncertainty threshold.
+  static double get uncertaintyThreshold =>
+      AppConstants.identificationUncertaintyThreshold;
+}
+
+class _ScoredPlant {
+  _ScoredPlant(this.plant, this.score);
+  final PlantInfo plant;
+  final double score;
 }
