@@ -7,6 +7,94 @@
 /// worse, an invented value.
 library;
 
+/// Cultivated crop attributes for a species, from `plant_crops`.
+///
+/// Every field is nullable: only 61 species have a curated crop record, so this
+/// is null for most plants. That is surfaced as "no sourced growing data" rather
+/// than filled with typical values for the genus.
+class KnowledgeCrop {
+  const KnowledgeCrop({
+    this.cropRole,
+    this.ediblePart,
+    this.lifeCycle,
+    this.sowingSeason,
+    this.harvestPeriod,
+    this.growthDuration,
+    this.cultivationSystem,
+  });
+
+  final String? cropRole;
+  final String? ediblePart;
+  final String? lifeCycle;
+  final String? sowingSeason;
+  final String? harvestPeriod;
+  final String? growthDuration;
+  final String? cultivationSystem;
+
+  bool get hasAnyData => <String?>[
+        cropRole, ediblePart, lifeCycle, sowingSeason,
+        harvestPeriod, growthDuration, cultivationSystem,
+      ].any((v) => v != null && v.trim().isNotEmpty);
+
+  /// Label/value pairs in display order, skipping anything unsourced.
+  List<MapEntry<String, String>> get details {
+    final rows = <MapEntry<String, String?>>[
+      MapEntry<String, String?>('Role', cropRole),
+      MapEntry<String, String?>('Edible part', ediblePart),
+      MapEntry<String, String?>('Life cycle', lifeCycle),
+      MapEntry<String, String?>('Sowing season', sowingSeason),
+      MapEntry<String, String?>('Harvest', harvestPeriod),
+      MapEntry<String, String?>('Duration', growthDuration),
+      MapEntry<String, String?>('Growing system', cultivationSystem),
+    ];
+    return rows
+        .where((e) => e.value != null && e.value!.trim().isNotEmpty)
+        .map((e) => MapEntry(e.key, e.value!))
+        .toList(growable: false);
+  }
+
+  factory KnowledgeCrop.fromRow(Map<String, Object?> row) => KnowledgeCrop(
+        cropRole: row['crop_role'] as String?,
+        ediblePart: row['edible_part'] as String?,
+        lifeCycle: row['life_cycle'] as String?,
+        sowingSeason: row['sowing_season'] as String?,
+        harvestPeriod: row['harvest_period'] as String?,
+        growthDuration: row['growth_duration'] as String?,
+        cultivationSystem: row['cultivation_system'] as String?,
+      );
+}
+
+/// A user-facing plant category such as "Vegetable" or "Medicinal / aromatic".
+///
+/// Categories describe use, not taxonomy: a plant may hold several at once and
+/// exactly one is flagged primary. They group taxa the GBIF import already
+/// confirmed, so they add no new biological claim of their own.
+class KnowledgeCategory {
+  const KnowledgeCategory({
+    required this.code,
+    required this.label,
+    this.description,
+  });
+
+  final String code;
+  final String label;
+  final String? description;
+
+  factory KnowledgeCategory.fromRow(Map<String, Object?> row) =>
+      KnowledgeCategory(
+        code: '${row['code']}',
+        label: '${row['label']}',
+        description: row['description'] as String?,
+      );
+
+  @override
+  bool operator ==(Object other) =>
+      other is KnowledgeCategory && other.code == code;
+
+  @override
+  int get hashCode => code.hashCode;
+}
+
 /// One row of the `plants` table plus its joined names.
 class KnowledgePlant {
   const KnowledgePlant({
@@ -578,6 +666,9 @@ class KnowledgeProfile {
     this.toxicityWarning,
     this.hasCultivationData = false,
     this.rooftop,
+    this.categories = const [],
+    this.crop = const KnowledgeCrop(),
+    this.related = const [],
   });
 
   final KnowledgePlant plant;
@@ -596,6 +687,16 @@ class KnowledgeProfile {
 
   /// Rooftop siting guidance, when the species has a record.
   final KnowledgeRooftop? rooftop;
+
+  /// User-facing category labels, primary first. Every plant has at least one.
+  final List<({String code, String label})> categories;
+
+  /// Cultivated crop attributes, present only for species with a curated
+  /// record. Empty for the rest, and rendered as an explicit absence.
+  final KnowledgeCrop crop;
+
+  /// Same-genus then same-family species, for "look-alike and relative" browsing.
+  final List<KnowledgePlant> related;
 
   bool get hasRooftopData => rooftop?.hasAnyData ?? false;
 

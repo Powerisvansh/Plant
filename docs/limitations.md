@@ -4,21 +4,21 @@ What PlantDoctor AI cannot do, stated plainly. This document is deliberately
 unflattering; it is the contract between the app and the person holding the
 phone.
 
-## 1. The model recognises 14 crops, not 3,900 species
+## 1. The model recognises 14 crops, not 10,000 species
 
-The knowledge base holds 3,900 real species. The **image model** does not.
+The knowledge base holds 10,000 real species. The **image model** does not.
 
 The visual model is trained on PlantVillage, which covers 14 crops and 38
 `crop___condition` classes. There is no openly licensed image dataset covering
-3,900 species, so the model cannot be one.
+10,000 species, so the model cannot be one.
 
 Consequence: for a mango tree, a gulmohar, or a marigold, the app does **not**
 claim a species. It reports what it can see, and it offers the knowledge base as
 a *searchable* resource rather than a result. Presenting a species for an
 uncovered plant is exactly the failure this project exists to remove.
 
-`2,000+ plant records` and `image recognition coverage` are two different
-numbers. Only the first is 3,900.
+`10,000 plant records` and `image recognition coverage` are two different
+numbers. Only the first is 10,000.
 
 ## 2. PlantVillage images are not field photographs
 
@@ -113,9 +113,9 @@ better and could not be trained or shipped here.
 * No dose, treatment, or pesticide record exists.
 * No human or livestock toxicity data exists.
 * No plant, disease, or pest photograph is bundled — all image tables are empty.
-* No plant record is marked `VERIFIED`; all 3,900 are `UNVERIFIED` and correctly
+* No plant record is marked `VERIFIED`; all 10,000 are `UNVERIFIED` and correctly
   labelled as such.
-* Only 1,801 of 3,900 plants have a common name; the rest are searchable by
+* Only 4,157 of 10,000 plants have a common name; the rest are searchable by
   scientific name.
 * Not tested on a physical phone. The APK builds, but on-device behaviour is
   unverified.

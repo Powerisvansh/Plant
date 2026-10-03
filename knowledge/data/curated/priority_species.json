@@ -1,6 +1,6 @@
 {
   "_comment": "Species that must exist in the knowledge base because the bundled visual model has a published label for them. Fetched regardless of per-genus caps. Each name is resolved through the GBIF backbone; when GBIF accepts a different name the accepted one is stored and the requested name is recorded as a synonym. Nothing is added that GBIF does not confirm.",
-  "_usage": "python3 knowledge/scripts/import_gbif.py --target 2200",
+  "_usage": "python3 knowledge/scripts/import_gbif.py --target 10000",
   "species": [
     {"scientific_name": "Malus domestica", "group": "priority_crops"},
     {"scientific_name": "Vaccinium corymbosum", "group": "priority_crops"},
@@ -56,6 +56,35 @@
     {"scientific_name": "Bougainvillea spectabilis", "group": "priority_ornamentals"},
     {"scientific_name": "Nelumbo nucifera", "group": "priority_ornamentals"},
     {"scientific_name": "Helianthus annuus", "group": "priority_ornamentals"},
-    {"scientific_name": "Chrysanthemum indicum", "group": "priority_ornamentals"}
+    {"scientific_name": "Chrysanthemum indicum", "group": "priority_ornamentals"},
+
+    {"scientific_name": "Camellia sinensis", "group": "priority_plantation"},
+    {"scientific_name": "Coffea arabica", "group": "priority_plantation"},
+    {"scientific_name": "Coffea canephora", "group": "priority_plantation"},
+    {"scientific_name": "Elettaria cardamomum", "group": "priority_plantation"},
+    {"scientific_name": "Piper nigrum", "group": "priority_plantation"},
+    {"scientific_name": "Santalum album", "group": "priority_plantation"},
+
+    {"scientific_name": "Mentha spicata", "group": "priority_staples"},
+    {"scientific_name": "Mentha arvensis", "group": "priority_staples"},
+    {"scientific_name": "Mentha x piperita", "group": "priority_staples"},
+    {"scientific_name": "Ocimum basilicum", "group": "priority_staples"},
+    {"scientific_name": "Solanum surattense", "group": "priority_staples"},
+    {"scientific_name": "Cenchrus americanus", "group": "priority_staples"},
+    {"scientific_name": "Setaria italica", "group": "priority_staples"},
+    {"scientific_name": "Amaranthus cruentus", "group": "priority_staples"},
+    {"scientific_name": "Spinacia oleracea", "group": "priority_staples"},
+    {"scientific_name": "Lactuca sativa", "group": "priority_staples"},
+    {"scientific_name": "Lepidium sativum", "group": "priority_staples"},
+    {"scientific_name": "Nasturtium officinale", "group": "priority_staples"},
+    {"scientific_name": "Trianthema portulacastrum", "group": "priority_staples"},
+    {"scientific_name": "Enydra fluctuans", "group": "priority_staples"},
+    {"scientific_name": "Portulaca oleracea", "group": "priority_staples"},
+    {"scientific_name": "Alternanthera sessilis", "group": "priority_staples"},
+    {"scientific_name": "Bryophyllum pinnatum", "group": "priority_staples"},
+    {"scientific_name": "Tagetes patula", "group": "priority_ornamentals"},
+    {"scientific_name": "Tagetes minuta", "group": "priority_ornamentals"},
+    {"scientific_name": "Tulipa gesneriana", "group": "priority_ornamentals"},
+    {"scientific_name": "Catharanthus roseus", "group": "priority_ornamentals"}
   ]
 }

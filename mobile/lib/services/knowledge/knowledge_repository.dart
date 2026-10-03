@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -56,6 +57,29 @@ class KnowledgeRepository {
       lastError = error;
       rethrow;
     }
+  }
+
+  /// Opens the repository against an arbitrary database file.
+  ///
+  /// The app itself only ever calls [open]; this exists so tests can read the
+  /// exact bundle that ships in the APK rather than a copy that could drift.
+  @visibleForTesting
+  static Future<KnowledgeRepository> openForTesting(String path) async {
+    if (_instance != null) return _instance!;
+    final db = await sqflite.openDatabase(
+      path,
+      readOnly: true,
+      singleInstance: true,
+    );
+    final repo = KnowledgeRepository._(db, await _readManifest(db));
+    _instance = repo;
+    return repo;
+  }
+
+  @visibleForTesting
+  static Future<void> closeForTesting() async {
+    await _instance?._db.close();
+    _instance = null;
   }
 
   static Future<void> close() async {
@@ -224,6 +248,139 @@ class KnowledgeRepository {
   ) async {
     final plants = await Future.wait(rows.map(_toPlant));
     return plants.whereType<KnowledgePlant>().toList(growable: false);
+  }
+
+  // -------------------------------------------------------------- categories
+
+  /// Category labels for one plant, primary first.
+  ///
+  /// Returns label/code pairs rather than codes alone so a suggestion can be
+  /// rendered with the same wording the browse screen uses.
+  Future<List<({String code, String label})>> categoriesFor(int plantId) async {
+    final rows = await _query(
+      'SELECT cat.code AS code, cat.label AS label FROM plant_category_map m '
+      'JOIN plant_categories cat ON cat.id = m.category_id '
+      'WHERE m.plant_id = ? ORDER BY m.is_primary DESC, cat.sort_order',
+      [plantId],
+    );
+    return rows
+        .map((r) => (code: '${r['code']}', label: '${r['label']}'))
+        .toList(growable: false);
+  }
+
+  /// Plants a visitor is most likely searching for, given a species.
+  ///
+  /// Used to turn one scan result into "here are related plants" suggestions.
+  /// Relatedness is *real taxonomy* — same genus, then same family — never a
+  /// guess about what the user wants.
+  Future<List<KnowledgePlant>> relatedPlants(int plantId,
+      {int limit = 8}) async {
+    final rows = await _query(
+      '''
+      SELECT DISTINCT $_plantColumns FROM plants p
+      WHERE p.id <> ?
+        AND (
+          p.genus = (SELECT genus FROM plants WHERE id = ?)
+          OR p.family = (SELECT family FROM plants WHERE id = ?)
+        )
+      ORDER BY (p.genus = (SELECT genus FROM plants WHERE id = ?)) DESC,
+               (p.common_name IS NULL OR p.common_name = '') ASC,
+               p.common_name COLLATE NOCASE
+      LIMIT ?
+      ''',
+      [plantId, plantId, plantId, plantId, limit.clamp(1, 50)],
+    );
+    return _plantsFrom(rows);
+  }
+
+  /// Cultivated detail for a species, when a curated record exists.
+  ///
+  /// Only 61 species have one, so this returns null for most plants. That is
+  /// reported as missing rather than substituted, per the repository rule.
+  Future<KnowledgeCrop?> cropFor(int plantId) async {
+    final rows = await _query(
+      'SELECT crop_role, edible_part, life_cycle, sowing_season, '
+      'harvest_period, growth_duration, cultivation_system '
+      'FROM plant_crops WHERE plant_id = ? LIMIT 1',
+      [plantId],
+    );
+    if (rows.isEmpty) return null;
+    return KnowledgeCrop.fromRow(rows.first);
+  }
+
+  /// Curated horticultural traits for a species, when any are recorded.
+  ///
+  /// Named `curatedTraitsFor` to stay distinct from `traitsFor`, which reads the
+  /// GBIF-derived `plant_characteristics` table.
+  Future<List<({String trait, String value})>> curatedTraitsFor(int plantId) async {
+    final rows = await _query(
+      'SELECT trait, value FROM plant_traits WHERE plant_id = ? '
+      'ORDER BY id LIMIT 12',
+      [plantId],
+    );
+    return rows
+        .map((r) => (trait: '${r['trait']}', value: '${r['value']}'))
+        .toList(growable: false);
+  }
+
+  /// The user-facing category vocabulary, in display order.
+  ///
+  /// Categories group taxa the GBIF import already confirmed. Every plant has at
+  /// least one, so the browse screen never shows a single uncategorised pile.
+  Future<List<KnowledgeCategory>> categories() async {
+    final rows = await _query(
+      'SELECT id, code, label, description FROM plant_categories '
+      'ORDER BY sort_order, label',
+    );
+    return rows
+        .map((r) => KnowledgeCategory(
+              code: '${r['code']}',
+              label: '${r['label']}',
+              description: r['description'] as String?,
+            ))
+        .toList(growable: false);
+  }
+
+  /// Category codes for one plant, primary first.
+  Future<List<String>> categoryCodesFor(int plantId) async {
+    final rows = await _query(
+      'SELECT cat.code FROM plant_category_map m '
+      'JOIN plant_categories cat ON cat.id = m.category_id '
+      'WHERE m.plant_id = ? ORDER BY m.is_primary DESC, cat.sort_order',
+      [plantId],
+    );
+    return rows.map((r) => '${r['code']}').toList(growable: false);
+  }
+
+  /// Plants in one category, primary-first ordering preserved.
+  ///
+  /// Returns an empty list for an unknown code rather than falling back to the
+  /// whole catalogue, so a bad filter shows "no results" instead of pretending
+  /// everything matched.
+  Future<List<KnowledgePlant>> browseCategory(String code,
+      {int limit = 60, int offset = 0}) async {
+    final rows = await _query(
+      'SELECT $_plantColumns FROM plants p '
+      'JOIN plant_category_map m ON m.plant_id = p.id '
+      'JOIN plant_categories cat ON cat.id = m.category_id '
+      'WHERE cat.code = ? ORDER BY p.common_name COLLATE NOCASE '
+      'LIMIT ? OFFSET ?',
+      [code, limit.clamp(1, 200), offset],
+    );
+    return _plantsFrom(rows);
+  }
+
+  /// Row count per category code, for showing counts on a filter chip.
+  Future<Map<String, int>> categoryCounts() async {
+    final rows = await _query(
+      'SELECT cat.code AS code, COUNT(DISTINCT m.plant_id) AS n '
+      'FROM plant_category_map m '
+      'JOIN plant_categories cat ON cat.id = m.category_id '
+      'GROUP BY cat.code',
+    );
+    return {
+      for (final r in rows) '${r['code']}': (r['n'] as int?) ?? 0,
+    };
   }
 
   /// Free-text search over common, local, scientific and synonym names.
@@ -472,6 +629,9 @@ class KnowledgeRepository {
       treatmentsFor(plant.id),
       sourcesFor(plant.id),
       rooftopFor(plant.id),
+      categoriesFor(plant.id),
+      cropFor(plant.id),
+      relatedPlants(plant.id, limit: 8),
     ]);
 
     final growth = results[2] as KnowledgeGrowth?;
@@ -487,6 +647,9 @@ class KnowledgeRepository {
       treatments: results[7] as List<KnowledgeTreatment>,
       sources: results[8] as List<KnowledgeSource>,
       rooftop: results[9] as KnowledgeRooftop?,
+      categories: results[10] as List<({String code, String label})>,
+      crop: results[11] as KnowledgeCrop? ?? const KnowledgeCrop(),
+      related: results[12] as List<KnowledgePlant>,
       toxicityStatus: plant.toxicityStatus,
       toxicityWarning: plant.toxicityKnown
           ? null

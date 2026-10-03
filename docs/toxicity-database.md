@@ -5,7 +5,7 @@
 `first_aid_records` = 0 rows.**
 
 The `plants` table does carry a `toxicity_status` column and it is populated for
-all 3,900 records — every value is currently `UNKNOWN`. That is the correct
+all 10,000 records — every value is currently `UNKNOWN`. That is the correct
 value, and this document explains why it must stay `UNKNOWN` until a real source
 is attached.
 
@@ -62,7 +62,7 @@ the more likely place for a harmful invention.
 
 ## What the app shows today
 
-For all 3,900 plants:
+For all 10,000 plants:
 
 ```
 Toxicity status          Unknown

@@ -23,7 +23,7 @@ automatically permit reusing photographs or dosage text.
 
 * **`gbif`** — accepted scientific names, authorship, and the
   kingdom → phylum → class → order → family → genus hierarchy. This is where
-  all 3,900 plant records come from. Only taxonomy is taken; occurrence media is
+  all 10,000 plant records come from. Only taxonomy is taken; occurrence media is
   not mirrored.
 * **`gbif_occurrences`** — used to bias coverage toward species actually
   recorded in India, so that Haryana/UP agricultural and horticultural plants are

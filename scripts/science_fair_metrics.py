@@ -297,7 +297,7 @@ def render(report: dict) -> str:
 
     lines += ["", "-" * 62,
               "This model is a crop-and-condition screener. It is not a",
-              "2000-species identifier and the app never presents it as one.",
+              "10,000-species identifier and the app never presents it as one.",
               "Figures that have not been measured are shown as "
               f"'{NOT_MEASURED}'", ""]
     return "\n".join(lines)

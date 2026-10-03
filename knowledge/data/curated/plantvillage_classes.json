@@ -9,7 +9,7 @@
     "class_counts_file": "knowledge/data/raw/plantvillage_class_counts.json",
     "name_source": "aps_common_names",
     "verification_status": "UNVERIFIED",
-    "important_limit": "PlantVillage covers 14 crop species and their foliar conditions only. It does NOT represent the 2000+ species plant knowledge base and must never be used to justify a species claim outside those 14 crops."
+    "important_limit": "PlantVillage covers 14 crop species and their foliar conditions only. It does NOT represent the 10,000-species plant knowledge base and must never be used to justify a species claim outside those 14 crops."
   },
   "diseases": [
     {

@@ -9,7 +9,7 @@ What this does:
 
 The exported labels.txt is what the Flutter TFLite interpreter uses to map
 index -> human-readable class (crop___condition). The app does *not* trust a
-TFLite output alone to name a 2000-species plant: it only uses these predictions
+TFLite output alone to name a 10,000-species plant: it only uses these predictions
 as "crop-and-condition suggestions" or returns 'uncertain' when confidence is
 too low (per the spec).
 """
@@ -80,7 +80,7 @@ def main() -> int:
         "input_tensor": "image",
         "output_tensor": "class_probabilities",
         "note": "This is the PlantVillage crop-and-condition screener. "
-                "It does NOT claim to identify 2000+ species. "
+                "It does NOT claim to identify 10,000 species. "
                 "The app maps low-confidence outputs to 'uncertain'.",
     }
     write_json(EXPORT_DIR / "tflite_export_manifest.json", manifest)

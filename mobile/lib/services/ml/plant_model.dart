@@ -101,6 +101,15 @@ class ModelPrediction {
 
 /// Parsed `plantdoctor_plants.labels.json`.
 class ModelLabels {
+  /// Confidence floor below which no species may be named.
+  ///
+  /// Single source of truth: `ml/scripts/build_model_labels.py` writes this
+  /// into the labels JSON (its `--threshold` default is 0.60). This constant
+  /// used to be 0.35, which disagreed with the shipped 0.60 and only applied
+  /// when the key was absent -- so a malformed labels file silently loosened the
+  /// gate in exactly the situation where the model could not be trusted.
+  static const double defaultUnknownThreshold = 0.60;
+
   const ModelLabels({
     required this.modelKey,
     required this.version,
@@ -140,8 +149,8 @@ class ModelLabels {
       metrics: ((json['metrics'] as Map?) ?? const {}).map(
         (key, value) => MapEntry(key.toString(), (value as num).toDouble()),
       ),
-      unknownThreshold:
-          (json['unknown_threshold'] as num?)?.toDouble() ?? 0.35,
+      unknownThreshold: (json['unknown_threshold'] as num?)?.toDouble() ??
+          defaultUnknownThreshold,
     );
   }
 }

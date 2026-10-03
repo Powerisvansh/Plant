@@ -164,6 +164,135 @@ CREATE TABLE plant_taxonomy (
     UNIQUE (plant_id, rank)
 );
 
+-- ---------------------------------------------------------------------------
+-- Name resolution
+--
+-- Identification models, regional extension material and ordinary users all
+-- name the same plant differently ("Tomato", "tamatar", "टमाटर",
+-- "Solanum lycopersicum", "Lycopersicon esculentum"). Rather than duplicating
+-- a plant row per spelling, every accepted spelling is stored here against the
+-- one plant it belongs to, together with a normalised form used for lookup.
+-- ---------------------------------------------------------------------------
+
+CREATE TABLE plant_aliases (
+    id               INTEGER PRIMARY KEY,
+    plant_id         INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,
+    alias            TEXT NOT NULL,
+    normalized_alias TEXT NOT NULL,
+    alias_type       TEXT NOT NULL,
+    language         TEXT,
+    is_primary       INTEGER NOT NULL DEFAULT 0,
+    source_id        INTEGER REFERENCES sources(id),
+    UNIQUE (plant_id, normalized_alias, alias_type)
+);
+
+CREATE INDEX ix_plant_aliases_norm ON plant_aliases (normalized_alias);
+CREATE INDEX ix_plant_aliases_plant ON plant_aliases (plant_id);
+CREATE INDEX ix_plant_aliases_type ON plant_aliases (alias_type);
+
+-- Coarse plant-use grouping (food crop, vegetable, fruit, herb, ornamental,
+-- rooftop/container garden...). Many-to-many: amaranth is a leafy vegetable,
+-- a grain amaranth and a rooftop green, all at once.
+CREATE TABLE plant_categories (
+    id           INTEGER PRIMARY KEY,
+    code         TEXT NOT NULL UNIQUE,
+    label        TEXT NOT NULL,
+    description  TEXT,
+    sort_order   INTEGER NOT NULL DEFAULT 100
+);
+
+CREATE TABLE plant_category_map (
+    plant_id    INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,
+    category_id INTEGER NOT NULL REFERENCES plant_categories(id) ON DELETE CASCADE,
+    is_primary  INTEGER NOT NULL DEFAULT 0,
+    source_id   INTEGER REFERENCES sources(id),
+    PRIMARY KEY (plant_id, category_id)
+);
+
+CREATE INDEX ix_plant_category_cat ON plant_category_map (category_id, is_primary);
+
+-- Curated agronomic / horticultural traits. Kept separate from
+-- plant_characteristics, which holds GBIF-derived measured facts.
+CREATE TABLE plant_traits (
+    id          INTEGER PRIMARY KEY,
+    plant_id    INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,
+    trait       TEXT NOT NULL,
+    value       TEXT NOT NULL,
+    unit        TEXT,
+    source_id   INTEGER REFERENCES sources(id),
+    UNIQUE (plant_id, trait)
+);
+
+CREATE INDEX ix_plant_traits_trait ON plant_traits (trait);
+
+-- Agricultural crop attributes: which part is harvested, sowing and harvest
+-- windows, crop duration, and whether the species is a rainfed/rabi/kharif
+-- crop in South Asian practice.
+CREATE TABLE plant_crops (
+    plant_id           INTEGER PRIMARY KEY REFERENCES plants(id) ON DELETE CASCADE,
+    crop_role          TEXT,
+    edible_part        TEXT,
+    life_cycle         TEXT,
+    sowing_season      TEXT,
+    harvest_period     TEXT,
+    growth_duration    TEXT,
+    cultivation_system TEXT,
+    seed_rate          TEXT,
+    source_id          INTEGER REFERENCES sources(id)
+);
+
+-- Rooftop / terrace / container siting, derived from plant_rooftop so a
+-- single query can answer "show me everything that grows on a balcony".
+CREATE TABLE plant_rooftop_info (
+    id                     INTEGER PRIMARY KEY,
+    plant_id               INTEGER NOT NULL UNIQUE REFERENCES plants(id) ON DELETE CASCADE,
+    rooftop_suitable       INTEGER NOT NULL DEFAULT 0,
+    container_suitable     INTEGER NOT NULL DEFAULT 0,
+    indoor_suitable        INTEGER NOT NULL DEFAULT 0,
+    min_pot_size           TEXT,
+    min_container_litres   INTEGER,
+    sunlight_requirement   TEXT,
+    water_requirement      TEXT,
+    soil_type              TEXT,
+    temperature_range      TEXT,
+    growing_season         TEXT,
+    rooftop_role           TEXT,
+    exposure               TEXT,
+    heat_tolerance         TEXT,
+    drought_tolerance      TEXT,
+    wind_exposure          TEXT,
+    root_depth_cm          INTEGER,
+    drainage               TEXT,
+    watering_band          TEXT,
+    establishment_watering TEXT,
+    pruning_requirement    TEXT,
+    special_hazards        TEXT,
+    notes                  TEXT,
+    verification_status    TEXT NOT NULL DEFAULT 'UNVERIFIED',
+    source_id              INTEGER REFERENCES sources(id)
+);
+
+CREATE INDEX ix_plant_rooftop_info_suitable
+    ON plant_rooftop_info (rooftop_suitable, container_suitable);
+
+-- Nutrient deficiency and environmental-stress applicability per plant.
+CREATE TABLE plant_deficiencies (
+    plant_id      INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,
+    nutrient_id   INTEGER NOT NULL REFERENCES nutrient_deficiencies(id) ON DELETE CASCADE,
+    likelihood    TEXT,
+    notes         TEXT,
+    source_id     INTEGER REFERENCES sources(id),
+    PRIMARY KEY (plant_id, nutrient_id)
+);
+
+CREATE TABLE plant_environmental_stresses (
+    plant_id  INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,
+    stress_id INTEGER NOT NULL REFERENCES environmental_stresses(id) ON DELETE CASCADE,
+    notes     TEXT,
+    source_id INTEGER REFERENCES sources(id),
+    PRIMARY KEY (plant_id, stress_id)
+);
+
 CREATE TABLE plant_parts (
     id          INTEGER PRIMARY KEY,
     plant_id    INTEGER NOT NULL REFERENCES plants(id) ON DELETE CASCADE,

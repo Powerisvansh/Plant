@@ -268,7 +268,7 @@ def main() -> int:
         "per_class": per_class_rows,
         "confusion_matrix_file": str(METRICS_DIR / "confusion_matrix.csv"),
         "note": "Every number above is from this run on the held-out split. "
-                "The model is a crop-and-condition screener, not a 2000-species "
+                "The model is a crop-and-condition screener, not a 10,000-species "
                 "identifier: it can only name crops it was trained on and "
                 "must answer 'uncertain' for anything else.",
     }

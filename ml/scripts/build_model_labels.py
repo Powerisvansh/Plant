@@ -200,7 +200,7 @@ def main() -> int:
         "metrics": metrics,
         "metrics_measured_at": measured_at,
         "scope_note": "This model is a crop-and-condition screener covering 14 "
-                      "crops. It is not a 2000-species identifier. For any "
+                      "crops. It is not a 10,000-species identifier. For any "
                       "plant outside these crops the app reports the "
                       "identification as uncertain instead of guessing.",
         "classes": entries,

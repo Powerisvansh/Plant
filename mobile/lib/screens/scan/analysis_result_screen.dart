@@ -8,6 +8,8 @@ import '../../core/theme/app_theme.dart';
 import '../../models/analysis_models.dart';
 import '../../models/scan_models.dart';
 import '../../services/identification/identification_models.dart';
+import '../../services/analysis/scan_suggestions.dart';
+import '../../services/knowledge/knowledge_repository.dart';
 import '../../services/plant_database.dart';
 import '../../state/providers.dart';
 import '../../widgets/evidence_overlay.dart';
@@ -40,6 +42,38 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
   final _locationCtrl = TextEditingController();
   final _wateringCtrl = TextEditingController();
   final _timelineCtrl = TextEditingController();
+
+  /// Suggestions derived from the bundle plus the offline knowledge base.
+  ///
+  /// Loaded once in initState. A failure here must never take down the result
+  /// screen, which already shows everything measured from the image.
+  ScanSuggestions? _suggestions;
+  bool _suggestionsLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSuggestions();
+  }
+
+  Future<void> _loadSuggestions() async {
+    try {
+      final repo = await KnowledgeRepository.open();
+      final result = await ScanSuggestionService(repo).build(
+        identification: bundle.identification,
+        health: bundle.health,
+        perImage: bundle.perImage,
+      );
+      if (!mounted) return;
+      setState(() {
+        _suggestions = result;
+        _suggestionsLoading = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _suggestionsLoading = false);
+    }
+  }
 
   AnalysisBundle get bundle => widget.bundle;
 
@@ -176,6 +210,8 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
           _medicineSafetyCard(theme),
           const SizedBox(height: 12),
           _causesCard(theme),
+          const SizedBox(height: 12),
+          _suggestionsCard(theme),
           const SizedBox(height: 12),
           _careCard(theme, identification),
           const SizedBox(height: 12),
@@ -668,6 +704,109 @@ class _AnalysisResultScreenState extends State<AnalysisResultScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  /// Suggestions drawn from the offline knowledge base and from what the
+  /// image actually measured. Renders nothing when there is nothing sourced to
+  /// say, rather than padding the screen with filler.
+  Widget _suggestionsCard(ThemeData theme) {
+    final s = _suggestions;
+    if (_suggestionsLoading) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(18),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+    if (s == null || s.items.isEmpty) return const SizedBox.shrink();
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.auto_awesome_outlined,
+                    color: AppColors.teal, size: 20),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text('What to do next',
+                      style: theme.textTheme.titleMedium),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Based on what this photo measured and the records bundled with '
+              'the app.',
+              style: theme.textTheme.bodySmall,
+            ),
+            const SizedBox(height: 12),
+            for (final item in s.items) ...[
+              _suggestionRow(theme, item),
+              const SizedBox(height: 10),
+            ],
+            if (s.hasRelated) ...[
+              const SizedBox(height: 4),
+              Text('Related plants', style: theme.textTheme.titleSmall),
+              const SizedBox(height: 6),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  for (final r in s.related)
+                    ActionChip(
+                      label: Text(r.displayName),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) =>
+                              KnowledgePlantDetailScreen(slug: r.slug),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _suggestionRow(ThemeData theme, ScanSuggestion item) {
+    final (icon, color) = switch (item.kind) {
+      ScanSuggestionKind.identification =>
+        (Icons.category_outlined, AppColors.teal),
+      ScanSuggestionKind.cultivation =>
+        (Icons.grass_outlined, AppColors.primary),
+      ScanSuggestionKind.symptom =>
+        (Icons.healing_outlined, Colors.orange.shade800),
+      ScanSuggestionKind.care => (Icons.eco_outlined, AppColors.primary),
+      ScanSuggestionKind.safety =>
+        (Icons.warning_amber_rounded, Colors.red.shade700),
+    };
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 18, color: color),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(item.title,
+                  style: theme.textTheme.bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w700)),
+              const SizedBox(height: 2),
+              Text(item.detail, style: theme.textTheme.bodySmall),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

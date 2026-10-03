@@ -123,6 +123,63 @@ class _KnowledgePlantDetailScreenState
           _kv(context, 'Identification', plant.identificationFeatures!),
         ],
 
+        // ------------------------------------------------------- category & crop
+        if (profile.categories.isNotEmpty) ...[
+          const SizedBox(height: 18),
+          const SectionHeader(title: 'Category'),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final c in profile.categories)
+                Chip(
+                  label: Text(c.label),
+                  visualDensity: VisualDensity.compact,
+                ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Categories describe how the plant is used, not its taxonomy. '
+            'They are project-curated groupings of accepted taxa.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
+
+        if (profile.crop.hasAnyData) ...[
+          const SizedBox(height: 18),
+          const SectionHeader(title: 'Crop details'),
+          for (final row in profile.crop.details)
+            _kv(context, row.key, row.value),
+        ],
+
+        if (profile.related.isNotEmpty) ...[
+          const SizedBox(height: 18),
+          const SectionHeader(title: 'Related plants'),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final r in profile.related)
+                ActionChip(
+                  label: Text(r.displayName),
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) =>
+                          KnowledgePlantDetailScreen(slug: r.slug),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Same genus first, then same family.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
+
         // -------------------------------------------------------------- growth
         const SizedBox(height: 18),
         const SectionHeader(title: 'Growing conditions'),

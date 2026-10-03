@@ -11,7 +11,7 @@ second, and this dataset's classes are separable without a large network.
 
 The model outputs the PlantVillage class set: 14 crop species x their foliar
 conditions (including ``*___healthy``). It is a *crop and condition* recogniser,
-not a 2000-species identifier, and the app says so.
+not a 10,000-species identifier, and the app says so.
 
 Ground rules
 ------------

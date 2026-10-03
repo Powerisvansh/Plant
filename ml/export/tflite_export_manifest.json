@@ -7,5 +7,5 @@
   "image_size": 160,
   "input_tensor": "image",
   "output_tensor": "class_probabilities",
-  "note": "This is the PlantVillage crop-and-condition screener. It does NOT claim to identify 2000+ species. The app maps low-confidence outputs to 'uncertain'."
+  "note": "This is the PlantVillage crop-and-condition screener. It does NOT claim to identify 10,000 species. The app maps low-confidence outputs to 'uncertain'."
 }

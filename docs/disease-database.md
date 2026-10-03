@@ -40,7 +40,7 @@ Example (`Tomato early blight`, id 19):
 | Tomato | bacterial spot, early blight, late blight, leaf mould, Septoria leaf spot, spider mites, target spot, yellow leaf curl virus, mosaic virus |
 
 This mirrors the model's 38 classes exactly. It is **not** a general plant
-pathology reference: there are no disease records for the other ~3,900 species
+pathology reference: there are no disease records for the other ~10,000 species
 in the plant database.
 
 ## Verification status

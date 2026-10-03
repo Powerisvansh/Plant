@@ -9,7 +9,7 @@ APK. There is no network call on the identification path.
 | --- | --- | --- |
 | `assets/models/plantdoctor_plants.tflite` | 1,102.6 KB | crop/condition classifier |
 | `assets/models/plantdoctor_plants.labels.json` | ~11 KB | 38 classes, real metrics, plant slugs |
-| `assets/plant_knowledge/plantdoctor.db` | 6.5 MB | 3,918 plants, 25 diseases, 7 pests, sources |
+| `assets/plant_knowledge/plantdoctor.db` | 18.8 MB | 10,000 plants, 25 diseases, 7 pests, sources |
 
 All three are declared in `mobile/pubspec.yaml`. A test asserts each file
 exists, so a build missing one fails rather than silently degrading.
@@ -62,7 +62,7 @@ a field with no signal.
 
 ## APK size
 
-The database is the bulk of the payload at 6.5 MB. It is stored uncompressed in
+The database is the bulk of the payload at 18.8 MB. It is stored uncompressed in
 the APK; if size becomes a problem, the standard options are to ship only the
 crops the model can actually return as a primary table with the rest fetched by
 an optional downloadable pack, or to compress. Both trade away the "everything

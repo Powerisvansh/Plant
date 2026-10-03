@@ -13,7 +13,7 @@
     "average_inference_ms": 7.718
   },
   "metrics_measured_at": "2026-09-30T23:49:11+00:00",
-  "scope_note": "This model is a crop-and-condition screener covering 14 crops. It is not a 2000-species identifier. For any plant outside these crops the app reports the identification as uncertain instead of guessing.",
+  "scope_note": "This model is a crop-and-condition screener covering 14 crops. It is not a 10,000-species identifier. For any plant outside these crops the app reports the identification as uncertain instead of guessing.",
   "classes": [
     {
       "index": 0,

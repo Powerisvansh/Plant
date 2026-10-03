@@ -82,7 +82,7 @@ keeps 0..255 and a test asserts it.
 ## Scope limits
 
 - The model recognises **plants from the 14 crops above and nothing else**.
-- It does not identify the 3,918 species in the knowledge database.
+- It does not identify the 10,000 species in the knowledge database.
 - PlantVillage images are single leaves on plain backgrounds. Field photos,
   whole plants, fruit, flowers, seedlings and multiple plants are out of
   distribution and accuracy on them is not measured.

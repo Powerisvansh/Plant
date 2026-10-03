@@ -52,6 +52,12 @@ SCHEMA_VERSION = 2
 DATABASE_VERSION = 1
 DATA_RELEASE = "2026.10.0"
 
+# The build refuses to publish a bundle that does not reach this many real,
+# verifiable plant records. It is a floor, not a fill target: the importer
+# stages what GBIF actually returns, and a shortfall fails the build rather
+# than being padded with placeholder rows.
+PLANT_RECORD_TARGET = 10000
+
 # ---------------------------------------------------------------------------
 # Source registry (licences are recorded for every imported dataset)
 # ---------------------------------------------------------------------------
@@ -166,6 +172,33 @@ def connect_fresh(path: Path) -> sqlite3.Connection:
     return conn
 
 
+def _curated_rows(path: Path, key: str) -> list | dict:
+    """Rows of a curated/staged JSON file, unwrapping its ``_meta`` sibling.
+
+    Every content file in ``knowledge/data`` stores its rows under a named key
+    (``names``, ``species``, ``aliases``, ``diseases``...) beside a ``_meta``
+    provenance block. Indexing such a file at the top level silently yields
+    nothing, which previously let 199 curated common names go unapplied
+    without the build reporting an error. Callers name the key they expect and
+    a missing or mis-shaped file fails loudly instead.
+    """
+    data = read_json(path, None)
+    if data is None:
+        log.warning("curated file missing or unreadable: %s", path.name)
+        return [] if key is None else {}
+    if isinstance(data, list):
+        return data
+    if not isinstance(data, dict):
+        raise SystemExit(f"{path.name}: expected a list or an object")
+    rows = data.get(key if key is not None else "")
+    if rows is None:
+        raise SystemExit(
+            f"{path.name}: no '{key}' section. Refusing to build a knowledge "
+            f"base that silently drops every row in that file."
+        )
+    return rows
+
+
 def register_sources(conn: sqlite3.Connection) -> dict[str, int]:
     ids: dict[str, int] = {}
     for src in SOURCES:
@@ -211,15 +244,24 @@ RANK_CHAIN = ["kingdom", "phylum", "class", "order", "family", "genus"]
 
 def insert_plants(conn: sqlite3.Connection, source_ids: dict[str, int]) -> dict:
     staged = read_json(RAW_DIR / "gbif_species.json", []) or []
-    names = read_json(CURATED_DIR / "common_names.json", {}) or {}
+    # Curated files wrap their rows under a sibling key ("names"), next to the
+    # "_meta" provenance block. Reading the whole file and then looking a
+    # canonical name up at the top level silently returns None for every
+    # species, which is how 199 curated common/Hindi names went unapplied
+    # while the build still reported success. Always index through
+    # `_curated_rows()` so the wrapper cannot be forgotten again.
+    names = _curated_rows(CURATED_DIR / "common_names.json", "names")
     stats = {"plants": 0, "names": 0, "taxonomy": 0, "india": 0}
 
     for record in staged:
         slug = record["slug"]
         common = (record.get("vernacular_name") or "").strip() or None
         curated = names.get(record["canonical_name"]) or {}
+        if isinstance(curated, str):
+            curated = {"en": curated}
         if curated.get("en"):
             common = curated["en"]
+        group = record.get("group")
 
         cur = conn.execute(
             """
@@ -972,6 +1014,155 @@ def insert_rooftop(conn: sqlite3.Connection, source_ids: dict[str, int]) -> dict
         )
     log.info("rooftop: %s", stats)
     return stats
+def insert_categories(conn: sqlite3.Connection, source_ids: dict[str, int]) -> dict:
+    """Populate plant_categories / plant_category_map / plant_crops / plant_traits.
+
+    Two sources, both already curated in ``knowledge/data/curated``:
+
+    * ``plant_categories.json`` defines the category vocabulary and maps each
+      GBIF harvest ``group`` onto it, so every staged species lands in a real
+      bucket instead of one large uncategorised pile.
+    * ``crop_coverage.json`` carries explicit per-species membership for the
+      food plants, agricultural crops and urban-garden plants people actually
+      ask about, plus crop attributes and horticultural traits. Its membership
+      always wins over the group fallback, per that file's ``membership_rule``.
+
+    Category assignment groups taxa the GBIF import already confirmed and
+    records no new biological claim, so rows are stored UNVERIFIED_CATEGORY
+    rather than VERIFIED, matching the curated-file convention used elsewhere.
+
+    Like the rooftop loader, an unresolvable name in ``crop_coverage.json`` is a
+    hard failure: that file is a curated worklist, so silently dropping a row
+    would leave the app claiming coverage of a plant it has no record for.
+    """
+    spec = read_json(CURATED_DIR / "plant_categories.json", {}) or {}
+    categories = _curated_rows(CURATED_DIR / "plant_categories.json", "categories")
+    coverage = _curated_rows(CURATED_DIR / "crop_coverage.json", "species")
+    src = source_ids["curated_project"]
+
+    stats = {"categories": 0, "mappings": 0, "primary": 0, "crops": 0,
+             "traits": 0, "fallback_mapped": 0, "explicit": 0}
+
+    category_ids: dict[str, int] = {}
+    for cat in categories:
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO plant_categories
+                (code, label, description, sort_order)
+            VALUES (?,?,?,?)
+            """,
+            (cat["code"], cat["label"], cat.get("description"),
+             int(cat.get("sort_order", 100))),
+        )
+        row = conn.execute(
+            "SELECT id FROM plant_categories WHERE code = ?", (cat["code"],)
+        ).fetchone()
+        category_ids[cat["code"]] = row["id"]
+        stats["categories"] += 1
+
+    group_map = (spec.get("gbif_group_map") or {}).get("map") or {}
+    fallback = (spec.get("gbif_group_map") or {}).get("fallback")
+
+    def link(plant_id: int, code: str, is_primary: int) -> None:
+        category_id = category_ids.get(code)
+        if category_id is None:
+            log.warning("unknown category code %r - not mapping", code)
+            return
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO plant_category_map
+                (plant_id, category_id, is_primary, source_id)
+            VALUES (?,?,?,?)
+            """,
+            (plant_id, category_id, is_primary, src),
+        )
+        stats["mappings"] += 1
+        if is_primary:
+            stats["primary"] += 1
+        provenance(conn, "plant_category_map", plant_id, "category_code", src,
+                   code, method="curated_file", confidence="MEDIUM",
+                   status="UNVERIFIED_CATEGORY",
+                   note="Project-curated grouping of GBIF-accepted taxa; "
+                        "records no new biological claim.")
+# Explicit per-species membership from crop_coverage.json.
+    unmatched: list[str] = []
+    for entry in coverage:
+        plant_id = _plant_id_for(conn, entry.get("scientific_name"))
+        if plant_id is None:
+            unmatched.append(entry.get("scientific_name") or "?")
+            continue
+        primary = entry.get("primary_category")
+        for code in entry.get("categories") or []:
+            link(plant_id, code, 1 if code == primary else 0)
+        stats["explicit"] += 1
+
+        crop = entry.get("crop") or {}
+        if crop:
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO plant_crops
+                    (plant_id, crop_role, edible_part, life_cycle,
+                     sowing_season, harvest_period, growth_duration,
+                     cultivation_system, source_id)
+                VALUES (?,?,?,?,?,?,?,?,?)
+                """,
+                (plant_id, crop.get("crop_role"), crop.get("edible_part"),
+                 crop.get("life_cycle"), crop.get("sowing_season"),
+                 crop.get("harvest_period"), crop.get("growth_duration"),
+                 crop.get("cultivation_system"), src),
+            )
+            stats["crops"] += 1
+            provenance(conn, "plant_crops", plant_id, "crop_role", src,
+                       crop.get("crop_role"), method="curated_file",
+                       confidence="MEDIUM", status="UNVERIFIED",
+                       note="Curated from standard Indian agricultural "
+                            "extension practice.")
+
+        for trait in entry.get("traits") or []:
+            if not isinstance(trait, dict) or not trait.get("trait"):
+                continue
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO plant_traits
+                    (plant_id, trait, value, source_id)
+                VALUES (?,?,?,?)
+                """,
+                (plant_id, trait["trait"], trait.get("value"), src),
+            )
+            stats["traits"] += 1
+            provenance(conn, "plant_traits", plant_id, trait["trait"], src,
+                       trait.get("value"), method="curated_file",
+                       confidence="MEDIUM", status="UNVERIFIED",
+                       note="Curated horticultural description.")
+
+    if unmatched:
+        raise SystemExit(
+            "crop_coverage.json names species that are not in the knowledge "
+            f"base, so they would be silently dropped: {', '.join(sorted(set(unmatched)))}. "
+            "Fix the name, or add the species to knowledge/data/curated/"
+            "target_genera.json and re-run knowledge/scripts/import_gbif.py."
+        )
+
+    # Group fallback for every species not already placed above, so the browse
+    # screen never collapses into a single uncategorised pile.
+    if group_map:
+        placed = {r["id"] for r in conn.execute(
+            "SELECT DISTINCT plant_id AS id FROM plant_category_map"
+        ).fetchall()}
+        for record in read_json(RAW_DIR / "gbif_species.json", []) or []:
+            plant_row = conn.execute(
+                "SELECT id FROM plants WHERE slug = ?", (record["slug"],)
+            ).fetchone()
+            if not plant_row or plant_row["id"] in placed:
+                continue
+            code = group_map.get(record.get("group") or "") or fallback
+            if not code:
+                continue
+            link(plant_row["id"], code, 1)
+            stats["fallback_mapped"] += 1
+
+    log.info("categories: %s", stats)
+    return stats
 
 
 # ---------------------------------------------------------------------------
@@ -982,6 +1173,7 @@ AUDITED_TABLES = [
     "plants", "plant_names", "plant_synonyms", "plant_taxonomy",
     "plant_characteristics", "plant_distribution", "plant_rooftop",
     "plant_images", "diseases",
+    "plant_categories", "plant_category_map", "plant_crops", "plant_traits",
     "plant_diseases", "disease_symptoms", "pests", "plant_pests",
     "pest_symptoms", "nutrient_deficiencies", "environmental_stresses",
     "prevention_methods", "treatments", "treatment_targets",
@@ -1001,7 +1193,7 @@ def write_meta(conn: sqlite3.Connection, stats: dict) -> None:
         "build_date": utc_now(),
         "built_by": "knowledge/scripts/build_sqlite.py",
         "project": "PlantDoctor AI",
-        "plant_record_target": "2000",
+        "plant_record_target": str(PLANT_RECORD_TARGET),
         "notes": (
             "Every record carries its source and verification status. Fields "
             "with no source are left NULL rather than generated. Toxicity "
@@ -1108,8 +1300,10 @@ def validate(conn: sqlite3.Connection) -> dict:
           AND (label_url IS NULL OR label_page_reference IS NULL
                OR last_verified IS NULL)
         """)
-    report["plant_record_target"] = 2000
-    report["target_status"] = "PASS" if report["plants"] >= 2000 else "FAIL"
+    report["plant_record_target"] = PLANT_RECORD_TARGET
+    report["target_status"] = (
+        "PASS" if report["plants"] >= PLANT_RECORD_TARGET else "FAIL"
+    )
     return report
 
 
@@ -1251,7 +1445,7 @@ def main() -> int:
     parser.add_argument("--db", type=Path, default=DB_PATH,
                         help="output SQLite path")
     parser.add_argument("--allow-partial", action="store_true",
-                        help="exit 0 even if the 2000-record target is unmet")
+                        help="exit 0 even if the plant-record target is unmet")
     parser.add_argument("--asset", type=Path, default=ASSET_DB_PATH,
                         help="also write the bundle to this app asset path; "
                              "pass an empty string to skip")
@@ -1277,6 +1471,7 @@ def main() -> int:
             stats["treatments"] = insert_treatments(conn, source_ids)
             stats["prevention"] = insert_prevention(conn, source_ids)
             stats["toxicity"] = insert_toxicity(conn, source_ids)
+            stats["categories"] = insert_categories(conn, source_ids)
             stats["rooftop"] = insert_rooftop(conn, source_ids)
             write_meta(conn, stats)
             write_indexes(conn)

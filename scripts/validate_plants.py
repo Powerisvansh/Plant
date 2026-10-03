@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Validate the bundled PlantDoctor plant knowledge base.
 
-This is the gate for the spec requirement "at least 2,000 distinct, real plant
+This is the gate for the spec requirement "at least 10,000 distinct, real plant
 records". It reads the *built* SQLite database (not the source JSON) and reports
 exactly how many verifiable plant records exist, how many are duplicated or
-missing required fields, and whether the 2,000 target is met.
+missing required fields, and whether the 10,000 target is met.
 
 It never repairs or invents anything. If the count is short, it says so.
 
@@ -25,7 +25,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = REPO_ROOT / "knowledge" / "dist" / "plantdoctor.db"
-TARGET = 2000
+TARGET = 10000
 
 TOXICITY_VALUES = {
     "NON_TOXIC_REPORTED",
@@ -98,6 +98,21 @@ def validate(db_path: Path) -> dict:
         "SELECT COUNT(*) FROM plants WHERE genus IS NULL OR trim(genus)=''",
     )
 
+    # A plant with no category is invisible to every browse filter, so it is
+    # reported rather than left implicit. Not blocking: the catalogue is still
+    # valid without it, the app just has one uncategorised bucket to show.
+    uncategorised = scalar(
+        conn,
+        "SELECT COUNT(*) FROM plants p WHERE NOT EXISTS ("
+        "  SELECT 1 FROM plant_category_map m WHERE m.plant_id = p.id)",
+    ) if has_table(conn, "plant_category_map") else 0
+    no_primary = scalar(
+        conn,
+        "SELECT COUNT(*) FROM plants p WHERE NOT EXISTS ("
+        "  SELECT 1 FROM plant_category_map m "
+        "  WHERE m.plant_id = p.id AND m.is_primary = 1)",
+    ) if has_table(conn, "plant_category_map") else 0
+
     tox_null = scalar(
         conn,
         "SELECT COUNT(*) FROM plants WHERE toxicity_status IS NULL "
@@ -128,7 +143,8 @@ def validate(db_path: Path) -> dict:
                   "human_safety", "pet_safety", "livestock_safety",
                   "prevention_methods", "sources", "source_records",
                   "data_provenance", "verification_records", "plant_images",
-                  "plant_rooftop"):
+                  "plant_rooftop", "plant_categories", "plant_category_map",
+                  "plant_crops", "plant_traits"):
         detail_rows.append({
             "table": table,
             "present": table in tables,
@@ -175,6 +191,8 @@ def validate(db_path: Path) -> dict:
         "missing_source": missing_source,
         "missing_taxonomy": missing_taxonomy,
         "missing_genus": missing_genus,
+        "uncategorised_plants": uncategorised,
+        "plants_without_primary_category": no_primary,
         "missing_toxicity_status": tox_null,
         "invalid_toxicity_status": tox_invalid,
         "toxicity_status_breakdown": tox_values,

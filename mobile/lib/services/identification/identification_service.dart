@@ -53,7 +53,14 @@ class ModelConditionScreen {
 class IdentificationService {
   IdentificationService._();
 
-  static double get _unknownFloor => 0.35;
+  /// Confidence floor below which no species may be named.
+  ///
+  /// Delegates to [ModelLabels.defaultUnknownThreshold] rather than carrying its
+  /// own number. The previous hardcoded 0.35 here was a third copy of the same
+  /// setting and disagreed with both the labels JSON and the parser default;
+  /// three copies of a safety threshold is exactly how they drift apart.
+  static double get _unknownFloor =>
+      ModelLabels.defaultUnknownThreshold;
 
   /// Combines per-image model outputs with the morphology screening.
   ///

@@ -9,11 +9,17 @@ What this script does (and does not do):
 * Species are discovered through real occurrence records in India
   (``occurrence/search?country=IN``): a species enters the database because it
   has genuine GBIF occurrence records in India, not because it was guessed.
+* Discovery runs in two stages. The curated genus worklist comes first, so the
+  India-relevant crop and ornamental genera are covered deliberately. That
+  worklist saturates at a few thousand species, because a genus can only
+  contribute what is recorded in India within that genus -- so once it is
+  exhausted the importer pages the kingdom-level Plantae facet for India to
+  reach the full target. Both routes require the same evidence.
 * Every staged record keeps its GBIF usage key, dataset key and retrieval date,
   so ``build_sqlite.py`` can write full provenance.
 
 Usage:
-    python3 knowledge/scripts/import_gbif.py --target 2200
+    python3 knowledge/scripts/import_gbif.py --target 10000
     python3 knowledge/scripts/import_gbif.py --refresh        # start over
     python3 knowledge/scripts/import_gbif.py --vernacular-only
 """
@@ -57,6 +63,40 @@ def india_species_for_taxon(key: int, limit: int) -> list[dict]:
             "taxonKey": key,
             "facet": "speciesKey",
             "facetLimit": limit,
+            "limit": 0,
+        },
+    )
+    facets = payload.get("facets") or []
+    if not facets:
+        return []
+    counts = facets[0].get("counts") or []
+    return [{"key": int(c["name"]), "occurrences": c["count"]} for c in counts if c.get("name")]
+
+
+# GBIF's taxonKey 6 is Plantae, the root of the plant kingdom.
+PLANTAE_TAXON_KEY = 6
+
+
+def india_species_page(offset: int, page_size: int) -> list[dict]:
+    """One page of India-recorded Plantae species, ranked by occurrence count.
+
+    The per-genus route in :func:`india_species_for_taxon` can only ever
+    return what a single genus has recorded in India, which caps the database
+    at a few thousand species. Paging the kingdom-level facet returns the same
+    kind of evidence -- species that genuinely have GBIF occurrence records in
+    India -- across the whole plant kingdom instead of one genus at a time.
+
+    Ordering is by occurrence count descending, so the best-recorded species
+    are staged first and a truncated run still yields the most valuable rows.
+    """
+    payload = gbif(
+        "/occurrence/search",
+        {
+            "country": "IN",
+            "taxonKey": PLANTAE_TAXON_KEY,
+            "facet": "speciesKey",
+            "facetLimit": page_size,
+            "facetOffset": offset,
             "limit": 0,
         },
     )
@@ -281,6 +321,77 @@ def collect_priority_species(staged: list[dict], by_key: dict[str, dict],
     return added
 
 
+def collect_wide(staged: list[dict], by_key: dict, state: dict,
+                 target: int, group: str = "wide_india_occurrence",
+                 page_size: int = 1000, max_pages: int = 40) -> int:
+    """Stage species by paging the whole Plantae facet for India.
+
+    Same evidence standard as the per-genus route -- a species is only staged
+    once GBIF confirms it is an accepted Plantae SPECIES with real occurrence
+    records in India -- but the discovery route is the kingdom-level facet
+    rather than a hand-curated genus list, so it scales past the few thousand
+    species the curated worklist can reach.
+
+    Resumable: ``state['__wide__']['offset']`` records the next facet offset, so
+    an interrupted run continues instead of restarting.
+    """
+    wide_state = state.setdefault("__wide__", {})
+    offset = int(wide_state.get("offset", 0))
+    added = 0
+
+    for _ in range(max_pages):
+        if len(staged) >= target:
+            break
+        try:
+            candidates = india_species_page(offset, page_size)
+        except RuntimeError as exc:
+            log.warning("wide page at offset %d failed: %s", offset, exc)
+            break
+        if not candidates:
+            log.info("wide paging exhausted at offset %d", offset)
+            break
+
+        found = 0
+        for cand in candidates:
+            if len(staged) >= target:
+                break
+            if str(cand["key"]) in by_key:
+                continue
+            detail = species_detail(cand["key"])
+            time.sleep(REQUEST_PAUSE)
+            if not detail:
+                continue
+            detail = accepted_detail(detail)
+            if not detail:
+                continue
+            if (detail.get("kingdom") or "") != "Plantae":
+                continue
+            if (detail.get("rank") or "").upper() != "SPECIES":
+                continue
+            record = stage_record(detail, group, cand.get("occurrences", 0))
+            if not record["scientific_name"] or record["gbif_key"] in by_key:
+                continue
+            by_key[record["gbif_key"]] = record
+            staged.append(record)
+            found += 1
+            added += 1
+
+        offset += page_size
+        wide_state["offset"] = offset
+        wide_state["staged_total"] = len(staged)
+        write_json(STAGE_PATH, sorted(staged, key=lambda r: r["slug"]))
+        write_json(STATE_PATH, state)
+        log.info("wide page offset=%-6d +%-4d staged=%d", offset, found, len(staged))
+
+        # A short page means GBIF has no more facets to give us.
+        if len(candidates) < page_size:
+            wide_state["exhausted"] = True
+            break
+
+    log.info("wide collection added %d species (next offset %d)", added, offset)
+    return added
+
+
 def collect(target: int, refresh: bool, group_filter: str | None,
             retry_unmatched: bool = False) -> list[dict]:
     worklist = read_json(CURATED_DIR / "target_genera.json", {})
@@ -378,6 +489,16 @@ def collect(target: int, refresh: bool, group_filter: str | None,
             write_json(STATE_PATH, state)
             log.info("%-24s +%-3d staged=%d", name, found, len(staged))
 
+# The curated genus worklist runs out long before the target is met: each
+    # genus can only contribute the species recorded in India within that genus,
+    # which caps the whole worklist at a few thousand species. Fall back to
+    # paging the kingdom-level Plantae facet for India -- the same evidence
+    # (real GBIF occurrences), at a scale that can actually reach 10,000.
+    if len(staged) < target:
+        wide_added = collect_wide(staged, by_key, state, target)
+        if wide_added:
+            log.info("wide collection added %d (total staged %d)",
+                     wide_added, len(staged))
     write_json(STAGE_PATH, sorted(staged, key=lambda r: r["slug"]))
     write_json(STATE_PATH, state)
     return staged
@@ -385,7 +506,7 @@ def collect(target: int, refresh: bool, group_filter: str | None,
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Import real plant taxonomy from GBIF")
-    parser.add_argument("--target", type=int, default=2200, help="stop after this many species")
+    parser.add_argument("--target", type=int, default=10000, help="stop after this many species")
     parser.add_argument("--refresh", action="store_true", help="ignore previous staging")
     parser.add_argument("--group", default=None, help="only import one curated group")
     parser.add_argument(

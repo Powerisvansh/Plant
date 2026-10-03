@@ -31,14 +31,86 @@ class _KnowledgeBrowserScreenState extends State<KnowledgeBrowserScreen> {
   bool _exhausted = false;
   static const int _pageSize = 40;
 
+  /// Category vocabulary plus per-code counts, loaded once from the database.
+  List<KnowledgeCategory> _categories = const [];
+  Map<String, int> _categoryCounts = const {};
+
+  /// The active category filter, or null for "all plants".
+  String? _activeCategory;
+
   Future<KnowledgeRepository> _open() async {
     final repo = await KnowledgeRepository.open();
+    _categories = await repo.categories();
+    _categoryCounts = await repo.categoryCounts();
+    // Drop any category with no members so the chip row never offers an
+    // empty result.
+    _categories = _categories
+        .where((c) => (_categoryCounts[c.code] ?? 0) > 0)
+        .toList(growable: false);
     if (_controller.text.trim().isEmpty) {
       await _loadFirstPage();
     } else {
       await _runSearch(_controller.text);
     }
     return repo;
+  }
+
+  /// Applies the category filter to the current page, then loads more.
+  Future<void> _selectCategory(String? code) async {
+    setState(() {
+      _activeCategory = code;
+      _results = const [];
+      _offset = 0;
+      _exhausted = false;
+      _searching = true;
+    });
+    if (code == null) {
+      await _loadFirstPage();
+    } else {
+      await _loadCategoryPage(code);
+    }
+  }
+
+  Future<void> _loadCategoryPage(String code) async {
+    final repo = KnowledgeRepository.instance;
+    if (repo == null) return;
+    try {
+      final page = await repo.browseCategory(code, limit: _pageSize);
+      if (!mounted) return;
+      setState(() {
+        _results = page;
+        _offset = page.length;
+        _exhausted = page.length < _pageSize;
+        _searching = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _results = const [];
+        _searching = false;
+      });
+    }
+  }
+
+  Future<void> _loadMoreInCategory() async {
+    final repo = KnowledgeRepository.instance;
+    final code = _activeCategory;
+    if (repo == null || code == null || _exhausted || _searching) return;
+    setState(() => _searching = true);
+    try {
+      final page =
+          await repo.browseCategory(code, limit: _pageSize, offset: _offset);
+      if (!mounted) return;
+      setState(() {
+        _results = [..._results, ...page];
+        _offset += page.length;
+        _exhausted = page.length < _pageSize;
+        _searching = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _searching = false);
+    }
   }
 
   Future<void> _loadFirstPage() async {
@@ -165,6 +237,7 @@ class _KnowledgeBrowserScreenState extends State<KnowledgeBrowserScreen> {
           ),
         ),
         _releaseBar(manifest),
+        if (_categories.isNotEmpty) _categoryChips(),
         if (_searching && _results.isEmpty)
           const LinearProgressIndicator(minHeight: 2),
         Expanded(
@@ -187,7 +260,7 @@ class _KnowledgeBrowserScreenState extends State<KnowledgeBrowserScreen> {
                         padding: const EdgeInsets.all(20),
                         child: Center(
                           child: TextButton.icon(
-                            onPressed: _loadMore,
+                            onPressed: _activeCategory == null ? _loadMore : _loadMoreInCategory,
                             icon: const Icon(Icons.expand_more),
                             label: const Text('Load more'),
                           ),
@@ -223,6 +296,38 @@ class _KnowledgeBrowserScreenState extends State<KnowledgeBrowserScreen> {
                 ),
         ),
       ],
+    );
+  }
+
+  /// Horizontal category filter, each chip showing its real record count.
+  Widget _categoryChips() {
+    return SizedBox(
+      height: 52,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            child: FilterChip(
+              label: const Text('All'),
+              selected: _activeCategory == null,
+              onSelected: (_) => _selectCategory(null),
+            ),
+          ),
+          for (final c in _categories)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+              child: FilterChip(
+                label: Text('${c.label} (${_categoryCounts[c.code] ?? 0})'),
+                selected: _activeCategory == c.code,
+                tooltip: c.description,
+                onSelected: (on) =>
+                    _selectCategory(on ? c.code : null),
+              ),
+            ),
+        ],
+      ),
     );
   }
 

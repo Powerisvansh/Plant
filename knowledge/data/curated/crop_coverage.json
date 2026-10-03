@@ -1,0 +1,4120 @@
+{
+ "_meta": {
+  "file": "crop_coverage.json",
+  "purpose": "Category membership, crop attributes, curated traits and rooftop/container suitability for the food plants, agricultural crops and urban-garden plants people actually ask PlantDoctor about.",
+  "scope": "This file never creates a taxon. Every 'scientific_name' must already resolve to a plant row in the GBIF import, through canonical_name, an existing synonym, or the alias table in name_aliases.json. An unresolvable name fails the build rather than being dropped, so a typo cannot silently shrink the catalogue.",
+  "provenance": "Project-curated. Category assignment and siting guidance are compiled from standard Indian agricultural extension and horticultural practice. They are recorded as UNVERIFIED_CATEGORY / UNVERIFIED_ROOFTOP rather than VERIFIED, because no single published work is cited per record. Nothing here is a dosage, a spray recipe, or a safety claim.",
+  "verification_status": "UNVERIFIED_CATEGORY",
+  "why_unverified": "Per-record 'sources' arrays are empty. A record only becomes VERIFIED once a named publication is listed for it. This matches the convention used by pests.json, plantvillage_classes.json and rooftop_greenery.json.",
+  "how_to_verify": "For a record, add entries to its 'sources' array citing a named work (title, publisher or institution, year, URL or DOI). Empty 'sources' keeps the record UNVERIFIED and scripts/validate_plants.py will report it as unverified.",
+  "field_definitions": {
+   "categories": "Category codes from plant_categories.json. Several may apply; 'primary_category' is the label a browse card shows.",
+   "names": "Extra names beyond the GBIF vernacular name. 'hi' is the established Hindi name, 'transliterations' are the Latin-script spellings people type, 'variants' are other English forms, and 'taxonomic_synonyms' are real historical or alternate botanical names that must resolve to this same plant.",
+   "crop": "Agricultural crop attributes: which part is harvested, life cycle, sowing and harvest windows in Indian practice, and typical duration. These drive the crop-information panel.",
+   "rooftop": "Container and rooftop siting: whether it tolerates a pot, how much sun it needs, water band, minimum container volume, rooting depth, drainage, wind and heat tolerance, and hazards such as toxicity or aggressive roots.",
+   "traits": "Curated plant characteristics in a key/value form, used for search and for the plant profile. These are horticultural facts, distinct from the GBIF-derived measurements in plant_characteristics."
+  },
+  "safety_rule": "Watering and feeding guidance is expressed as bands and soil-moisture checks, never as a measured volume, dilution or spray recipe. Toxicity notes point at the recorded status and never advise ingestion or treatment.",
+  "data_release_notes": "Data release 2026.10.1 adds category membership, crop attributes, curated traits and rooftop/container suitability for the food and urban-garden crops."
+ },
+ "species": [
+  {
+   "scientific_name": "Abelmoschus esculentus",
+   "common_name": "Okra (bhindi)",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "भिंडी",
+    "transliterations": [
+     "bhindi",
+     "bhendi",
+     "lady finger"
+    ],
+    "variants": [
+     "okra",
+     "lady's finger",
+     "bhindi",
+     "Abelmoschus esculentus (L.) Moench"
+    ],
+    "taxonomic_synonyms": [
+     "Abelmoschus esculentus (L.) Moench",
+     "Hibiscus esculentus L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature pods",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi September-November; summer February-March in the plains",
+    "harvest_period": "1.5-2 months after sowing; pods picked every 2-3 days",
+    "growth_duration": "60-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "palmately lobed, 5-7 deep lobes, hairy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect branching 1-2 m with a rough, hairy stem"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "high",
+    "min_container_litres": 25,
+    "root_depth_cm": 40,
+    "drainage": "very free draining, moisture-retentive",
+    "watering_band": "high",
+    "establishment_watering": "needs steady water; drought makes the pods tough and stops flowering",
+    "pruning_requirement": "remove lower yellow leaves and pinch once to encourage side shoots",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "The leaves and stems are hairy and can irritate skin.",
+    "notes": "Tolerates heat well and gives a long harvest. Needs a large pot and staking, since a healthy plant reaches well over a metre."
+   }
+  },
+  {
+   "scientific_name": "Allium cepa",
+   "common_name": "Onion",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "प्याज",
+    "transliterations": [
+     "pyaz",
+     "pyaaz",
+     "kanda"
+    ],
+    "variants": [
+     "onion",
+     "onion plant",
+     "common onion"
+    ],
+    "taxonomic_synonyms": [
+     "Allium cepa L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "bulb vegetable",
+    "edible_part": "bulb and leaves",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "kharif June-July (transplanted); rabi October-November",
+    "harvest_period": "4-5 months",
+    "growth_duration": "120-180 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial bulbous herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "hollow, cylindrical, glaucous basal leaves"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tuft from a single basal plate"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 20,
+    "drainage": "very free draining and loose; bulb must not be disturbed once formed",
+    "watering_band": "moderate",
+    "establishment_watering": "steady moisture while leaves are growing, then reduce to let the bulb mature",
+    "pruning_requirement": "stop watering about two weeks before harvest",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Grows acceptably in a deep tub or a row of wide pots. Bulb size stays small in containers, but green onion can be cut all season."
+   }
+  },
+  {
+   "scientific_name": "Allium sativum",
+   "common_name": "Garlic",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "SPICE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "लहसुन",
+    "transliterations": [
+     "lehsun",
+     "lasun"
+    ],
+    "variants": [
+     "garlic",
+     "garlic plant"
+    ],
+    "taxonomic_synonyms": [
+     "Allium sativum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "bulb spice and vegetable",
+    "edible_part": "bulb",
+    "life_cycle": "perennial, grown as annual",
+    "sowing_season": "rabi, planted October-November",
+    "harvest_period": "March-April",
+    "growth_duration": "150-180 days",
+    "cultivation_system": "plantation or spice garden"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial bulbous herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "flat, solid, linear, glaucous"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tuft from a clove-bearing basal plate"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 20,
+    "drainage": "very free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "even moisture in autumn and winter, then withhold water to size the bulb",
+    "pruning_requirement": "stop watering about two weeks before harvest",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Performs well in a wide pot or small bed; needs a cold winter period to bulb properly, so it is less reliable in tropical cities."
+   }
+  },
+  {
+   "scientific_name": "Alternanthera sessilis",
+   "common_name": "Sessile joyweed",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "WEED",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सेसी जलसेनी",
+    "transliterations": [
+     "sessili"
+    ],
+    "variants": [
+     "joyweed",
+     "sessile joyweed",
+     "khira saga"
+    ],
+    "taxonomic_synonyms": [
+     "Alternanthera sessilis (L.) DC."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "edible weed vegetable",
+    "edible_part": "leaves and tender stems",
+    "life_cycle": "annual or perennial",
+    "sowing_season": "warm and wet season",
+    "harvest_period": "cut and come again",
+    "growth_duration": "30 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "prostrate or ascending herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "opposite, sessile, obovate"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "mat-forming, often rooting at nodes"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "partial sun to full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 8,
+    "root_depth_cm": 12,
+    "drainage": "moist but not waterlogged",
+    "watering_band": "moderate",
+    "establishment_watering": "keep the surface damp",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "A common edible on Indian terraces and in cracks of paving; grows happily in a shallow tray."
+   }
+  },
+  {
+   "scientific_name": "Amaranthus cruentus",
+   "common_name": "Amaranth (grain amaranth)",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "राजगिरा",
+    "transliterations": [
+     "rajgira",
+     "rajgira rakta"
+    ],
+    "variants": [
+     "grain amaranth",
+     "red amaranth",
+     "amaranth"
+    ],
+    "taxonomic_synonyms": [
+     "Amaranthus cruentus L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and leafy",
+    "edible_part": "seed (grain), young leaves",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "September-October",
+    "growth_duration": "100-130 days to seed",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad ovate, long-petioled, often coloured"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect to spreading annual up to 2 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep moist until established, then let it dry slightly between waterings",
+    "pruning_requirement": "pinch the tips to encourage branching",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Grows well in a terrace tub and gives both a leafy harvest and a seed head. Can self-sow freely in a pot."
+   }
+  },
+  {
+   "scientific_name": "Amaranthus tricolor",
+   "common_name": "Amaranth (leafy)",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "चौंदन",
+    "transliterations": [
+     "chaundan",
+     "chandamama"
+    ],
+    "variants": [
+     "amaranth",
+     "red amaranth",
+     "leafy amaranth",
+     "Chinese spinach"
+    ],
+    "taxonomic_synonyms": [
+     "Amaranthus tricolor L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy vegetable",
+    "edible_part": "young leaves and tender stems",
+    "life_cycle": "annual",
+    "sowing_season": "kharif and rabi, sown throughout the year in mild areas",
+    "harvest_period": "cut and come again every 3-4 weeks",
+    "growth_duration": "30-45 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad ovate to rhomboid, often bronze or purple"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect or spreading succulent-stemmed annual"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "moderate",
+    "min_container_litres": 10,
+    "root_depth_cm": 25,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "water every 2-3 days in summer; it wilts fast in a small pot and recovers quickly",
+    "pruning_requirement": "pinch tips and shear leaves regularly",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "One of the most productive pot vegetables: it regrows after each cut, tolerates heat, and self-sows."
+   }
+  },
+  {
+   "scientific_name": "Arachis hypogaea",
+   "common_name": "Groundnut (peanut)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "OILSEED",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मूंगफली",
+    "transliterations": [
+     "mungfali",
+     "mungaphali"
+    ],
+    "variants": [
+     "groundnut",
+     "peanut",
+     "peanut plant"
+    ],
+    "taxonomic_synonyms": [
+     "Arachis hypogaea L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "oilseed and pulse",
+    "edible_part": "seed (pod) and green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "September-November",
+    "growth_duration": "100-140 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual prostrate or erect herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnate with four paired obovate leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "low bushy plant; flowers above ground, pods bury"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 35,
+    "drainage": "very free draining, sandy loam preferred",
+    "watering_band": "moderate",
+    "establishment_watering": "water consistently until flowering, then keep it on the drier side so pods set",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Needs a deep, loose medium so the pegs can bury and the pods form underground. Not a hanging-basket plant."
+   }
+  },
+  {
+   "scientific_name": "Avena sativa",
+   "common_name": "Oat",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "जई",
+    "transliterations": [
+     "jai",
+     "jaya"
+    ],
+    "variants": [
+     "oats",
+     "oat plant"
+    ],
+    "taxonomic_synonyms": [
+     "Avena sativa L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain)",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, October-November in the hills",
+    "harvest_period": "May-June",
+    "growth_duration": "110-130 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "linear, parallel-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tufted grass with loose panicle"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to bright shade",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 20,
+    "root_depth_cm": 30,
+    "drainage": "free draining, moisture-retentive",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; oats dislike drying out",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "An unusual but workable container cereal in a cool season; best in a deep tub rather than a hanging pot."
+   }
+  },
+  {
+   "scientific_name": "Beta vulgaris",
+   "common_name": "Beetroot",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "चुकंदर",
+    "transliterations": [
+     "chukandar",
+     "chukundar"
+    ],
+    "variants": [
+     "beetroot",
+     "beet",
+     "sugar beet",
+     "Beta vulgaris subsp. vulgaris"
+    ],
+    "taxonomic_synonyms": [
+     "Beta vulgaris L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "root vegetable",
+    "edible_part": "root and leaves",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown September-November",
+    "harvest_period": "3-4 months",
+    "growth_duration": "80-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "basal rosette, ovate, often reddish-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "rosette on a swollen taproot"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 30,
+    "drainage": "loose, well-drained, stones removed",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist",
+    "pruning_requirement": "thin to 8 cm apart",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Tolerates cooler weather than most vegetables and its leaves are edible too."
+   }
+  },
+  {
+   "scientific_name": "Brassica juncea",
+   "common_name": "Mustard (sarson/rai)",
+   "categories": [
+    "FOOD_CROP",
+    "OILSEED",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN",
+    "VEGETABLE"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सरसों",
+    "transliterations": [
+     "sarson",
+     "sarso",
+     "rai",
+     "mustard"
+    ],
+    "variants": [
+     "mustard",
+     "Chinese mustard",
+     "Indian mustard",
+     "rapeseed"
+    ],
+    "taxonomic_synonyms": [
+     "Brassica juncea (L.) Czern."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "oilseed and leafy vegetable",
+    "edible_part": "seed and leaves",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown October-November",
+    "harvest_period": "February-March",
+    "growth_duration": "110-140 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "lower leaves pinnatifid, upper sessile and clasping"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect 1-2 m branching"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "water steadily, then reduce once pods form",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Gives early greens and then seed. Prefers the cooler months; it bolts quickly in peak summer heat."
+   }
+  },
+  {
+   "scientific_name": "Brassica oleracea",
+   "common_name": "Cabbage",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "पत्ता गोभी",
+    "transliterations": [
+     "patta gobi",
+     "band gobi",
+     "cabbage"
+    ],
+    "variants": [
+     "cabbage",
+     "white cabbage",
+     "kohlrabi"
+    ],
+    "taxonomic_synonyms": [
+     "Brassica oleracea L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy and head vegetable",
+    "edible_part": "leaves and head",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown August-September, planted out October-November",
+    "harvest_period": "2.5-4 months",
+    "growth_duration": "80-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, waxy, blue-green, in a tight head"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "short stem with a dense rosette of overlapping leaves"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "high",
+    "min_container_litres": 30,
+    "root_depth_cm": 35,
+    "drainage": "firm, free draining, heavily compacted soil",
+    "watering_band": "high",
+    "establishment_watering": "needs steady, generous water; drought makes the head loose and bitter",
+    "pruning_requirement": "remove yellow outer leaves as they appear",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "A heavy, thirsty feeder. It does best in a large terrace tub with steady moisture, and heads stay smaller in containers than in a field."
+   }
+  },
+  {
+   "scientific_name": "Brassica oleracea botrytis",
+   "common_name": "Cauliflower",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "फूलगोभी",
+    "transliterations": [
+     "phoolgobi",
+     "fulgobi"
+    ],
+    "variants": [
+     "cauliflower"
+    ],
+    "taxonomic_synonyms": [
+     "Brassica oleracea var. botrytis L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "flower vegetable",
+    "edible_part": "immature inflorescence",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown August-September, planted October-November",
+    "harvest_period": "2-3 months",
+    "growth_duration": "60-90 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, waxy, blue-green, sessile"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "short stem with a compact white curd"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 35,
+    "root_depth_cm": 35,
+    "drainage": "very rich, free draining, moisture-retentive soil",
+    "watering_band": "high",
+    "establishment_watering": "never let it dry once the curd starts forming; drought ruins it",
+    "pruning_requirement": "blanch the curd by tying the outer leaves over it once it is about 3 cm across, or the head will green",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Demanding: rich soil, constant water and a cool season. A rooftop choice only where a deep tub and steady watering are possible."
+   }
+  },
+  {
+   "scientific_name": "Brassica oleracea capitata",
+   "common_name": "Cabbage",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "पत्ता गोभी",
+    "transliterations": [
+     "patta gobi",
+     "band gobi"
+    ],
+    "variants": [
+     "cabbage",
+     "heading cabbage"
+    ],
+    "taxonomic_synonyms": []
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "head vegetable",
+    "edible_part": "head",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown August-September",
+    "harvest_period": "3 months",
+    "growth_duration": "90 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "high",
+    "min_container_litres": 30,
+    "root_depth_cm": 35,
+    "drainage": "firm, free draining",
+    "watering_band": "high",
+    "establishment_watering": "steady, generous water",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "The heading cabbage variety, held separately because GBIF records it as a variety of Brassica oleracea."
+   }
+  },
+  {
+   "scientific_name": "Brassica oleracea italica",
+   "common_name": "Broccoli",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "ब्रोकली",
+    "transliterations": [
+     "broccoli"
+    ],
+    "variants": [
+     "broccoli",
+     "broccoli raab"
+    ],
+    "taxonomic_synonyms": [
+     "Brassica oleracea var. italica Plenck"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "flower vegetable",
+    "edible_part": "immature flower buds and stems",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown August-September",
+    "harvest_period": "2-3 months",
+    "growth_duration": "70-100 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, blue-green, waxy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect stem with side flower heads"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 35,
+    "drainage": "rich, moisture-retentive, free draining",
+    "watering_band": "high",
+    "establishment_watering": "keep evenly moist, especially once heads form",
+    "pruning_requirement": "cut the main head just above a side shoot to keep it producing",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Gives repeat harvests from one plant, which makes it high value in a small rooftop space."
+   }
+  },
+  {
+   "scientific_name": "Brassica rapa",
+   "common_name": "Turnip",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "शलजम",
+    "transliterations": [
+     "saljam",
+     "shaljam"
+    ],
+    "variants": [
+     "turnip",
+     "turnip plant",
+     "Brassica rapa subsp. rapa"
+    ],
+    "taxonomic_synonyms": [
+     "Brassica rapa L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "root vegetable",
+    "edible_part": "root and leaves",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown August-November",
+    "harvest_period": "40-60 days",
+    "growth_duration": "45-70 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "lyrate, rough, lobed"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "rosette on a swollen root"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 25,
+    "drainage": "loose, free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Hardy in cold weather and quick to harvest."
+   }
+  },
+  {
+   "scientific_name": "Cajanus cajan",
+   "common_name": "Pigeon pea (tur/arhar)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "अरहर",
+    "transliterations": [
+     "arhar",
+     "tur",
+     "tuvar"
+    ],
+    "variants": [
+     "pigeon pea",
+     "tur dal",
+     "arhar dal",
+     "Cajanus indicus"
+    ],
+    "taxonomic_synonyms": [
+     "Cajanus cajan (L.) Millsp.",
+     "Cajanus indicus"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse",
+    "edible_part": "seed",
+    "life_cycle": "shrubby perennial grown as annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "December-January",
+    "growth_duration": "150-200 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "woody perennial shrub, grown as an annual crop"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "trifoliate with narrow leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect branching shrub 1-3 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "high",
+    "min_container_litres": 25,
+    "root_depth_cm": 45,
+    "drainage": "free draining",
+    "watering_band": "low",
+    "establishment_watering": "water well in the first season, then sparingly; drought-tolerant once nodulated",
+    "pruning_requirement": "light tip pinching to keep it bushy",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "The dry pod is ornamental but not edible; pods must be cooked before the seed is eaten.",
+    "notes": "Deep rooted and long-cropping, so it needs the largest pot of any rooftop pulse. A north Indian rooftop classic."
+   }
+  },
+  {
+   "scientific_name": "Capsicum annuum",
+   "common_name": "Chilli (bell pepper)",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "शिमला मिर्च",
+    "transliterations": [
+     "shimla mirch",
+     "capsicum",
+     "mirch"
+    ],
+    "variants": [
+     "capsicum",
+     "bell pepper",
+     "sweet pepper",
+     "chilli pepper"
+    ],
+    "taxonomic_synonyms": [
+     "Capsicum annuum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable and spice",
+    "edible_part": "fruit",
+    "life_cycle": "annual or short-lived perennial",
+    "sowing_season": "kharif June-July; rabi September-November",
+    "harvest_period": "2-3 months after transplanting",
+    "growth_duration": "120-180 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual or short-lived perennial shrub"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "simple, ovate-lanceolate, entire, glossy dark green"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect branching 40-90 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 35,
+    "drainage": "very free draining, warm root zone",
+    "watering_band": "moderate",
+    "establishment_watering": "water evenly; allow the surface to dry slightly between waterings",
+    "pruning_requirement": "pinch the first growing tip to force branching; avoid over-pruning once flowering starts",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "The leaves and stems are not edible. Extremely hot varieties should not be eaten raw by people sensitive to capsicin.",
+    "notes": "One of the best rooftop vegetables: compact, heavy-cropping in a 20-litre pot, and it needs less root depth than tomato. Sweet bell types want the most sun; hot chilli types tolerate more heat and less light."
+   }
+  },
+  {
+   "scientific_name": "Capsicum frutescens",
+   "common_name": "Bird's eye chilli",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "SPICE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मिर्च",
+    "transliterations": [
+     "mirch",
+     "mirchi"
+    ],
+    "variants": [
+     "chilli",
+     "chilli pepper",
+     "bird chilli",
+     "hot pepper"
+    ],
+    "taxonomic_synonyms": [
+     "Capsicum frutescens (L.) Mill."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "spice crop",
+    "edible_part": "fruit",
+    "life_cycle": "perennial",
+    "sowing_season": "sown in the rainy season, or set out as rooted cuttings",
+    "harvest_period": "picked continuously over months",
+    "growth_duration": "first crop 4-6 months",
+    "cultivation_system": "plantation or spice garden"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial subshrub"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "simple, ovate-lanceolate, entire"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "upright, densely branched 0.5-1.2 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 30,
+    "drainage": "excellent drainage",
+    "watering_band": "moderate",
+    "establishment_watering": "water when the top few centimetres are dry; dislikes wet roots",
+    "pruning_requirement": "pinch the tip once to bush out, then pick often",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "An evergreen, long-lived, highly productive rooftop chilli that keeps fruiting for years in a sunny pot."
+   }
+  },
+  {
+   "scientific_name": "Cenchrus americanus",
+   "common_name": "Pearl millet (bajra)",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "बाजरा",
+    "transliterations": [
+     "bajra",
+     "bajari"
+    ],
+    "variants": [
+     "pearl millet",
+     "bajra",
+     "bulrush millet"
+    ],
+    "taxonomic_synonyms": [
+     "Pennisetum typhoides",
+     "Pennisetum glaucum (L.) R.Br."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain), green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July, sown with the first monsoon rain",
+    "harvest_period": "September-October",
+    "growth_duration": "80-110 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "narrow, linear, parallel-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect grass with a dense cylindrical candle head"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 35,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "low",
+    "establishment_watering": "moist until emergence, then almost no water once rooted",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "The most heat- and drought-tolerant of the common millets and a good rooftop cereal in a hot, dry city."
+   }
+  },
+  {
+   "scientific_name": "Cicer arietinum",
+   "common_name": "Chickpea (gram)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "चना",
+    "transliterations": [
+     "chana",
+     "channa",
+     "gram"
+    ],
+    "variants": [
+     "chickpea",
+     "chick pea",
+     "gram",
+     "Bengal gram"
+    ],
+    "taxonomic_synonyms": [
+     "Cicer arietinum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse",
+    "edible_part": "seed",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown October-November",
+    "harvest_period": "February-March",
+    "growth_duration": "100-120 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual bushy herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnately compound with small toothed leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect, much-branched, 30-60 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 30,
+    "drainage": "excellent drainage",
+    "watering_band": "low",
+    "establishment_watering": "soak-free: water only after the seedling is established, then rarely",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "An excellent balcony crop. Needs only a moderately deep pot, and fixing atmospheric nitrogen means no fertiliser is needed."
+   }
+  },
+  {
+   "scientific_name": "Cucumis sativus",
+   "common_name": "Cucumber",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "खीरा",
+    "transliterations": [
+     "khira",
+     "kheera"
+    ],
+    "variants": [
+     "cucumber",
+     "cucumber plant",
+     "gherkin"
+    ],
+    "taxonomic_synonyms": [
+     "Cucumis sativus L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi September-November; summer January-February in the plains",
+    "harvest_period": "40-60 days from sowing",
+    "growth_duration": "60-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual trailing or climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, palmately lobed, rough-hairy, on long petioles"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "trailing vine with tendrils, or a compact bush type"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 45,
+    "drainage": "very free draining; roots must breathe",
+    "watering_band": "high",
+    "establishment_watering": "large, thirsty crop; a small pot must be watered at least daily in summer",
+    "pruning_requirement": "guide along a trellis to save space and improve airflow",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Produces well in a big container or grow bag on a terrace. Compact bush varieties need no trellis and suit a large pot."
+   }
+  },
+  {
+   "scientific_name": "Cucurbita moschata",
+   "common_name": "Pumpkin",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "कद्दू",
+    "transliterations": [
+     "kaddu",
+     "kaddo"
+    ],
+    "variants": [
+     "pumpkin",
+     "red pumpkin",
+     "calabaza"
+    ],
+    "taxonomic_synonyms": [
+     "Cucurbita moschata (L.) Duchesne"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "mature fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "3.5-5 months from sowing",
+    "growth_duration": "120-180 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual trailing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, shallowly lobed, rough"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "prostrate vine running 2-5 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 50,
+    "root_depth_cm": 50,
+    "drainage": "deep, rich, very free draining",
+    "watering_band": "high",
+    "establishment_watering": "heavy feeder and drinker; needs a very large container",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "A field crop. Only realistic in a very large terrace planter with room for a 4 m vine."
+   }
+  },
+  {
+   "scientific_name": "Cucurbita pepo",
+   "common_name": "Zucchini / summer squash",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "लौकी अथवा टिक्की",
+    "transliterations": [
+     "lauki",
+     "tikki",
+     "zucchini"
+    ],
+    "variants": [
+     "zucchini",
+     "courgette",
+     "summer squash",
+     "marrow",
+     "pattypan squash"
+    ],
+    "taxonomic_synonyms": [
+     "Cucurbita pepo L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit and flowers",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; cooler months in the plains",
+    "harvest_period": "45-60 days from sowing",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual trailing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, deeply lobed, rough, on long stalks"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "prostrate or climbing vine"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 40,
+    "root_depth_cm": 50,
+    "drainage": "rich, very free draining, high fertility",
+    "watering_band": "high",
+    "establishment_watering": "the heaviest water and feeding demand of any common rooftop vegetable",
+    "pruning_requirement": "pick fruit small and often; harvest male flowers in the morning",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Enormously productive but needs a very large container and constant watering. Less realistic on a small balcony."
+   }
+  },
+  {
+   "scientific_name": "Daucus carota",
+   "common_name": "Carrot",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "गाजर",
+    "transliterations": [
+     "gajar",
+     "gajra"
+    ],
+    "variants": [
+     "carrot",
+     "carrot plant"
+    ],
+    "taxonomic_synonyms": [
+     "Daucus carota L.",
+     "Daucus carota subsp. sativus"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "root vegetable",
+    "edible_part": "root",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown August-October",
+    "harvest_period": "3-4 months",
+    "growth_duration": "80-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "finely divided, feathery, carrot-like"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "basal rosette on a swollen taproot"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 30,
+    "drainage": "deep, loose, stone-free soil; stones and compaction fork the root",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; the surface must never crust over",
+    "pruning_requirement": "thin seedlings early to 3-5 cm apart or the roots stay forked and small",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Needs a container at least 30 cm deep. Forking is nearly always caused by shallow soil or fresh manure, not by the variety."
+   }
+  },
+  {
+   "scientific_name": "Eleusine coracana",
+   "common_name": "Finger millet (ragi)",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "रागी",
+    "transliterations": [
+     "ragi",
+     "ragulu"
+    ],
+    "variants": [
+     "finger millet",
+     "ragi",
+     "mandua"
+    ],
+    "taxonomic_synonyms": [
+     "Eleusine coracana (L.) Gaertn."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain",
+    "edible_part": "seed (grain)",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July, often as a second crop after rice",
+    "harvest_period": "September-October",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "narrow strap-like, arranged in finger-like spikes"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tufted grass"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 30,
+    "drainage": "free draining but must not dry out hard",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; it is less drought-tolerant than pearl millet",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no"
+   }
+  },
+  {
+   "scientific_name": "Enydra fluctuans",
+   "common_name": "Buffalo spinach",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "AQUATIC"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": null,
+    "transliterations": [
+     "helencha",
+     "buffalo spinach"
+    ],
+    "variants": [
+     "buffalo spinach",
+     "helencha",
+     "water daisy"
+    ],
+    "taxonomic_synonyms": [
+     "Enhydra fluctuans",
+     "Enhydra fluctuans Lour."
+    ]
+   },
+   "sources": [],
+   "note": "Not Brahmi. Brahmi is Bacopa monnieri, a different plant with a different medicinal reputation; this entry deliberately avoids that name to prevent a wrong identification.",
+   "crop": {
+    "crop_role": "leafy vegetable and herb",
+    "edible_part": "leaves",
+    "life_cycle": "perennial",
+    "sowing_season": "warm and wet season",
+    "harvest_period": "cut and come again",
+    "growth_duration": "45 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial wetland herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "opposite, sessile, toothed above"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "creeping mat in wet soil"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": false,
+    "rooftop_role": "edible",
+    "exposure": "partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "low",
+    "min_container_litres": 8,
+    "root_depth_cm": 12,
+    "drainage": "must stay consistently wet",
+    "watering_band": "high",
+    "establishment_watering": "never let the surface dry; it wilts in a few hours of heat",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "Needs a permanently damp tray or wick-fed pot. A poor choice for an exposed, drying roof but excellent in a cool balcony water tray."
+   }
+  },
+  {
+   "scientific_name": "Glycine max",
+   "common_name": "Soybean",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "OILSEED",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सोयाबीन",
+    "transliterations": [
+     "soya",
+     "soyabean",
+     "soya bean"
+    ],
+    "variants": [
+     "soybean",
+     "soy bean",
+     "soya"
+    ],
+    "taxonomic_synonyms": [
+     "Glycine max (L.) Merr."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "oilseed and pulse",
+    "edible_part": "seed",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "October-November",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual twining or erect herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "trifoliate, broad, slightly hairy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect or climbing, 30-90 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "water regularly; soybean is shallow-rooted and drought-sensitive at pod fill",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Fixes its own nitrogen and grows well in grow bags, though it needs more root depth than mung or lentil."
+   }
+  },
+  {
+   "scientific_name": "Helianthus annuus",
+   "common_name": "Sunflower",
+   "categories": [
+    "FOOD_CROP",
+    "OILSEED",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सूरजमुखी",
+    "transliterations": [
+     "surajmukhi",
+     "suraj mukhi"
+    ],
+    "variants": [
+     "sunflower",
+     "common sunflower",
+     "Milan"
+    ],
+    "taxonomic_synonyms": [
+     "Helianthus annuus L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "oilseed and ornamental",
+    "edible_part": "seed",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; also a rabi crop in the south",
+    "harvest_period": "September-October",
+    "growth_duration": "90-130 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, rough, broadly heart-shaped, long-petioled"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "tall erect 1.5-3.5 m with a single terminal flower head"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "high",
+    "min_container_litres": 35,
+    "root_depth_cm": 45,
+    "drainage": "very free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "water deeply at least twice a week in a pot; it wilts readily",
+    "pruning_requirement": "tie the stem as it thickens; wind will snap a tall plant",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Its height shades everything below it on a small roof.",
+    "notes": "A cheerful rooftop crop but wants a large, deep, firmly staked pot. Dwarf and branching varieties suit containers far better than the tall field type."
+   }
+  },
+  {
+   "scientific_name": "Hordeum vulgare",
+   "common_name": "Barley",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "जौ",
+    "transliterations": [
+     "jau",
+     "jowa"
+    ],
+    "variants": [
+     "barley",
+     "six-rowed barley"
+    ],
+    "taxonomic_synonyms": [
+     "Hordeum vulgare L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain)",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, October-November in the hills",
+    "harvest_period": "April-May",
+    "growth_duration": "110-140 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "linear, parallel-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tufted grass"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "high",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 35,
+    "drainage": "very free draining",
+    "watering_band": "low",
+    "establishment_watering": "even moisture until emergence, then sparse watering",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Hardy in a container in a cool, bright position; less suited to a hot exposed roof."
+   }
+  },
+  {
+   "scientific_name": "Ipomoea batatas",
+   "common_name": "Sweet potato",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "शकरकंद",
+    "transliterations": [
+     "shakarkandi",
+     "shakar kand"
+    ],
+    "variants": [
+     "sweet potato",
+     "yam",
+     "sweet potato plant"
+    ],
+    "taxonomic_synonyms": [
+     "Ipomoea batatas (L.) Lam."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "root tuber vegetable",
+    "edible_part": "storage tuber",
+    "life_cycle": "perennial, grown as annual",
+    "sowing_season": "slips planted June-July in the kharif",
+    "harvest_period": "2-3 months",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial trailing vine"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "heart-shaped to lobed, often glossy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "prostrate vine rooting at the nodes"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 40,
+    "root_depth_cm": 50,
+    "drainage": "deep, very free draining, loose; waterlogging rots the tuber",
+    "watering_band": "low",
+    "establishment_watering": "water well in the first two months, then reduce sharply",
+    "pruning_requirement": "lift or redirect the vines so they do not root into the drain",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "The leaves and raw tuber are not eaten; cook the tuber.",
+    "notes": "Tolerates heat and neglect, but the tuber needs real root depth, so it suits a large fabric grow bag rather than a pot."
+   }
+  },
+  {
+   "scientific_name": "Lactuca sativa",
+   "common_name": "Lettuce",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सलाद",
+    "transliterations": [
+     "salad",
+     "lettuce"
+    ],
+    "variants": [
+     "lettuce",
+     "lettuce plant",
+     "garden lettuce"
+    ],
+    "taxonomic_synonyms": [
+     "Lactuca sativa L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy vegetable",
+    "edible_part": "leaves",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown September-November; spring February-March",
+    "harvest_period": "45-75 days",
+    "growth_duration": "45-90 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad, wavy or curled, in a loose or tight rosette"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "low rosette"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "partial sun to full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "low",
+    "min_container_litres": 6,
+    "root_depth_cm": 15,
+    "drainage": "moisture-retentive but free draining",
+    "watering_band": "high",
+    "establishment_watering": "the single most important factor: a shallow pot dries in hours and lettuce bolts",
+    "pruning_requirement": "harvest whole or pick outer leaves",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "A shallow bowl or window box on a bright balcony is ideal. It bolts in heat and long days, so treat it as a cool-season crop."
+   }
+  },
+  {
+   "scientific_name": "Lagenaria siceraria",
+   "common_name": "Bottle gourd",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "लौकी",
+    "transliterations": [
+     "lauki",
+     "doodhi",
+     "calabash"
+    ],
+    "variants": [
+     "bottle gourd",
+     "doodhi",
+     "calabash gourd"
+    ],
+    "taxonomic_synonyms": [
+     "Lagenaria siceraria (Molina) Standl.",
+     "Lagenaria vulgaris"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; summer January-March in the plains",
+    "harvest_period": "45-70 days from sowing",
+    "growth_duration": "90-150 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, soft, heart-shaped to shallowly lobed"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "vigorous climbing vine with tendrils"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 45,
+    "root_depth_cm": 50,
+    "drainage": "rich, moisture-retentive, free draining",
+    "watering_band": "high",
+    "establishment_watering": "large and thirsty; never let a container dry",
+    "pruning_requirement": "needs strong trellis support and frequent picking of the fruit",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Suits a rooftop trellis well and gives heavy production, but it needs the largest pot of the common gourds."
+   }
+  },
+  {
+   "scientific_name": "Lens culinaris",
+   "common_name": "Lentil (masur)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मसूर",
+    "transliterations": [
+     "masur",
+     "masoor"
+    ],
+    "variants": [
+     "lentil",
+     "masoor dal",
+     "split pea"
+    ],
+    "taxonomic_synonyms": [
+     "Lens culinaris Medik."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse",
+    "edible_part": "seed",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, October-November",
+    "harvest_period": "February-March",
+    "growth_duration": "110-130 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual low herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnate with small leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "spreading to erect, 15-40 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 10,
+    "root_depth_cm": 20,
+    "drainage": "excellent drainage",
+    "watering_band": "low",
+    "establishment_watering": "keep evenly moist until flowering, then reduce",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Shallow rooted and quick, so it is one of the easiest container pulses."
+   }
+  },
+  {
+   "scientific_name": "Lepidium sativum",
+   "common_name": "Garden cress",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "हल्दी क्षार अथवा आरसी",
+    "transliterations": [
+     "halim",
+     "halim arsi",
+     "garden cress"
+    ],
+    "variants": [
+     "cress",
+     "garden cress",
+     "watercress salad"
+    ],
+    "taxonomic_synonyms": [
+     "Lepidium sativum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy salad",
+    "edible_part": "leaves and seedlings",
+    "life_cycle": "annual",
+    "sowing_season": "cool season, September-November",
+    "harvest_period": "15-25 days",
+    "growth_duration": "15-30 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnately divided, small rounded leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect, slender, 15-30 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "low",
+    "min_container_litres": 3,
+    "root_depth_cm": 10,
+    "drainage": "moist but free draining",
+    "watering_band": "high",
+    "establishment_watering": "keep damp; it is a shallow-rooted salad crop",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "Harvestable in under three weeks from a shallow tray, which makes it the quickest green on a rooftop."
+   }
+  },
+  {
+   "scientific_name": "Luffa acutangula",
+   "common_name": "Ridge gourd",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "तोरी",
+    "transliterations": [
+     "tori",
+     "tori ka gourd"
+    ],
+    "variants": [
+     "ridge gourd",
+     "angled luffa",
+     "Chinese okra"
+    ],
+    "taxonomic_synonyms": [
+     "Luffa acutangula (L.) Roxb."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; summer February-March in the plains",
+    "harvest_period": "40-60 days",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "palmately 5-7 lobed, rough"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "climbing vine"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 40,
+    "drainage": "rich, free draining",
+    "watering_band": "high",
+    "establishment_watering": "steady water",
+    "pruning_requirement": "trellis; pick young",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Reliable in summer heat; pick the ridged fruit young or it becomes fibrous and inedible."
+   }
+  },
+  {
+   "scientific_name": "Luffa aegyptiaca",
+   "common_name": "Smooth luffa (sponge gourd)",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सिक्की",
+    "transliterations": [
+     "sikki",
+     "sikkim"
+    ],
+    "variants": [
+     "sponge gourd",
+     "loofah",
+     "smooth luffa",
+     "ridged sponge gourd"
+    ],
+    "taxonomic_synonyms": [
+     "Luffa aegyptiaca Mill."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit; mature fruit used as a sponge",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; summer February-March in the plains",
+    "harvest_period": "45-60 days",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad, shallowly 5-lobed, rough"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "climbing vine"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 40,
+    "drainage": "rich, free draining",
+    "watering_band": "high",
+    "establishment_watering": "steady water",
+    "pruning_requirement": "trellis; pick young",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Grows well in a warm rooftop trellis. The mature fruit is the vegetable sponge used as a bath sponge."
+   }
+  },
+  {
+   "scientific_name": "Momordica charantia",
+   "common_name": "Bitter gourd",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN",
+    "MEDICINAL"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "करेला",
+    "transliterations": [
+     "karela",
+     "bitter gourd"
+    ],
+    "variants": [
+     "bitter gourd",
+     "bitter melon",
+     "karela"
+    ],
+    "taxonomic_synonyms": [
+     "Momordica charantia L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "immature fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; summer January-March in the plains",
+    "harvest_period": "45-60 days from sowing",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "deeply lobed, 5-7 rounded lobes"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "slender climbing vine"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 30,
+    "root_depth_cm": 40,
+    "drainage": "rich, free draining, moisture-retentive",
+    "watering_band": "high",
+    "establishment_watering": "regular watering; drought makes the fruit bitter and small",
+    "pruning_requirement": "train on a trellis and pick frequently for continued cropping",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Bitter gourd belongs to the same family as cucumber and squash; it is a food plant, but its seeds are not edible.",
+    "notes": "Thrives in heat, so it crops well in summer when other rooftop vegetables struggle."
+   }
+  },
+  {
+   "scientific_name": "Musa paradisiaca",
+   "common_name": "Banana",
+   "categories": [
+    "FOOD_CROP",
+    "FRUIT",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "केला",
+    "transliterations": [
+     "kela"
+    ],
+    "variants": [
+     "banana",
+     "banana plant",
+     "plantain"
+    ],
+    "taxonomic_synonyms": [
+     "Musa paradisiaca L.",
+     "Musa acuminata 'Balbisiana'"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "tropical fruit",
+    "edible_part": "fruit",
+    "life_cycle": "perennial herb",
+    "sowing_season": "suckers or tissue-culture plants set out at the start of the monsoon",
+    "harvest_period": "12-18 months from planting",
+    "growth_duration": "perennial, ratooning",
+    "cultivation_system": "perennial orchard or home-garden tree"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "giant perennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "enormous, paddle-shaped, torn along the veins"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "pseudostem of leaf sheaths up to 2-3 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 60,
+    "root_depth_cm": 60,
+    "drainage": "very free draining and rich; must never be waterlogged",
+    "watering_band": "high",
+    "establishment_watering": "enormous drinker: a fruiting banana in a pot needs water twice a day in summer",
+    "pruning_requirement": "remove dead leaves and, once the bunch is harvested, cut the pseudostem down to the ground and keep one strong sucker",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Sap stains and irritates skin; keep away from children.",
+    "notes": "Dwarf varieties such as 'Dwarf Cavendish' or the local Mysore and Neythakiran types are the only realistic choice for a rooftop, and they still need a very large container."
+   }
+  },
+  {
+   "scientific_name": "Nasturtium officinale",
+   "common_name": "Watercress",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "AQUATIC",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "जलसेनी",
+    "transliterations": [
+     "jalseni",
+     "watercress"
+    ],
+    "variants": [
+     "watercress",
+     "water cress"
+    ],
+    "taxonomic_synonyms": [
+     "Nasturtium officinale R.Br.",
+     "Rorippa nasturtium-aquatica"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy salad",
+    "edible_part": "leaves and tender stems",
+    "life_cycle": "perennial",
+    "sowing_season": "cool season, September-February",
+    "harvest_period": "cut and come again",
+    "growth_duration": "30 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial aquatic or semi-aquatic herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnate with rounded leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "creeping in shallow running or flowing water"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "low",
+    "min_container_litres": 8,
+    "root_depth_cm": 12,
+    "drainage": "must stay continuously wet; grows in flowing water",
+    "watering_band": "high",
+    "establishment_watering": "never allow the surface to dry; a wick-fed tray or a small water channel suits it",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "A watercress bed or shallow channel on a shaded balcony works; an ordinary dry pot does not."
+   }
+  },
+  {
+   "scientific_name": "Ocimum basilicum",
+   "common_name": "Basil (sweet basil)",
+   "categories": [
+    "FOOD_CROP",
+    "HERB",
+    "SPICE",
+    "ROOFTOP_GARDEN",
+    "MEDICINAL"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "तुलसी जीवन अथवा ब्राह्मी",
+    "transliterations": [
+     "tulsi jiwan",
+     "sweet basil",
+     "basil"
+    ],
+    "variants": [
+     "basil",
+     "sweet basil",
+     "sweet basil plant",
+     "Genovese basil"
+    ],
+    "taxonomic_synonyms": [
+     "Ocimum basilicum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "culinary herb",
+    "edible_part": "leaves and flowering tips",
+    "life_cycle": "annual or short-lived perennial",
+    "sowing_season": "sown after the monsoon, or rooted cuttings set out in September",
+    "harvest_period": "cut regularly throughout the warm season",
+    "growth_duration": "first cut 30-45 days",
+    "cultivation_system": "kitchen garden or herb bed"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual or short-lived perennial aromatic herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "opposite, ovate, glossy, slightly toothed, strongly aromatic"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect, square, branching 30-60 cm"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 8,
+    "root_depth_cm": 20,
+    "drainage": "free draining, moisture-retentive",
+    "watering_band": "moderate",
+    "establishment_watering": "water when the top centimetre is dry; basil wilts fast in a small pot",
+    "pruning_requirement": "pinch the growing tip above a leaf pair early, then harvest the top regularly to keep it bushy; remove flower spikes to keep the leaves sweet",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "special_hazards": "Holy basil (Ocimum tenuiflorum) is a different species and a different plant; do not substitute one for the other.",
+    "notes": "Very productive in a small pot and it self-sows readily on a terrace. One of the easiest herbs for a balcony kitchen."
+   }
+  },
+  {
+   "scientific_name": "Ocimum tenuiflorum",
+   "common_name": "Holy basil (tulsi)",
+   "categories": [
+    "FOOD_CROP",
+    "HERB",
+    "SPICE",
+    "ROOFTOP_GARDEN",
+    "MEDICINAL"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "तुलसी",
+    "transliterations": [
+     "tulsi",
+     "tulasi",
+     "holy basil"
+    ],
+    "variants": [
+     "holy basil",
+     "tulsi",
+     "tulasi",
+     "Ocimum tenuiflorum"
+    ],
+    "taxonomic_synonyms": [
+     "Ocimum tenuiflorum L.",
+     "Ocimum sanctum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "medicinal and culinary herb",
+    "edible_part": "leaves and seeds",
+    "life_cycle": "perennial shrub",
+    "sowing_season": "propagated by seed or cuttings at the start of the monsoon",
+    "harvest_period": "harvest leaves year-round in a warm climate",
+    "growth_duration": "perennial",
+    "cultivation_system": "kitchen garden or herb bed"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial aromatic subshrub"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "opposite, ovate, finely toothed, hairy, strongly aromatic"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "branching shrub 30-60 cm with purple flower spikes"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 10,
+    "root_depth_cm": 20,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "water in the dry season, less during monsoon; never waterlog",
+    "pruning_requirement": "pinch tips continuously to keep a dense bush",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "special_hazards": "Traditional use in Indian medicine is not the same as a demonstrated medical effect; it is not a substitute for care.",
+    "notes": "Grows year-round in a sunny pot in a warm climate, and is widely grown in rooftop and balcony containers for that reason."
+   }
+  },
+  {
+   "scientific_name": "Oryza sativa",
+   "common_name": "Rice",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "AGRICULTURAL_CROP"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "धान",
+    "transliterations": [
+     "dhan",
+     "dhaan",
+     "chawal"
+    ],
+    "variants": [
+     "rice plant",
+     "paddy",
+     "rice"
+    ],
+    "taxonomic_synonyms": [
+     "Oryza sativa L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain",
+    "edible_part": "seed (grain)",
+    "life_cycle": "annual",
+    "sowing_season": "kharif transplanting June-July; rabi in irrigated areas",
+    "harvest_period": "kharif October-November; rabi April-May",
+    "growth_duration": "kharif 110-150 days; rabi 115-140 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "aquatic to mesophytic annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "linear, parallel-veined, lanceolate"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect tufted tillered grass"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": false,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "low",
+    "wind_exposure": "low",
+    "min_container_litres": 20,
+    "root_depth_cm": 25,
+    "drainage": "must not stand waterlogged once established",
+    "watering_band": "high",
+    "establishment_watering": "keep the pot continuously moist for the first two weeks",
+    "pruning_requirement": "none",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "None recorded.",
+    "notes": "Grows well in a wide, deep tub or cut-and-come-again in a waterlogged paddy-style tray, but a dry rooftop pot rarely gives a full crop."
+   }
+  },
+  {
+   "scientific_name": "Pennisetum glaucum",
+   "common_name": "Pearl millet (bajra)",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "बाजरा",
+    "transliterations": [
+     "bajra"
+    ],
+    "variants": [
+     "pearl millet",
+     "bajra"
+    ],
+    "taxonomic_synonyms": []
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain), green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "September-October",
+    "growth_duration": "80-110 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "narrow, linear"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 35,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "low",
+    "establishment_watering": "moist until emergence, then sparing",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Held under this name alongside the accepted Cenchrus americanus; recorded here so either name resolves."
+   }
+  },
+  {
+   "scientific_name": "Phaseolus vulgaris",
+   "common_name": "Common bean (kidney/rajma)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "राजमा",
+    "transliterations": [
+     "rajma",
+     "rajam",
+     "kidney bean"
+    ],
+    "variants": [
+     "kidney bean",
+     "common bean",
+     "dry bean",
+     "french bean"
+    ],
+    "taxonomic_synonyms": [
+     "Phaseolus vulgaris L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse and snap bean",
+    "edible_part": "pods when young; seed when dry",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi in mild areas",
+    "harvest_period": "August-November",
+    "growth_duration": "50-70 days to pods, 90-110 to dry seed",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual twining or bushy herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "trifoliate, broad ovate leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "climbing vine or dwarf bush"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 30,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; never let the surface dry once flowering starts",
+    "pruning_requirement": "train onto a trellis for climbing types",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Dwarf bush types need no support and give a crop in about two months in a large pot."
+   }
+  },
+  {
+   "scientific_name": "Pisum sativum",
+   "common_name": "Pea",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मटर",
+    "transliterations": [
+     "matar",
+     "mattar"
+    ],
+    "variants": [
+     "pea",
+     "garden pea",
+     "sweet pea",
+     "field pea"
+    ],
+    "taxonomic_synonyms": [
+     "Pisum sativum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse and green vegetable",
+    "edible_part": "pods and seed",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, October-November in the plains; February-March in the hills",
+    "harvest_period": "December-March",
+    "growth_duration": "60-90 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual climbing herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "pinnate with tendrils at the leaf tip"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "slender twining vine"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 35,
+    "drainage": "free draining, moisture-retentive",
+    "watering_band": "moderate",
+    "establishment_watering": "water consistently; drought at flowering blanks the pods",
+    "pruning_requirement": "provide a trellis from the start",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "The seeds of some ornamental sweet-pea relatives are not edible; garden pea pods are.",
+    "notes": "Cool-season crop, so it succeeds on a rooftop in winter and shuts down in summer heat."
+   }
+  },
+  {
+   "scientific_name": "Portulaca oleracea",
+   "common_name": "Purslane",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "ROOFTOP_GARDEN",
+    "WEED"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "सलख अथवा पूतला",
+    "transliterations": [
+     "salakh",
+     "putla"
+    ],
+    "variants": [
+     "purslane",
+     "little hogweed",
+     "common purslane"
+    ],
+    "taxonomic_synonyms": [
+     "Portulaca oleracea L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy vegetable and edible weed",
+    "edible_part": "leaves and tender stems",
+    "life_cycle": "annual",
+    "sowing_season": "any warm season",
+    "harvest_period": "cut and come again",
+    "growth_duration": "20 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "succulent annual prostrate herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "fleshy obovate, clustered"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "low, mat-forming, stems root at the nodes"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 5,
+    "root_depth_cm": 10,
+    "drainage": "excellent drainage; dislikes wet feet",
+    "watering_band": "low",
+    "establishment_watering": "water lightly and often; it will rot in a soggy pot",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "notes": "Spreads from cuttings almost anywhere, survives a missed watering, and is a common edible on Indian rooftops. Too vigorous for a small hanging basket."
+   }
+  },
+  {
+   "scientific_name": "Raphanus sativus",
+   "common_name": "Radish",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मूली",
+    "transliterations": [
+     "muli",
+     "mooli"
+    ],
+    "variants": [
+     "radish",
+     "radish plant",
+     "white radish",
+     "daikon"
+    ],
+    "taxonomic_synonyms": [
+     "Raphanus sativus L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "root vegetable",
+    "edible_part": "root and leaves",
+    "life_cycle": "biennial, grown as annual",
+    "sowing_season": "rabi, sown August-November",
+    "harvest_period": "25-45 days",
+    "growth_duration": "25-60 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "biennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "lyrate, deeply lobed, rough-hairy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "basal rosette on a swollen root"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 15,
+    "root_depth_cm": 25,
+    "drainage": "loose, free draining, not freshly manured",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; a dry soil makes the root woody and cracked",
+    "pruning_requirement": "thin to 5 cm apart",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "The fastest reliable rooftop crop: some varieties are harvestable in under a month, which makes it ideal for children and for continual succession sowing."
+   }
+  },
+  {
+   "scientific_name": "Sesamum indicum",
+   "common_name": "Sesame (til)",
+   "categories": [
+    "FOOD_CROP",
+    "OILSEED",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "तिल",
+    "transliterations": [
+     "til",
+     "ellu"
+    ],
+    "variants": [
+     "sesame",
+     "gingerbread plant",
+     "benne"
+    ],
+    "taxonomic_synonyms": [
+     "Sesamum indicum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "oilseed",
+    "edible_part": "seed",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi October in the south",
+    "harvest_period": "September-October",
+    "growth_duration": "90-120 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "erect annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "lower leaves opposite, upper alternate, lanceolate to oblong"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "upright 1-1.5 m, sticky-hairy"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 30,
+    "drainage": "excellent drainage; susceptible to waterlogging",
+    "watering_band": "low",
+    "establishment_watering": "water moderately; overwatering is the main cause of failure",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "A heat-tolerant oilseed that performs well in a terrace tub."
+   }
+  },
+  {
+   "scientific_name": "Setaria italica",
+   "common_name": "Foxtail millet",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "कांगनी",
+    "transliterations": [
+     "kangni",
+     "kangni millet"
+    ],
+    "variants": [
+     "foxtail millet",
+     "Italian millet"
+    ],
+    "taxonomic_synonyms": [
+     "Setaria italica (L.) P.Beauv."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain), green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "September",
+    "growth_duration": "75-90 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "narrow, linear"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect grass with a dense bristly cylindrical head"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 25,
+    "drainage": "free draining",
+    "watering_band": "low",
+    "establishment_watering": "moist until emergence, then sparing",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Short season and modest root depth make it a practical container cereal."
+   }
+  },
+  {
+   "scientific_name": "Solanum aethiopicum",
+   "common_name": "African eggplant",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "वांग",
+    "transliterations": [
+     "wang"
+    ],
+    "variants": [
+     "African eggplant",
+     "scarlet eggplant",
+     "ethiopian eggplant"
+    ],
+    "taxonomic_synonyms": [
+     "Solanum aethiopicum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy and fruit vegetable",
+    "edible_part": "leaves and fruit",
+    "life_cycle": "annual or short-lived perennial",
+    "sowing_season": "warm season, year-round in frost-free areas",
+    "harvest_period": "2-3 months",
+    "growth_duration": "120-180 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual or short-lived perennial"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "lobed, wavy-margined, hairy"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect branching herb"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 35,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Tougher and more heat-tolerant than brinjal, and the leaves are also eaten as a vegetable."
+   }
+  },
+  {
+   "scientific_name": "Solanum lycopersicum",
+   "common_name": "Tomato",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "टमाटर",
+    "transliterations": [
+     "tamatar",
+     "tamater"
+    ],
+    "variants": [
+     "tomato",
+     "tomato plant",
+     "tomatoes"
+    ],
+    "taxonomic_synonyms": [
+     "Lycopersicon esculentum",
+     "Solanum esculentum"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi October-November; summer January-February in the plains",
+    "harvest_period": "50 days to first ripe fruit from transplanting",
+    "growth_duration": "90-150 days to maturity",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "odd-pinnate compound, serrated leaflets, hairy and aromatic"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "bushy or climbing, 0.5-3 m, stems and leaves hairy and strongly scented when crushed"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 20,
+    "root_depth_cm": 40,
+    "drainage": "very free draining; never waterlogged",
+    "watering_band": "high",
+    "establishment_watering": "keep evenly moist every day; inconsistent watering splits the fruit and causes blossom-end rot",
+    "pruning_requirement": "tie to a cane or stake, pinch side shoots, remove leaves below the first flower truss",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Leaves and stems are not edible and carry solanine; green fruit and cut tomatoes should not be eaten in quantity.",
+    "notes": "The most reliable rooftop vegetable in a 20-litre pot, provided it gets at least six hours of direct sun and steady water. Determinate bush varieties need far less root depth than indeterminate vine types."
+   }
+  },
+  {
+   "scientific_name": "Solanum melongena",
+   "common_name": "Brinjal (eggplant)",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "बैंगन",
+    "transliterations": [
+     "baingan",
+     "began",
+     "vanga"
+    ],
+    "variants": [
+     "eggplant",
+     "egg plant",
+     "aubergine",
+     "brinjal"
+    ],
+    "taxonomic_synonyms": [
+     "Solanum melongena L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "fruit vegetable",
+    "edible_part": "fruit",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi October-November",
+    "harvest_period": "2-3 months after transplanting",
+    "growth_duration": "120-160 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "large, ovate to lobed, softly hairy, often wavy-edged"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "upright branched 0.5-1.5 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 40,
+    "drainage": "free draining and moisture-retentive",
+    "watering_band": "high",
+    "establishment_watering": "needs steady moisture; drought causes tough fruit and bitter fruit",
+    "pruning_requirement": "remove the growing tip after the first fruit to get side branches and more fruit",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Foliage is hairy and can irritate skin; it is not edible.",
+    "notes": "A heavy feeder with a long season. Warm, sheltered rooftop positions suit it better than exposed ones."
+   }
+  },
+  {
+   "scientific_name": "Solanum surattense",
+   "common_name": "Indian eggplant",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "ROOFTOP_GARDEN",
+    "WEED"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मटरी",
+    "transliterations": [
+     "matri",
+     "kantoki"
+    ],
+    "variants": [
+     "Indian eggplant",
+     "forest eggplant",
+     "kantoki"
+    ],
+    "taxonomic_synonyms": [
+     "Solanum surattense Burm.f."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy and fruit vegetable",
+    "edible_part": "leaves and small fruit",
+    "life_cycle": "annual or perennial",
+    "sowing_season": "warm season, often self-sown",
+    "harvest_period": "2-3 months",
+    "growth_duration": "120-200 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "perennial herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "deeply lobed, armed with small prickles"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect, prickly, widespread"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 15,
+    "root_depth_cm": 30,
+    "drainage": "excellent drainage",
+    "watering_band": "low",
+    "establishment_watering": "light watering; drought tolerant",
+    "pruning_requirement": "pinch tips for branching",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Handles heat, poor soil and neglect, which makes it a reliable rooftop vegetable where finisher crops fail. The prickles are stinging, so put it out of reach of children."
+   }
+  },
+  {
+   "scientific_name": "Solanum tuberosum",
+   "common_name": "Potato",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "आलू",
+    "transliterations": [
+     "alu",
+     "aloo"
+    ],
+    "variants": [
+     "potato",
+     "potato plant",
+     "Irish potato"
+    ],
+    "taxonomic_synonyms": [
+     "Solanum tuberosum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "tuber vegetable",
+    "edible_part": "tuber",
+    "life_cycle": "annual (tuberous perennial)",
+    "sowing_season": "kharif August-September; rabi October-November",
+    "harvest_period": "2.5-3 months after planting",
+    "growth_duration": "80-120 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "tuberous herbaceous perennial"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "odd-pinnate compound with soft leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "upright bushy herb; tubers form on stolons below soil"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 40,
+    "root_depth_cm": 40,
+    "drainage": "very free draining and loose; tubers need to swell underground",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; never let the soil dry once tubers have set",
+    "pruning_requirement": "earth up around the stems as they grow to keep tubers buried and out of the light",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Green tubers and any green part carry solanine and must not be eaten; the plant foliage is not edible.",
+    "notes": "Workable in a deep tub or fabric grow bag on a terrace, but needs far more root depth and volume than a balcony pot allows. Compact early varieties are the practical choice."
+   }
+  },
+  {
+   "scientific_name": "Sorghum bicolor",
+   "common_name": "Sorghum (jowar)",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "FORAGE_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "ज्वार",
+    "transliterations": [
+     "jwar",
+     "jowar",
+     "jowar"
+    ],
+    "variants": [
+     "jowar",
+     "great millet",
+     "guinea corn"
+    ],
+    "taxonomic_synonyms": [
+     "Sorghum bicolor (L.) Moench"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain), whole plant as fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July",
+    "harvest_period": "September-October",
+    "growth_duration": "100-130 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad, linear, parallel-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "tall erect grass, often 1.5-3 m"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 45,
+    "root_depth_cm": 45,
+    "drainage": "very free draining",
+    "watering_band": "low",
+    "establishment_watering": "keep moist for the first three weeks; then drought-tolerant",
+    "pruning_requirement": "none",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Handles heat, wind and irregular watering better than maize, which makes it the safer rooftop cereal in a hot city."
+   }
+  },
+  {
+   "scientific_name": "Spinacia oleracea",
+   "common_name": "Spinach",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "HERB",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "पालक",
+    "transliterations": [
+     "palak",
+     "spinach"
+    ],
+    "variants": [
+     "spinach",
+     "spinach plant",
+     "Persian spinach"
+    ],
+    "taxonomic_synonyms": [
+     "Spinacia oleracea L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "leafy vegetable",
+    "edible_part": "leaves",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown September-November",
+    "harvest_period": "30-45 days",
+    "growth_duration": "30-45 days",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "broad ovate to arrowhead, dark green or red"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect rosette"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun to partial sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 10,
+    "root_depth_cm": 20,
+    "drainage": "rich, moisture-retentive, free draining",
+    "watering_band": "high",
+    "establishment_watering": "needs consistent moisture; it bolts within days of a hot dry spell",
+    "pruning_requirement": "harvest outer leaves and let the crown regrow",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Excellent cool-season rooftop crop. Sow little and often, because it bolts fast once days lengthen or temperatures rise."
+   }
+  },
+  {
+   "scientific_name": "Trianthema portulacastrum",
+   "common_name": "Desert horse-purslane",
+   "categories": [
+    "FOOD_CROP",
+    "VEGETABLE",
+    "WEED",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "देशी पालक",
+    "transliterations": [
+     "deshi palak"
+    ],
+    "variants": [
+     "horse purslane",
+     "desert horsepurslane"
+    ],
+    "taxonomic_synonyms": [
+     "Trianthema portulacastrum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "edible weed vegetable",
+    "edible_part": "leaves and tender stems",
+    "life_cycle": "annual",
+    "sowing_season": "warm season, monsoon",
+    "harvest_period": "cut and come again",
+    "growth_duration": "25 days to first cut",
+    "cultivation_system": "kitchen garden or field vegetable"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "prostrate annual herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "opposite, unequal, ovate to obovate"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "creeping prostrate"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "high",
+    "wind_exposure": "high",
+    "min_container_litres": 5,
+    "root_depth_cm": 10,
+    "drainage": "excellent drainage",
+    "watering_band": "low",
+    "establishment_watering": "light frequent watering; a neglected pot is often better for it",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "yes",
+    "special_hazards": "Some Solanaceae-free but commonly confused with toxic look-alikes; identify by its paired unequal leaves and small pink flowers before eating."
+   }
+  },
+  {
+   "scientific_name": "Triticum aestivum",
+   "common_name": "Wheat",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "AGRICULTURAL_CROP"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "गेहूँ",
+    "transliterations": [
+     "gehu",
+     "gehun",
+     "gehoon"
+    ],
+    "variants": [
+     "wheat plant",
+     "bread wheat"
+    ],
+    "taxonomic_synonyms": [
+     "Triticum aestivum L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain",
+    "edible_part": "seed (grain)",
+    "life_cycle": "annual",
+    "sowing_season": "rabi, sown November-December in northern India",
+    "harvest_period": "March-April",
+    "growth_duration": "120-150 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "linear, parallel-veined"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "erect, tillering cereal"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": false,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "low",
+    "drought_tolerance": "low",
+    "wind_exposure": "moderate",
+    "min_container_litres": 25,
+    "root_depth_cm": 40,
+    "drainage": "free draining; never waterlogged",
+    "watering_band": "low",
+    "establishment_watering": "keep evenly moist until emergence, then let the surface dry between waterings",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Grows in a deep container on a terrace, but the grain head needs more root depth and a cooler winter than most rooftop positions offer."
+   }
+  },
+  {
+   "scientific_name": "Vigna mungo",
+   "common_name": "Black gram (urad)",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "उड़द",
+    "transliterations": [
+     "urad",
+     "urd"
+    ],
+    "variants": [
+     "black gram",
+     "urad dal",
+     "black lentil"
+    ],
+    "taxonomic_synonyms": [
+     "Vigna mungo (L.) Hepper"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse",
+    "edible_part": "seed and green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi October-November",
+    "harvest_period": "kharif October; rabi February",
+    "growth_duration": "60-80 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual trailing or erect herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "trifoliate"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "spreading, twining at the tips"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 12,
+    "root_depth_cm": 25,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Handles a wider range of soils than most pulses and climbs a small support readily."
+   }
+  },
+  {
+   "scientific_name": "Vigna radiata",
+   "common_name": "Mung bean",
+   "categories": [
+    "FOOD_CROP",
+    "PULSE",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मूंग",
+    "transliterations": [
+     "moong",
+     "mung"
+    ],
+    "variants": [
+     "mung bean",
+     "green gram",
+     "moong dal"
+    ],
+    "taxonomic_synonyms": [
+     "Vigna radiata (L.) Wilczek"
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "pulse",
+    "edible_part": "seed and green fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July; rabi February-March",
+    "harvest_period": "kharif September; rabi May",
+    "growth_duration": "60-75 days",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual twining or erect herb"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "trifoliate, broad ovate leaflets"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "bushy to twining, trailing"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "moderate",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "low",
+    "min_container_litres": 10,
+    "root_depth_cm": 20,
+    "drainage": "free draining",
+    "watering_band": "moderate",
+    "establishment_watering": "keep evenly moist; it wilts quickly in a dry pot",
+    "pruning_requirement": "low",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "notes": "Fast, productive and forgiving in a shallow container. Give it a small trellis or let it trail over the rim."
+   }
+  },
+  {
+   "scientific_name": "Zea mays",
+   "common_name": "Maize",
+   "categories": [
+    "FOOD_CROP",
+    "CEREAL",
+    "AGRICULTURAL_CROP",
+    "ROOFTOP_GARDEN"
+   ],
+   "primary_category": "FOOD_CROP",
+   "names": {
+    "hi": "मक्का",
+    "transliterations": [
+     "makka",
+     "makai",
+     "bhutta"
+    ],
+    "variants": [
+     "corn",
+     "sweetcorn",
+     "corn plant"
+    ],
+    "taxonomic_synonyms": [
+     "Zea mays L."
+    ]
+   },
+   "sources": [],
+   "crop": {
+    "crop_role": "grain and fodder",
+    "edible_part": "seed (grain), then whole plant as fodder",
+    "life_cycle": "annual",
+    "sowing_season": "kharif June-July, or year-round in mild areas",
+    "harvest_period": "kharif September-October",
+    "growth_duration": "90-120 days to green cob; 150-180 to dry grain",
+    "cultivation_system": "irrigated or rainfed field crop"
+   },
+   "traits": [
+    {
+     "trait": "life_form",
+     "value": "annual grass"
+    },
+    {
+     "trait": "leaf_type",
+     "value": "long, broad, arching, parallel-veined strap leaves"
+    },
+    {
+     "trait": "growth_habit",
+     "value": "tall erect single-stemmed grass"
+    }
+   ],
+   "rooftop": {
+    "rooftop_suitable": true,
+    "rooftop_role": "edible",
+    "exposure": "full sun",
+    "heat_tolerance": "high",
+    "drought_tolerance": "moderate",
+    "wind_exposure": "moderate",
+    "min_container_litres": 40,
+    "root_depth_cm": 45,
+    "drainage": "very free draining, never waterlogged",
+    "watering_band": "high",
+    "establishment_watering": "water deeply and often in the first month; a container dries fast",
+    "pruning_requirement": "none",
+    "self_sown": "no",
+    "indoor_suitable": "no",
+    "special_hazards": "Pollen from tasselling male flowers is an allergen.",
+    "notes": "Needs a deep pot and constant water, so it suits a terrace planter rather than a small balcony pot. Wind can snap the stalk unless it is staked."
+   }
+  }
+ ]
+}
